@@ -1,0 +1,59 @@
+{
+  "name": "ellmos-clatcher-mcp",
+  "version": "1.0.0",
+  "description": "Claude Patcher -- MCP tools that extend Claude Code with capabilities not covered by built-in tools (Read/Write/Edit/Glob/Grep/Bash). Fix encoding, convert formats, detect duplicates, batch rename, archive, and more.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ellmos-clatcher": "dist/index.js"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node node_modules/typescript/bin/tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "claude-code",
+    "developer-tools",
+    "encoding-fix",
+    "format-conversion",
+    "duplicate-detection",
+    "mcp-server"
+  ],
+  "author": "Lukas Geiger",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ellmos-ai/ellmos-clatcher-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ellmos-ai/ellmos-clatcher-mcp/issues"
+  },
+  "homepage": "https://github.com/ellmos-ai/ellmos-clatcher-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "adm-zip": "^0.5.16",
+    "fast-xml-parser": "^5.3.6",
+    "js-yaml": "^4.1.1",
+    "smol-toml": "^1.6.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
