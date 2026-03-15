@@ -16,6 +16,7 @@
     "build": "node node_modules/typescript/bin/tsc",
     "start": "node dist/index.js",
     "dev": "tsc --watch",
+    "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -51,7 +52,8 @@
     "@types/adm-zip": "^0.5.7",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.11.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^4.1.0"
   },
   "engines": {
     "node": ">=18.0.0"

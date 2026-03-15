@@ -1,8 +1,16 @@
 # ellmos-clatcher-mcp
 
-**Claude Patcher** -- a "best-of" MCP server that extends Claude Code with tools it does *not* have natively. No redundant file I/O, no grep clones. Only capabilities that fill real gaps.
+**Claude Patcher** -- an MCP server that extends AI coding agents with utility tools they don't have natively. File repair, format conversion, duplicate detection, batch operations, and more.
 
-Replaces **bach-codecommander-mcp** and **bach-filecommander-mcp** with a single, lean server.
+Part of the **ellmos MCP family**:
+
+| Server | Focus | npm |
+|---|---|---|
+| [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | Filesystem operations, process management, interactive sessions | `ellmos-filecommander-mcp` |
+| [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | Code analysis, AST parsing, import management | `ellmos-codecommander-mcp` |
+| **ellmos-clatcher-mcp** | **Utility tools: repair, convert, detect, batch ops** | `ellmos-clatcher-mcp` |
+
+Each server covers a different domain. Use one, two, or all three depending on your workflow.
 
 ## Tools
 
@@ -21,38 +29,40 @@ Replaces **bach-codecommander-mcp** and **bach-filecommander-mcp** with a single
 | `scan_emoji` | Find emoji characters in code files |
 | `regex_test` | Test regex patterns against text, showing all matches with groups |
 
-All destructive tools (`fix_json`, `fix_encoding`, `fix_umlauts`, `batch_rename`, `cleanup_file`) default to **dry-run mode** and require explicit `dry_run: false` to write changes.
+All destructive tools default to **dry-run mode** and require explicit `dry_run: false` to write changes.
 
 ## Installation
+
+### Claude Code CLI
+
+```bash
+claude mcp add ellmos-clatcher-mcp -- npx ellmos-clatcher-mcp
+```
 
 ### npm (global)
 
 ```bash
 npm install -g ellmos-clatcher-mcp
+claude mcp add ellmos-clatcher-mcp -- ellmos-clatcher
 ```
 
-### Claude Code CLI
-
-```bash
-claude mcp add ellmos-clatcher -- npx ellmos-clatcher-mcp
-```
-
-Or with an explicit global install:
-
-```bash
-npm install -g ellmos-clatcher-mcp
-claude mcp add ellmos-clatcher -- ellmos-clatcher
-```
-
-### Manual (from source)
+### From source
 
 ```bash
 git clone https://github.com/ellmos-ai/ellmos-clatcher-mcp.git
 cd ellmos-clatcher-mcp
 npm install
 npm run build
-claude mcp add ellmos-clatcher -- node /path/to/ellmos-clatcher-mcp/dist/index.js
+node dist/index.js
 ```
+
+## Testing
+
+```bash
+npm test
+```
+
+122 tests covering all 12 tools (vitest).
 
 ## Requirements
 
