@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.jpg" alt="clatcher logo" width="400">
+</p>
+
 # ellmos-clatcher-mcp
 
 **Claude Patcher** -- an MCP server that extends AI coding agents with utility tools they don't have natively. File repair, format conversion, duplicate detection, batch operations, and more.
