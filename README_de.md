@@ -4,38 +4,38 @@
 
 # ellmos-clatcher-mcp
 
-**🇩🇪 [Deutsche Version](README_de.md)**
+**🇬🇧 [English Version](README.md)**
 
-**Claude Patcher** -- an MCP server that extends AI coding agents with utility tools they don't have natively. File repair, format conversion, duplicate detection, batch operations, and more.
+**Claude Patcher** — ein MCP-Server, der KI-Coding-Agenten um nützliche Werkzeuge erweitert, die sie von Haus aus nicht mitbringen. Dateireparatur, Formatkonvertierung, Duplikaterkennung, Batch-Operationen und mehr.
 
-Part of the **ellmos MCP family**:
+Teil der **ellmos MCP-Familie**:
 
-| Server | Focus | npm |
+| Server | Fokus | npm |
 |---|---|---|
-| [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | Filesystem operations, process management, interactive sessions | `ellmos-filecommander-mcp` |
-| [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | Code analysis, AST parsing, import management | `ellmos-codecommander-mcp` |
-| **ellmos-clatcher-mcp** | **Utility tools: repair, convert, detect, batch ops** | `ellmos-clatcher-mcp` |
+| [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | Dateisystem-Operationen, Prozessverwaltung, interaktive Sitzungen | `ellmos-filecommander-mcp` |
+| [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | Code-Analyse, AST-Parsing, Import-Verwaltung | `ellmos-codecommander-mcp` |
+| **ellmos-clatcher-mcp** | **Hilfswerkzeuge: Reparatur, Konvertierung, Erkennung, Batch-Operationen** | `ellmos-clatcher-mcp` |
 
-Each server covers a different domain. Use one, two, or all three depending on your workflow.
+Jeder Server deckt einen anderen Bereich ab. Verwende einen, zwei oder alle drei — je nach Workflow.
 
-## Tools
+## Werkzeuge
 
-| Tool | Description |
+| Tool | Beschreibung |
 |---|---|
-| `fix_json` | Repair broken JSON: strip comments, trailing commas, single quotes, BOM/NUL |
-| `fix_encoding` | Fix encoding issues: BOM removal, double-encoded UTF-8, cp1252 artifacts |
-| `fix_umlauts` | Fix broken German umlauts from double-encoding (e.g. `Ã¤` -> `ä`) |
-| `convert_format` | Convert between JSON, YAML, TOML, XML, CSV, and INI |
-| `detect_dupes` | Find duplicate files by content hash (SHA256), grouped by identical content |
-| `folder_diff` | Compare two directories, or take a snapshot and diff on next call |
-| `batch_rename` | Rename files using regex patterns, with dry-run preview |
-| `archive` | Create, extract, or list ZIP archives |
-| `checksum` | Calculate file hashes (SHA256, MD5, SHA1, SHA512) with optional verification |
-| `cleanup_file` | Remove BOM, trailing whitespace, fix line endings, strip NUL bytes |
-| `scan_emoji` | Find emoji characters in code files |
-| `regex_test` | Test regex patterns against text, showing all matches with groups |
+| `fix_json` | Defektes JSON reparieren: Kommentare, abschließende Kommas, einfache Anführungszeichen, BOM/NUL entfernen |
+| `fix_encoding` | Encoding-Probleme beheben: BOM-Entfernung, doppelt kodiertes UTF-8, cp1252-Artefakte |
+| `fix_umlauts` | Kaputte deutsche Umlaute aus Doppel-Encoding reparieren (z. B. `Ã¤` → `ä`) |
+| `convert_format` | Zwischen JSON, YAML, TOML, XML, CSV und INI konvertieren |
+| `detect_dupes` | Doppelte Dateien anhand von Content-Hash (SHA256) finden, gruppiert nach identischem Inhalt |
+| `folder_diff` | Zwei Verzeichnisse vergleichen oder einen Snapshot erstellen und beim nächsten Aufruf abgleichen |
+| `batch_rename` | Dateien per Regex-Muster umbenennen, mit Vorschau im Dry-Run-Modus |
+| `archive` | ZIP-Archive erstellen, entpacken oder auflisten |
+| `checksum` | Datei-Hashes berechnen (SHA256, MD5, SHA1, SHA512) mit optionaler Verifikation |
+| `cleanup_file` | BOM entfernen, Leerzeichen am Zeilenende bereinigen, Zeilenenden korrigieren, NUL-Bytes entfernen |
+| `scan_emoji` | Emoji-Zeichen in Quellcode-Dateien finden |
+| `regex_test` | Regex-Muster gegen Text testen, mit Anzeige aller Treffer und Gruppen |
 
-All destructive tools default to **dry-run mode** and require explicit `dry_run: false` to write changes.
+Alle destruktiven Werkzeuge laufen standardmäßig im **Dry-Run-Modus** und erfordern explizit `dry_run: false`, um Änderungen zu schreiben.
 
 ## Installation
 
@@ -52,7 +52,7 @@ npm install -g ellmos-clatcher-mcp
 claude mcp add ellmos-clatcher-mcp -- ellmos-clatcher
 ```
 
-### From source
+### Aus dem Quellcode
 
 ```bash
 git clone https://github.com/ellmos-ai/ellmos-clatcher-mcp.git
@@ -62,19 +62,19 @@ npm run build
 node dist/index.js
 ```
 
-## Testing
+## Tests
 
 ```bash
 npm test
 ```
 
-122 tests covering all 12 tools (vitest).
+122 Tests für alle 12 Tools (vitest).
 
-## Requirements
+## Voraussetzungen
 
 - Node.js >= 18
 
-## License
+## Lizenz
 
 [MIT](LICENSE)
 
