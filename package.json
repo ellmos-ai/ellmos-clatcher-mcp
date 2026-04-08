@@ -1,6 +1,6 @@
 {
   "name": "ellmos-clatcher-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Claude Patcher -- MCP tools that extend Claude Code with capabilities not covered by built-in tools (Read/Write/Edit/Glob/Grep/Bash). Fix encoding, convert formats, detect duplicates, batch rename, archive, and more.",
   "type": "module",
   "main": "dist/index.js",
@@ -47,6 +47,10 @@
     "js-yaml": "^4.1.1",
     "smol-toml": "^1.6.0",
     "zod": "^3.23.8"
+  },
+  "overrides": {
+    "hono": "^4.12.12",
+    "@hono/node-server": "^1.19.13"
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.7",
