@@ -1,1 +1,32 @@
-{"$schema":"https://glama.ai/mcp/schemas/server.json","maintainers":["lukisch"]}
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "ellmos-clatcher-mcp",
+  "version": "1.0.4",
+  "description": "Utility-first MCP server that extends Claude Code with encoding repair, format conversion, duplicate detection, batch rename, archiving, and related file-maintenance tools.",
+  "maintainers": [
+    "lukisch"
+  ],
+  "author": "Lukas Geiger",
+  "homepage": "https://github.com/ellmos-ai/ellmos-clatcher-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "developer-tools",
+    "encoding-fix",
+    "format-conversion",
+    "duplicate-detection",
+    "mcp-server"
+  ],
+  "tools": {
+    "count": 12
+  },
+  "features": [
+    "Encoding repair",
+    "Format conversion",
+    "Duplicate detection",
+    "Batch rename",
+    "Archive utilities"
+  ]
+}
