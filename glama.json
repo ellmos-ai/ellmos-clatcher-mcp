@@ -1,7 +1,7 @@
 {
   "$schema": "https://glama.ai/mcp/schemas/server.json",
   "name": "ellmos-clatcher-mcp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Utility-first MCP server that extends Claude Code with encoding repair, format conversion, duplicate detection, batch rename, archiving, and related file-maintenance tools.",
   "maintainers": [
     "lukisch"

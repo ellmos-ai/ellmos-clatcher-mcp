@@ -41,8 +41,17 @@ const execAsync = promisify(exec);
 
 const server = new McpServer({
   name: "ellmos-clatcher-mcp",
-  version: "1.0.0",
+  version: "1.0.5",
 });
+
+function registerTool(
+  name: string,
+  description: string,
+  schema: Record<string, z.ZodTypeAny>,
+  handler: (args: any) => Promise<any>
+): void {
+  server.tool(name, description, schema as any, handler as any);
+}
 
 // ============================================================================
 // Helpers
@@ -69,7 +78,7 @@ function err(text: string) { return { isError: true as const, content: [{ type: 
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "fix_json",
   "Repair broken JSON: strip comments, fix trailing commas, convert single quotes, remove BOM/NUL. Supports dry_run mode.",
   {
@@ -131,7 +140,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "fix_encoding",
   "Fix encoding issues: detect and repair BOM, broken UTF-8, cp1252 artifacts. Common on Windows.",
   {
@@ -198,7 +207,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "fix_umlauts",
   "Fix broken German umlauts from double-encoding or cp1252 artifacts (Ã¤→ä, Ã¶→ö, etc.)",
   {
@@ -262,7 +271,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "convert_format",
   "Convert between data formats: JSON, YAML, TOML, XML, CSV, INI. Reads input file and writes output file.",
   {
@@ -360,7 +369,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "detect_dupes",
   "Find duplicate files in a directory by content hash (SHA256). Groups files with identical content.",
   {
@@ -374,7 +383,7 @@ server.tool(
       const dir = norm(directory);
       if (!await exists(dir)) return err(`Directory not found: ${dir}`);
 
-      const extFilter = extensions ? new Set(extensions.split(",").map(e => "." + e.trim().replace(/^\./, ""))) : null;
+      const extFilter = extensions ? new Set(extensions.split(",").map((e: string) => "." + e.trim().replace(/^\./, ""))) : null;
 
       // Collect files
       async function collectFiles(d: string): Promise<string[]> {
@@ -461,7 +470,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "folder_diff",
   "Compare two directories, or take a snapshot and compare on next call. Shows new, modified, and deleted files.",
   {
@@ -572,7 +581,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "batch_rename",
   "Rename multiple files using regex pattern, prefix/suffix, or counter. Always preview first with dry_run=true.",
   {
@@ -588,7 +597,7 @@ server.tool(
       if (!await exists(dir)) return err(`Directory not found: ${dir}`);
 
       const re = new RegExp(pattern);
-      const extFilter = extensions ? new Set(extensions.split(",").map(e => "." + e.trim().replace(/^\./, ""))) : null;
+      const extFilter = extensions ? new Set(extensions.split(",").map((e: string) => "." + e.trim().replace(/^\./, ""))) : null;
 
       const entries = await fs.readdir(dir, { withFileTypes: true });
       const renames: { from: string; to: string }[] = [];
@@ -632,7 +641,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "archive",
   "Create, extract, or list ZIP archives.",
   {
@@ -695,7 +704,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "checksum",
   "Calculate file hash (SHA256, MD5, SHA1, SHA512). Optionally verify against expected hash.",
   {
@@ -724,7 +733,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "cleanup_file",
   "Remove BOM, trailing whitespace, fix line endings, remove NUL bytes. Configurable per-option.",
   {
@@ -776,7 +785,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "scan_emoji",
   "Scan code files for emoji characters. Useful for finding accidental emojis in source code.",
   {
@@ -789,7 +798,7 @@ server.tool(
       const dir = norm(directory);
       if (!await exists(dir)) return err(`Directory not found: ${dir}`);
 
-      const extSet = new Set(extensions.split(",").map(e => "." + e.trim().replace(/^\./, "")));
+      const extSet = new Set(extensions.split(",").map((e: string) => "." + e.trim().replace(/^\./, "")));
       const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{200D}\u{20E3}\u{FE0F}]/gu;
 
       const results: { file: string; line: number; emoji: string; text: string }[] = [];
@@ -842,7 +851,7 @@ server.tool(
 // ============================================================================
 
 // @ts-ignore: MCP SDK Zod type depth
-server.tool(
+registerTool(
   "regex_test",
   "Test a regex pattern against text. Shows all matches with groups and positions.",
   {
