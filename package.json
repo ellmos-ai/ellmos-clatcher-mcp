@@ -10,7 +10,8 @@
   "files": [
     "dist/",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "README_de.md"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",
