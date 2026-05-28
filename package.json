@@ -1,6 +1,7 @@
 {
   "name": "ellmos-clatcher-mcp",
   "version": "1.0.5",
+  "mcpName": "io.github.ellmos-ai/ellmos-clatcher-mcp",
   "description": "Claude Patcher -- MCP tools that extend Claude Code with capabilities not covered by built-in tools (Read/Write/Edit/Glob/Grep/Bash). Fix encoding, convert formats, detect duplicates, batch rename, archive, and more.",
   "type": "module",
   "main": "dist/index.js",
@@ -11,7 +12,8 @@
     "dist/",
     "LICENSE",
     "README.md",
-    "README_de.md"
+    "README_de.md",
+    "server.json"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",

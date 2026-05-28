@@ -10,6 +10,7 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 - [README (English)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README.md): Tools overview, installation, family context
 - [README (Deutsch)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_de.md): German version
+- [server.json](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/server.json): MCP Registry metadata for `io.github.ellmos-ai/ellmos-clatcher-mcp`
 - [LICENSE](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/LICENSE): MIT license text
 - [npm package](https://www.npmjs.com/package/ellmos-clatcher-mcp): Published artifact
 
