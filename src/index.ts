@@ -59,6 +59,18 @@ function registerTool(
 
 function norm(p: string): string { return path.normalize(p); }
 
+function isSafeRenameTarget(name: string): boolean {
+  return (
+    name.length > 0 &&
+    name !== "." &&
+    name !== ".." &&
+    !path.isAbsolute(name) &&
+    !path.win32.isAbsolute(name) &&
+    !name.includes("/") &&
+    !name.includes("\\")
+  );
+}
+
 async function exists(p: string): Promise<boolean> {
   try { await fs.access(p); return true; } catch { return false; }
 }
@@ -611,6 +623,18 @@ registerTool(
       }
 
       if (renames.length === 0) return ok(`No files match pattern /${pattern}/ in ${dir}`);
+
+      const unsafeRenames = renames.filter((r) => !isSafeRenameTarget(r.to));
+      if (unsafeRenames.length > 0) {
+        const lines = [
+          `Unsafe rename target${unsafeRenames.length === 1 ? "" : "s"} generated.`,
+          "Replacements must produce file names, not paths.",
+          "",
+        ];
+        for (const r of unsafeRenames.slice(0, 20)) lines.push(`  - ${r.from} -> ${r.to}`);
+        if (unsafeRenames.length > 20) lines.push(`  ... and ${unsafeRenames.length - 20} more`);
+        return err(lines.join("\n"));
+      }
 
       if (dry_run) {
         const lines = [`**Preview** (${renames.length} renames):`, ""];

@@ -86,7 +86,7 @@ node dist/index.js
 npm test
 ```
 
-133 tests covering all 12 tools and i18n language packs (vitest).
+134 tests covering all 12 tools and i18n language packs (vitest).
 
 ## Requirements
 

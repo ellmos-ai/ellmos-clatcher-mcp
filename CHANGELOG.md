@@ -10,4 +10,7 @@ All notable changes to this project will be documented in this file.
 - Add local changelog and push protocol files for recurring MCP maintenance automation.
 
 ### Changed
-- Update README and LLM index test count to 133 tests.
+- Update README and LLM index test count to 134 tests.
+
+### Security
+- Prevent `batch_rename` replacements from generating path targets outside the selected directory.

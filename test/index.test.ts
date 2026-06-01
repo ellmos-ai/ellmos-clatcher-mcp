@@ -25,6 +25,18 @@ function norm(p: string): string {
   return path.normalize(p);
 }
 
+function isSafeRenameTarget(name: string): boolean {
+  return (
+    name.length > 0 &&
+    name !== "." &&
+    name !== ".." &&
+    !path.isAbsolute(name) &&
+    !path.win32.isAbsolute(name) &&
+    !name.includes("/") &&
+    !name.includes("\\")
+  );
+}
+
 async function exists(p: string): Promise<boolean> {
   try {
     await fs.access(p);
@@ -1110,6 +1122,11 @@ describe("Tool 7: batch_rename", () => {
       if (newName !== entry.name) renames.push({ from: entry.name, to: newName });
     }
 
+    const unsafeRenames = renames.filter((r) => !isSafeRenameTarget(r.to));
+    if (unsafeRenames.length > 0) {
+      throw new Error("Unsafe rename target generated");
+    }
+
     if (!dryRun && renames.length > 0) {
       for (const r of renames) {
         await fs.rename(path.join(dir, r.from), path.join(dir, r.to));
@@ -1179,6 +1196,18 @@ describe("Tool 7: batch_rename", () => {
     const result = await batchRename(tmpDir, "test_", "renamed_");
     expect(result.renames).toHaveLength(1);
     expect(result.renames[0].from).toBe("test_file.txt");
+  });
+
+  it("should reject replacements that escape the selected directory", async () => {
+    await fs.writeFile(path.join(tmpDir, "old_file.txt"), "content", "utf-8");
+    const outsidePath = path.join(path.dirname(tmpDir), "outside_file.txt");
+
+    await expect(
+      batchRename(tmpDir, "old_", "../outside_", { dryRun: false })
+    ).rejects.toThrow("Unsafe rename target");
+
+    expect(await exists(outsidePath)).toBe(false);
+    expect(await exists(path.join(tmpDir, "old_file.txt"))).toBe(true);
   });
 });
 

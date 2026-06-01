@@ -4,7 +4,7 @@
 
 Covers 12 tools focused on the fix-and-convert layer: fix_json (strip comments, trailing commas, single quotes, BOM/NUL), fix_encoding (BOM removal, double-encoded UTF-8, cp1252 artifacts), fix_umlauts (German umlaut Mojibake), convert_format (JSON / YAML / TOML / XML / CSV / INI), detect_dupes (SHA256 content hashing), folder_diff (two-directory compare + snapshot), batch_rename (regex with dry-run preview), archive (ZIP create/extract/list), checksum (SHA256 / MD5 / SHA1 / SHA512), cleanup_file (BOM, whitespace, line endings, NUL stripping), scan_emoji (code-file emoji detection), regex_test (pattern debugging with groups).
 
-All destructive tools default to dry-run mode -- writes require explicit `dry_run: false`. 133 tests (vitest) cover all 12 tools and i18n language packs. Node.js >= 18, MIT. Published as `ellmos-clatcher-mcp` on npm.
+All destructive tools default to dry-run mode -- writes require explicit `dry_run: false`. 134 tests (vitest) cover all 12 tools and i18n language packs. Node.js >= 18, MIT. Published as `ellmos-clatcher-mcp` on npm.
 
 ## Docs
 
