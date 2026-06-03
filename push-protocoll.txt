@@ -1,7 +1,0 @@
-2026-05-29 16:16:38 +02:00
-- Repo: ellmos-clatcher-mcp
-- GitHub-Push: nicht ausgeführt; heutige Änderung ist ein begrenzter i18n- und Testausbau ohne Versionsschnitt.
-- npm-Publish: nicht ausgeführt; Version blieb `1.0.5`, kein Sicherheitsfix und keine dringende Release-Notwendigkeit.
-- Paketcheck: `npm pack --dry-run` nach abgeschlossenem Build erfolgreich; aktualisierte `dist/i18n/*.js` für es/zh/ja/ru wären im Paket enthalten.
-- Lokaler Commit angelegt: `feat: add clatcher i18n translations`.
-- Hinweis: Bei nächstem Release Version in `package.json`, `server.json` und `src/index.ts` synchron erhöhen, dann GitHub pushen und anschließend npm publish ausführen.

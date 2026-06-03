@@ -1,8 +1,0 @@
-2026-05-29 16:16:38 +02:00
-- Repo: ellmos-clatcher-mcp
-- Spanische, vereinfachte chinesische, japanische und russische i18n-Stubs durch echte Clatcher-Übersetzungen ersetzt.
-- Direkte i18n-Tests ergänzt: stabile Sprachliste, Reset auf Deutsch, Nicht-EN-Fallback-Schutz, Stub-Quellcheck und Platzhalter-Interpolation.
-- README.md, README_de.md und llms.txt auf 133 Tests aktualisiert.
-- CHANGELOG.md mit Unreleased-Eintrag für i18n- und Testausbau angelegt.
-- Verifikation: `npm test` 133/133 bestanden, `npm run build` bestanden, `npm audit --omit=dev --audit-level=moderate` 0 Vulnerabilities, `npm pack --dry-run` nach Build bestanden.
-- Lokaler Commit angelegt: `feat: add clatcher i18n translations`.
