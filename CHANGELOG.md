@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Document the push-test workflow in both READMEs.
+- Lock `@emnapi/core` and `@emnapi/runtime` as explicit dev dependencies so Linux `npm ci` resolves Vitest/Rolldown optional peers deterministically.
 - Update README and LLM index test count to 134 tests.
 - Update community workflows to `actions/stale@v10` and `actions/first-interaction@v3`.
 
