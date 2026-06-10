@@ -121,9 +121,9 @@ registerTool(
       const c3 = content;
       content = content.replace(/,\s*([\]}])/g, "$1");
       if (content !== c3) fixes.push("Trailing commas removed");
-      // Single quotes → double quotes (naive but effective for config files)
+      // Single quotes → double quotes (only string delimiters, not apostrophes inside values)
       const c4 = content;
-      content = content.replace(/'/g, '"');
+      content = content.replace(/'([^'\\]*(?:\\.[^'\\]*)*)'/g, '"$1"');
       if (content !== c4) fixes.push("Single quotes → double quotes");
 
       // Validate
