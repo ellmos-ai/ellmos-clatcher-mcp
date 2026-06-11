@@ -20,6 +20,8 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 - [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp): Code analysis, AST parsing, import management (17 tools)
 - [n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp): n8n workflow management via MCP (18 tools)
 - [ellmos-controlcenter-mcp](https://github.com/ellmos-ai/ellmos-controlcenter-mcp): MCP stack discovery, profile management, control plane (10 tools)
+- [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp): LLM memory, knowledge, state, routing, and orchestration (44 tools, alpha)
+- [ellmos-servercommander-mcp](https://github.com/ellmos-ai/ellmos-servercommander-mcp): Server operations: deploy dry-runs, mail status, log analysis, health checks (8 tools, alpha)
 
 ## Broader ellmos ecosystem
 
@@ -30,3 +32,17 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 ## Optional
 
 - [GitHub Issues](https://github.com/ellmos-ai/ellmos-clatcher-mcp/issues): Bug reports and feature requests
+
+## Audience
+
+- Developers using Claude Code, Cursor, or MCP-compatible agents who need file repair and format conversion tools without leaving the AI workflow.
+- Teams building LLM pipelines that process malformed JSON, broken encodings, or large file collections requiring checksums and deduplication.
+- Windows users dealing with cp1252 encoding artifacts, BOM issues, and German umlaut Mojibake.
+- CI pipelines and automation workflows that need checksums, format conversion (JSON/YAML/TOML/XML/CSV/INI), or duplicate detection as agent tools.
+- Anyone using the ellmos MCP family (FileCommander for filesystem ops, CodeCommander for code intelligence) who needs the file repair and utility tier.
+
+## Search phrases
+
+mcp server json repair; fix encoding mcp; format conversion mcp tool; claude code utility tools; duplicate file detection mcp; batch rename mcp; checksum mcp; zip archive mcp; fix umlauts mcp; ellmos-clatcher-mcp; claude patcher; model context protocol file repair; json fix trailing commas; bom removal mcp; regex batch rename agent; folder diff mcp.
+
+## Last-checked: 2026-06-11
