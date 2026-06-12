@@ -37,7 +37,7 @@ Each server covers a different domain. Use one server, a focused pair, or the fu
 - **MCP Registry metadata:** [`server.json`](server.json) declares the official `io.github.ellmos-ai/ellmos-clatcher-mcp` package identity.
 - **LLM index:** [`llms.txt`](llms.txt) summarizes the tool surface for agents and registry crawlers.
 
-Primary search terms: `mcp server`, `model context protocol`, `claude code tools`, `json repair`, `encoding fix`, `format conversion`, `duplicate file detection`, `batch rename`, `checksum`, `zip archive`.
+Primary search terms: `ellmos-clatcher-mcp`, `clatcher mcp`, `claude patcher`, `mcp json repair server`, `mcp encoding fix`, `model context protocol file repair`, `claude code utility tools`, `format conversion mcp tool`, `duplicate file detection mcp`, `batch rename mcp`, `checksum mcp`, `zip archive mcp`.
 
 ## Tools
 
@@ -109,7 +109,7 @@ This MCP server is part of the **[ellmos-ai](https://github.com/ellmos-ai)** eco
 
 | Server | Tools | Focus | npm |
 |--------|-------|-------|-----|
-| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 43 | Filesystem, process management, interactive sessions | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
+| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 44 | Filesystem, process management, interactive sessions | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
 | [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 17 | Code analysis, AST parsing, import management | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
 | **[Clatcher](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **12** | **File repair, format conversion, batch operations** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
 | [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 18 | n8n workflow management via AI assistants | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |
@@ -121,7 +121,7 @@ This MCP server is part of the **[ellmos-ai](https://github.com/ellmos-ai)** eco
 
 | Project | Description |
 |---------|-------------|
-| [BACH](https://github.com/ellmos-ai/bach) | Text-based OS for LLMs — 109+ handlers, 373+ tools, 932+ skills |
+| [BACH](https://github.com/ellmos-ai/bach) | Text-based OS for LLMs — 113+ handlers, 550+ tools, 1870+ skills |
 | [clutch](https://github.com/ellmos-ai/clutch) | Provider-neutral LLM orchestration with auto-routing and budget tracking |
 | [rinnsal](https://github.com/ellmos-ai/rinnsal) | Lightweight agent memory, connectors, and automation infrastructure |
 | [ellmos-stack](https://github.com/ellmos-ai/ellmos-stack) | Self-hosted AI research stack (Ollama + n8n + Rinnsal + KnowledgeDigest) |
@@ -144,4 +144,3 @@ Nutzung auf eigenes Risiko. Keine Wartungszusage, keine Verfügbarkeitsgarantie,
 This project is an unpaid open-source donation under German law. Liability is limited to intent and gross negligence (§ 521 German Civil Code). The MIT License warranty disclaimer applies.
 
 Use at your own risk. No warranty, no maintenance guarantee, no availability guarantee, and no fitness-for-purpose assumed.
-

@@ -37,7 +37,7 @@ Jeder Server deckt einen anderen Bereich ab. Verwende einen Server, ein fokussie
 - **MCP-Registry-Metadaten:** [`server.json`](server.json) deklariert die offizielle Paketidentität `io.github.ellmos-ai/ellmos-clatcher-mcp`.
 - **LLM-Index:** [`llms.txt`](llms.txt) fasst die Tool-Oberfläche für Agenten und Registry-Crawler zusammen.
 
-Primäre Suchbegriffe: `mcp server`, `model context protocol`, `claude code tools`, `json repair`, `encoding fix`, `format conversion`, `duplicate file detection`, `batch rename`, `checksum`, `zip archive`.
+Primäre Suchbegriffe: `ellmos-clatcher-mcp`, `clatcher mcp`, `claude patcher`, `mcp json repair server`, `mcp encoding fix`, `model context protocol file repair`, `claude code utility tools`, `format conversion mcp tool`, `duplicate file detection mcp`, `batch rename mcp`, `checksum mcp`, `zip archive mcp`.
 
 ## Werkzeuge
 
@@ -109,7 +109,7 @@ Dieser MCP-Server ist Teil des **[ellmos-ai](https://github.com/ellmos-ai)**-Ök
 
 | Server | Tools | Fokus | npm |
 |--------|-------|-------|-----|
-| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 43 | Dateisystem, Prozessverwaltung, interaktive Sitzungen | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
+| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 44 | Dateisystem, Prozessverwaltung, interaktive Sitzungen | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
 | [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 17 | Code-Analyse, AST-Parsing, Import-Verwaltung | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
 | **[Clatcher](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **12** | **Dateireparatur, Formatkonvertierung, Batch-Operationen** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
 | [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 18 | n8n-Workflow-Verwaltung über KI-Assistenten | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |

@@ -2,7 +2,7 @@
   "$schema": "https://glama.ai/mcp/schemas/server.json",
   "name": "ellmos-clatcher-mcp",
   "version": "1.0.5",
-  "description": "Utility-first MCP server that extends Claude Code with encoding repair, format conversion, duplicate detection, batch rename, archiving, and related file-maintenance tools.",
+  "description": "Utility-first MCP server for JSON repair, encoding fixes, format conversion, duplicate detection, batch rename, ZIP archives, checksums, and regex testing.",
   "maintainers": [
     "lukisch"
   ],
@@ -14,9 +14,14 @@
     "model-context-protocol",
     "claude-code",
     "developer-tools",
+    "json-repair",
     "encoding-fix",
     "format-conversion",
     "duplicate-detection",
+    "batch-rename",
+    "checksum",
+    "zip-archive",
+    "file-repair",
     "mcp-server"
   ],
   "tools": {
@@ -24,9 +29,11 @@
   },
   "features": [
     "Encoding repair",
+    "JSON repair",
     "Format conversion",
     "Duplicate detection",
     "Batch rename",
-    "Archive utilities"
+    "Archive utilities",
+    "Checksum verification"
   ]
 }
