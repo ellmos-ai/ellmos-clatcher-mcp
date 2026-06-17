@@ -3,7 +3,7 @@
   "name": "io.github.ellmos-ai/ellmos-clatcher-mcp",
   "title": "Ellmos Clatcher MCP",
   "description": "MCP utility tools for JSON repair, encoding fixes, format conversion, duplicate detection, batch rename, ZIP archives, checksums, and regex testing.",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "repository": {
     "url": "https://github.com/ellmos-ai/ellmos-clatcher-mcp",
     "source": "github"
@@ -12,7 +12,7 @@
     {
       "registryType": "npm",
       "identifier": "ellmos-clatcher-mcp",
-      "version": "1.0.5",
+      "version": "1.0.7",
       "transport": {
         "type": "stdio"
       }

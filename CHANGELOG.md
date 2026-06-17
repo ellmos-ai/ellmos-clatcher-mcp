@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2026-06-17
+
+### Changed
+- Add a TTY-guarded `update-notifier` check for interactive CLI starts while keeping MCP stdio output unchanged.
+- Include `CHANGELOG.md` in the npm package file list.
+- Normalize `package.json` repository metadata to npm's `git+https` form.
+
+### Fixed
+- Align `package.json`, lockfile, MCP runtime version, and `server.json` metadata after the update-notifier release.
+- Refresh npm dependency locks so production audit findings for `hono` and `js-yaml` are resolved.
+
 ## [Unreleased]
 
 ### Added
