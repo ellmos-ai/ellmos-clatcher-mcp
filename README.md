@@ -89,7 +89,7 @@ node dist/index.js
 npm test
 ```
 
-134 tests covering all 12 tools and i18n language packs (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+136 tests covering all 12 tools, i18n language packs, and repository hygiene (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ## Requirements
 
