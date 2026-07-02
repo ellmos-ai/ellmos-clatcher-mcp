@@ -89,7 +89,7 @@ node dist/index.js
 npm test
 ```
 
-136 Tests für alle 12 Tools, i18n-Sprachpakete und Repository-Hygiene (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+137 Tests für alle 12 Tools, i18n-Sprachpakete und Repository-Hygiene (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ## Voraussetzungen
 

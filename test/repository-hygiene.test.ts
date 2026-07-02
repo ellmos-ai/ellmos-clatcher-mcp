@@ -47,4 +47,12 @@ describe("repository hygiene", () => {
       expect(isIgnored(candidate), `${candidate} should stay trackable`).toBe(false);
     }
   });
+
+  it("ignores local maintenance protocol logs", () => {
+    const ignoredPaths = ["push-protocoll.txt", "changelog-protocoll.txt", "release-protocol.txt"];
+
+    for (const candidate of ignoredPaths) {
+      expect(isIgnored(candidate), `${candidate} should be ignored`).toBe(true);
+    }
+  });
 });

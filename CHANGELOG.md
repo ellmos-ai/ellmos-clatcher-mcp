@@ -25,11 +25,12 @@ All notable changes to this project will be documented in this file.
 - Synchronize ellmos MCP family references with FileCommander's current 44-tool surface and current BACH scale.
 - Document the push-test workflow in both READMEs.
 - Lock `@emnapi/core` and `@emnapi/runtime` as explicit dev dependencies so Linux `npm ci` resolves Vitest/Rolldown optional peers deterministically.
-- Update README and LLM index test count to 136 tests.
+- Update README and LLM index test count to 137 tests.
 - Update community workflows to `actions/stale@v10` and `actions/first-interaction@v3`.
 
 ### Security
 - Ignore local credential, token, private-key, and recovery-code files while keeping public env examples trackable.
+- Cover local maintenance protocol-log ignore rules in repository hygiene tests.
 - Prevent `batch_rename` replacements from generating path targets outside the selected directory.
 
 ### Removed
