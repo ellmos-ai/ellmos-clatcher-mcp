@@ -16,6 +16,7 @@ import * as yaml from "js-yaml";
 import * as toml from "smol-toml";
 import { XMLParser, XMLBuilder } from "fast-xml-parser";
 import AdmZip from "adm-zip";
+import { convertSingleQuotedDelimiters } from "../src/index.js";
 
 // ============================================================================
 // Test Helpers -- mirror the logic from src/index.ts
@@ -1870,5 +1871,35 @@ describe("Helper functions", () => {
 
   it("exists should return false for non-existing file", async () => {
     expect(await exists("/nonexistent/path/file.txt")).toBe(false);
+  });
+});
+
+// ============================================================================
+// Regression: fix_json single-quote conversion must not corrupt valid JSON
+// ============================================================================
+// Unlike the rest of this file, these tests import the real function from
+// src/index.ts instead of a replicated copy, so they actually exercise the
+// shipped implementation.
+
+describe("convertSingleQuotedDelimiters (fix_json single-quote step)", () => {
+  it("leaves already-valid JSON with multiple apostrophes inside double-quoted strings untouched", () => {
+    const input = '{"a": "it\'s fine", "b": "another\'s value"}';
+    const output = convertSingleQuotedDelimiters(input);
+    expect(output).toBe(input);
+    expect(() => JSON.parse(output)).not.toThrow();
+  });
+
+  it("still converts JSON5-style single-quoted string delimiters to double quotes", () => {
+    const input = "{'a': 'hello', 'b': 1}";
+    const output = convertSingleQuotedDelimiters(input);
+    expect(output).toBe('{"a": "hello", "b": 1}');
+    expect(() => JSON.parse(output)).not.toThrow();
+  });
+
+  it("preserves a literal apostrophe inside a double-quoted string next to a single-quoted key", () => {
+    const input = "{'a': \"it's ok\"}";
+    const output = convertSingleQuotedDelimiters(input);
+    expect(output).toBe('{"a": "it\'s ok"}');
+    expect(() => JSON.parse(output)).not.toThrow();
   });
 });

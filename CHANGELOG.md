@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 - Align `package.json`, lockfile, MCP runtime version, and `server.json` metadata after the update-notifier release.
 - Refresh npm dependency locks so production audit findings for `hono` and `js-yaml` are resolved.
 
-## [Unreleased]
+## [1.0.8] - 2026-07-03
 
 ### Added
 - Add a `Clatcher tests` GitHub Actions workflow for Node.js 20, 22, and 24 with `npm ci`, TypeScript build, Vitest, and npm package dry-run.
@@ -26,8 +26,12 @@ All notable changes to this project will be documented in this file.
 - Synchronize ellmos MCP family references with FileCommander's current 44-tool surface and current BACH scale.
 - Document the push-test workflow in both READMEs.
 - Lock `@emnapi/core` and `@emnapi/runtime` as explicit dev dependencies so Linux `npm ci` resolves Vitest/Rolldown optional peers deterministically.
-- Update README and LLM index test count to 138 tests.
+- Update README and LLM index test count to 141 tests.
 - Update community workflows to `actions/stale@v10` and `actions/first-interaction@v3`.
+- Only start the stdio server when `dist/index.js` is run directly (CLI entry), not when its pure helpers are imported, e.g. by tests.
+
+### Fixed
+- `fix_json`: stop the single-quote-to-double-quote repair step from corrupting already-valid JSON. The previous regex paired up any two apostrophes in the file as if they delimited a single-quoted string, so a double-quoted value like `"it's fine"` followed later by another apostrophe (e.g. `"another's value"`) had everything between the two apostrophes mangled into invalid JSON -- even in non-dry-run mode, where the corrupted content was written to disk. The conversion is now context-aware and only rewrites real single-quote string delimiters outside of double-quoted strings.
 
 ### Security
 - Ignore local credential, token, private-key, and recovery-code files while keeping public env examples trackable.

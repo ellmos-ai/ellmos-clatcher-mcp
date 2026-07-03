@@ -27,6 +27,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 // @ts-expect-error update-notifier (v7, ESM) liefert keine eigenen Typdeklarationen
 import updateNotifier from "update-notifier";
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import { z } from "zod";
 import * as fs from "fs/promises";
 import * as fsSync from "fs";
@@ -44,7 +45,7 @@ const execAsync = promisify(exec);
 
 const server = new McpServer({
   name: "ellmos-clatcher-mcp",
-  version: "1.0.7",
+  version: "1.0.8",
 });
 
 function registerTool(
@@ -88,6 +89,31 @@ function fmtSize(bytes: number): string {
 function ok(text: string) { return { content: [{ type: "text" as const, text }] }; }
 function err(text: string) { return { isError: true as const, content: [{ type: "text" as const, text }] }; }
 
+// Converts JSON5-style single-quoted string delimiters to double quotes, while
+// leaving apostrophes inside already-double-quoted strings untouched. A naive
+// regex that ignores double-quote context corrupts valid JSON as soon as a
+// double-quoted string contains an apostrophe (e.g. "it's") followed later by
+// another apostrophe elsewhere in the file (e.g. "another's") -- the regex
+// pairs the two unrelated apostrophes as if they delimited a single-quoted
+// string and mangles everything between them.
+export function convertSingleQuotedDelimiters(content: string): string {
+  let out = "";
+  let inDouble = false;
+  let inSingle = false;
+  for (let i = 0; i < content.length; i++) {
+    const ch = content[i];
+    if (ch === "\\" && i + 1 < content.length) {
+      out += ch + content[i + 1];
+      i++;
+      continue;
+    }
+    if (!inSingle && ch === '"') { inDouble = !inDouble; out += ch; continue; }
+    if (!inDouble && ch === "'") { inSingle = !inSingle; out += '"'; continue; }
+    out += ch;
+  }
+  return out;
+}
+
 // ============================================================================
 // Tool 1: fix_json
 // ============================================================================
@@ -126,7 +152,7 @@ registerTool(
       if (content !== c3) fixes.push("Trailing commas removed");
       // Single quotes → double quotes (only string delimiters, not apostrophes inside values)
       const c4 = content;
-      content = content.replace(/'([^'\\]*(?:\\.[^'\\]*)*)'/g, '"$1"');
+      content = convertSingleQuotedDelimiters(content);
       if (content !== c4) fixes.push("Single quotes → double quotes");
 
       // Validate
@@ -934,4 +960,11 @@ async function main() {
   await server.connect(transport);
 }
 
-main().catch(console.error);
+// Only start the stdio server when this file is run directly (CLI/bin entry),
+// not when imported as a module -- e.g. by tests that import pure helpers.
+const isMainModule = process.argv[1] !== undefined
+  && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1]);
+
+if (isMainModule) {
+  main().catch(console.error);
+}
