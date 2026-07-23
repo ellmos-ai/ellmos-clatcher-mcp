@@ -45,7 +45,7 @@ const execAsync = promisify(exec);
 
 const server = new McpServer({
   name: "ellmos-clatcher-mcp",
-  version: "1.0.8",
+  version: "1.0.10",
 });
 
 function registerTool(

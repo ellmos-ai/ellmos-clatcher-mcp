@@ -1,6 +1,6 @@
 {
   "name": "ellmos-clatcher-mcp",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "mcpName": "io.github.ellmos-ai/ellmos-clatcher-mcp",
   "description": "MCP utility toolkit for Claude Code and other agents: JSON repair, encoding fixes, format conversion, duplicate detection, batch rename, ZIP archives, checksums, and regex testing.",
   "type": "module",
