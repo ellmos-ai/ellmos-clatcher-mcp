@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.9] - 2026-07-24
+
+### Changed
+- Unified the ellmos-ai ecosystem section in README.md and README_de.md: full 9-server MCP family table with refreshed tool counts, AI infrastructure, and desktop software links.
+- Refreshed `glama.json` for the Glama MCP directory listing.
+- Synced `server.json` version metadata.
+
 ## [1.0.7] - 2026-06-17
 
 ### Changed
