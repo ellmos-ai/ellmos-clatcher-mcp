@@ -28,3 +28,6 @@ id_ecdsa
 id_ed25519
 *recovery*code*.txt
 *recovery*codes*.txt
+
+# mcp-publisher login artifacts (credentials, never commit)
+.mcpregistry_*
