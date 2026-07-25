@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.10] - 2026-07-24
 
+### Changed
+- Update `llms.txt` index timestamp to 2026-07-25.
+- Add Shields.io Vitest (141 passed) and LLM-Ready badges to `README.md` and `README_de.md`.
+- Include AI/LLM integration callouts (`> [!NOTE]`) in both READMEs explaining default dry-run semantics for autonomous agents.
+
 ### Fixed
 - Correct FileCommander (46) and CodeCommander (22) tool counts in the ecosystem family table; counts now verified against the live MCP `tools/list` surface.
 - Align the McpServer runtime version in `src/index.ts` with package.json (was stuck at 1.0.8).

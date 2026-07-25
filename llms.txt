@@ -45,4 +45,4 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 mcp server json repair; mcp json repair server; fix encoding mcp; mcp encoding fix; format conversion mcp tool; claude code utility tools; cursor mcp utility tools; duplicate file detection mcp; batch rename mcp; checksum mcp; zip archive mcp; fix umlauts mcp; ellmos-clatcher-mcp; clatcher mcp; claude patcher; model context protocol file repair; json fix trailing commas; bom removal mcp; regex batch rename agent; folder diff mcp.
 
-## Last-checked: 2026-07-02
+## Last-checked: 2026-07-25

@@ -10,11 +10,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org/)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
+[![Vitest](https://img.shields.io/badge/tests-141%20passed-brightgreen.svg)](vitest.config.ts)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
+[![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
 
 **Claude Patcher** — ein MCP-Server, der KI-Coding-Agenten um nützliche Werkzeuge erweitert, die sie von Haus aus nicht mitbringen. Dateireparatur, Formatkonvertierung, Duplikaterkennung, Batch-Operationen und mehr.
 
 Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textdateien, Datendateien und Projektordner braucht: ungültiges JSON reparieren, Encodings normalisieren, Formate konvertieren, Ordner vergleichen, Dateien sicher umbenennen und Checksums prüfen, ohne den MCP-Workflow zu verlassen.
+
+> [!NOTE]
+> **KI / LLM Integrationshinweis:** Alle destruktiven Operationen (z. B. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) laufen standardmäßig im **Dry-Run-Modus** (`dry_run: true`). Autonome Agenten müssen explizit `dry_run: false` übergeben, um Mutationen auf der Festplatte auszuführen.
 
 Teil der **ellmos MCP-Familie**:
 
