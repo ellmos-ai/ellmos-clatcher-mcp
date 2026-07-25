@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.11] - 2026-07-25
+
+### Security & Maintenance
+- Remediate `postcss <=8.5.17` high-severity vulnerability (`GHSA-r28c-9q8g-f849`), `fast-uri`, `body-parser`, `js-yaml`, and `hono` security findings via dependency updates.
+- Synchronize version string 1.0.11 across `package.json`, `package-lock.json`, `server.json`, `glama.json`, and `src/index.ts`.
+- Verify full test suite (141 tests passing).
+
 ## [1.0.10] - 2026-07-24
 
 ### Changed
