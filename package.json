@@ -14,7 +14,8 @@
     "README.md",
     "README_de.md",
     "CHANGELOG.md",
-    "server.json"
+    "server.json",
+    "smithery.yaml"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",
@@ -52,7 +53,7 @@
   "homepage": "https://github.com/ellmos-ai/ellmos-clatcher-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
-    "adm-zip": "^0.5.16",
+    "adm-zip": "^0.6.0",
     "fast-xml-parser": "^5.8.0",
     "js-yaml": "^4.1.1",
     "smol-toml": "^1.6.0",
@@ -60,12 +61,15 @@
     "zod": "^3.23.8"
   },
   "overrides": {
-    "hono": "^4.12.18",
-    "@hono/node-server": "^1.19.13",
-    "fast-uri": "^3.1.2",
+    "hono": "^4.12.27",
+    "@hono/node-server": "^2.0.5",
+    "fast-uri": "^3.1.4",
     "ip-address": "^10.1.1",
     "fast-xml-builder": "^1.1.7",
-    "qs": "^6.15.2"
+    "qs": "^6.15.2",
+    "vitest": "^3.2.6",
+    "postcss": "^8.5.18",
+    "adm-zip": "^0.6.0"
   },
   "devDependencies": {
     "@emnapi/core": "^1.10.0",
@@ -75,7 +79,7 @@
     "@types/node": "^20.11.0",
     "typescript": "^5.3.3",
     "vite": "^6.2.0",
-    "vitest": "^3.0.8"
+    "vitest": "^3.2.6"
   },
   "engines": {
     "node": ">=18.0.0"
