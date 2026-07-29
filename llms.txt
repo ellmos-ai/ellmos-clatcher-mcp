@@ -11,6 +11,8 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 - [README (English)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README.md): Tools overview, installation, family context
 - [README (Deutsch)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_de.md): German version
 - [server.json](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/server.json): MCP Registry metadata for `io.github.ellmos-ai/ellmos-clatcher-mcp`
+- [glama.json](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/glama.json): Glama MCP ecosystem manifest
+- [smithery.yaml](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/smithery.yaml): Smithery deployment config
 - [LICENSE](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/LICENSE): MIT license text
 - [npm package](https://www.npmjs.com/package/ellmos-clatcher-mcp): Published artifact
 
@@ -45,4 +47,4 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 mcp server json repair; mcp json repair server; fix encoding mcp; mcp encoding fix; format conversion mcp tool; claude code utility tools; cursor mcp utility tools; duplicate file detection mcp; batch rename mcp; checksum mcp; zip archive mcp; fix umlauts mcp; ellmos-clatcher-mcp; clatcher mcp; claude patcher; model context protocol file repair; json fix trailing commas; bom removal mcp; regex batch rename agent; folder diff mcp.
 
-## Last-checked: 2026-07-25
+## Last-checked: 2026-07-29

@@ -15,7 +15,8 @@
     "README_de.md",
     "CHANGELOG.md",
     "server.json",
-    "smithery.yaml"
+    "smithery.yaml",
+    "glama.json"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",
@@ -39,7 +40,10 @@
     "zip-archive",
     "file-repair",
     "regex-test",
-    "mcp-server"
+    "mcp-server",
+    "glama",
+    "smithery",
+    "smithery-ai"
   ],
   "author": "Lukas Geiger",
   "license": "MIT",
