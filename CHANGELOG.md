@@ -5,10 +5,12 @@ All notable changes to this project will be documented in this file.
 ## [1.0.12] - 2026-07-29
 
 ### Added & Changed
-- Add Glama.ai (`glama.json`) and Smithery.ai (`smithery.yaml`) badges and ecosystem discoverability links to `README.md` and `README_de.md`.
+- Add Glama.ai (`glama.json`) badges and ecosystem discoverability links to `README.md` and `README_de.md`.
 - Include `glama.json` in `package.json` `"files"` array to ensure manifest inclusion in npm releases.
-- Extend `package.json` `"keywords"` with `glama`, `smithery`, and `smithery-ai` tags.
+- Extend `package.json` `"keywords"` with the `glama` tag.
 - Update `llms.txt` index timestamp to 2026-07-29.
+- Synchronize 1.0.12 across package, lockfile, registry manifests, and runtime metadata.
+- Require Node.js 20+ so the patched `@hono/node-server` 2.x line replaces the vulnerable 1.x line.
 
 ## [1.0.11] - 2026-07-25
 

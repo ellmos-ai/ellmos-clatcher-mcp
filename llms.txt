@@ -12,7 +12,6 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 - [README (Deutsch)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_de.md): German version
 - [server.json](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/server.json): MCP Registry metadata for `io.github.ellmos-ai/ellmos-clatcher-mcp`
 - [glama.json](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/glama.json): Glama MCP ecosystem manifest
-- [smithery.yaml](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/smithery.yaml): Smithery deployment config
 - [LICENSE](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/LICENSE): MIT license text
 - [npm package](https://www.npmjs.com/package/ellmos-clatcher-mcp): Published artifact
 

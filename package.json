@@ -1,6 +1,6 @@
 {
   "name": "ellmos-clatcher-mcp",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "mcpName": "io.github.ellmos-ai/ellmos-clatcher-mcp",
   "description": "MCP utility toolkit for Claude Code and other agents: JSON repair, encoding fixes, format conversion, duplicate detection, batch rename, ZIP archives, checksums, and regex testing.",
   "type": "module",
@@ -15,7 +15,6 @@
     "README_de.md",
     "CHANGELOG.md",
     "server.json",
-    "smithery.yaml",
     "glama.json"
   ],
   "scripts": {
@@ -41,9 +40,7 @@
     "file-repair",
     "regex-test",
     "mcp-server",
-    "glama",
-    "smithery",
-    "smithery-ai"
+    "glama"
   ],
   "author": "Lukas Geiger",
   "license": "MIT",
@@ -87,6 +84,6 @@
     "vitest": "^3.2.7"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }
