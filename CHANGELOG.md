@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13] - 2026-07-30
+
+### Added
+- Add visual repository header banner (`assets/banner.png`) to `README.md` and `README_de.md`.
+
 ## [1.0.12] - 2026-07-29
 
 ### Added & Changed
