@@ -1,5 +1,3 @@
-<img src="assets/banner.png" width="100%" alt="Ellmos Clatcher Mcp banner">
-
 <p align="center">
   <img src="assets/logo.jpg" alt="clatcher logo" width="400">
 </p>
