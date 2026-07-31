@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ellmos-ai/.github/master/profile/ellmos-logo.jpg" alt="ellmos emblem" width="300">
+  <img src="assets/logo.jpg" alt="clatcher logo" width="400">
 </p>
 
 # ellmos-clatcher-mcp
