@@ -3,7 +3,6 @@
 </p>
 
 # ellmos-clatcher-mcp
-<img src="assets/banner.png" width="100%" alt="ellmos-clatcher-mcp Banner">
 
 
 **🇩🇪 [Deutsche Version](README_de.md)**
