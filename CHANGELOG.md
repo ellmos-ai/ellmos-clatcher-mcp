@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+- Reconciled the `llms.txt` Node.js requirement with `package.json`, README, and CI: Node.js >= 20.
+
 ## [1.0.12] - 2026-07-29
 
 ### Added & Changed
