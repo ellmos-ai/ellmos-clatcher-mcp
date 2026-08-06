@@ -2,6 +2,64 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Changed
+- Reconcile the diverged `main` and `master` branches (open since 1.0.11) back
+  into a single line of development. Both branches had independently used the
+  version numbers 1.0.12 and 1.0.13 for different content; the entries below
+  now describe what npm actually shipped, and the discoverability work that
+  only ever existed on `master` is listed here as unreleased.
+- Add the Glama.ai badge and registry link to `README.md`, `README_de.md` and
+  `llms.txt`, ship `glama.json` in the `package.json` `files` array, and add the
+  `glama` keyword. Listing verified live (`glama.ai/mcp/servers/ellmos-clatcher-mcp`,
+  HTTP 200).
+- Refresh the dependency `overrides` (`hono`, `@hono/node-server`, `fast-uri`,
+  `postcss`, `vite`, `adm-zip`) and align `vitest` at `^3.2.7` in both
+  `devDependencies` and `overrides`.
+- Raise the declared Node.js floor from 18 to 20 in `package.json` (`engines`),
+  both READMEs and `llms.txt`. The `@hono/node-server` 2.x override requires
+  Node 20 and the CI matrix has only ever tested 20/22/24, so the advertised
+  `>=18` was wrong.
+
+### Fixed
+- Make the package installable again. `master` declared an override
+  `vite@^6.4.3` against a direct devDependency `vite@^6.2.0`; npm rejects that
+  combination with `EOVERRIDE`, so `npm install`/`npm ci` failed outright on
+  that branch. The direct dependency now matches the override at `^6.4.3`.
+
+### Security
+- Close all five open advisories that the stale override pins had left open:
+  `hono` (ReDoS in the CORS middleware, `<4.12.34`), `fast-uri` (host confusion
+  via backslash authority introducer, `<=3.1.4`), `ip-address` (3× SSRF /
+  trust-boundary bypass, `<=10.3.0`, also reaching `express-rate-limit`) and
+  `js-yaml` (quadratic CPU consumption in `!!omap`, `<=4.3.0`). All fixes stay
+  within the current major version. `npm audit` now reports 0 vulnerabilities;
+  build and 141/141 Vitest tests stay green.
+
+### Removed
+- Drop the Smithery.ai badge, the `smithery.yaml` deployment config, its
+  `files` entry, its `llms.txt` link and the `smithery`/`smithery-ai` keywords.
+  The advertised listing does not exist: `smithery.ai/server/@ellmos-ai/ellmos-clatcher-mcp`
+  returns HTTP 404, so the badge pointed at a page that was never created.
+
+## [1.0.14] - 2026-07-30
+
+### Changed
+- Settle the README header on the project's own Clatcher wappen after the
+  banner experiments in 1.0.12/1.0.13 — the generic emblem is gone for good.
+
+## [1.0.13] - 2026-07-30
+
+### Changed
+- Revert 1.0.12: restore the project's own Clatcher wappen/logo header.
+
+## [1.0.12] - 2026-07-29
+
+### Changed
+- Replace the custom README banner with the shared ellmos emblem (reverted
+  again in 1.0.13).
+
 ## [1.0.11] - 2026-07-25
 
 ### Security & Maintenance
