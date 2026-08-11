@@ -12,6 +12,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Security (2026-08-11)
+- Close all open Dependabot advisories in lockfile (`express-rate-limit` ^8.6.2, `nanoid` ^3.3.17, `fast-uri` ^3.1.5, `hono` ^4.13.0). `npm audit` reports 0 vulnerabilities.
+
 ### Changed
 - Reconcile the diverged `main` and `master` branches (open since 1.0.11) back
   into a single line of development. Both branches had independently used the
