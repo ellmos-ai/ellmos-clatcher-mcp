@@ -14,6 +14,8 @@
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
+[![Ecosystem](https://img.shields.io/badge/Ecosystem-ellmos--ai-orange.svg)](https://github.com/ellmos-ai)
+[![Umbrella](https://img.shields.io/badge/Umbrella-open--bricks-blue.svg)](https://github.com/open-bricks)
 
 **Claude Patcher** -- an MCP server that extends AI coding agents with utility tools they don't have natively. File repair, format conversion, duplicate detection, batch operations, and more.
 
@@ -21,6 +23,32 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 
 > [!NOTE]
 > **AI / LLM Integration Note:** All destructive operations (e.g. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) default to **dry-run mode** (`dry_run: true`). Autonomous agents must explicitly specify `dry_run: false` to execute mutations on disk.
+
+## System Architecture & Data Flow
+
+```mermaid
+graph TD
+    Agent[AI Agent / Claude Code / Cursor / IDE] -->|MCP JSON-RPC Protocol over Stdio| Transport[MCP Stdio Transport Layer]
+    Transport --> Server[Clatcher MCP Server Runtime]
+    Server --> Dispatcher{Tool Dispatcher}
+
+    Dispatcher -->|fix_json / cleanup_file| JsonEngine[JSON Linter & Auto-Fix Engine]
+    Dispatcher -->|fix_encoding / fix_umlauts| EncodingEngine[Encoding Normalizer & Mojibake Resolver]
+    Dispatcher -->|convert_format| FormatEngine[Format Converter: JSON/YAML/TOML/XML/CSV/INI]
+    Dispatcher -->|detect_dupes / checksum| HashEngine[SHA-256 / Multi-Hash Content Engine]
+    Dispatcher -->|folder_diff / batch_rename| FileOpsEngine[Folder Diff & Regex Batch Renamer]
+    Dispatcher -->|archive / zip| ArchiveEngine[AdmZip Compression Handler]
+    Dispatcher -->|scan_emoji / regex_test| RegexEngine[Emoji Scanner & Regex Debugger]
+
+    JsonEngine --> DryRunGuard{Dry-Run Guard}
+    EncodingEngine --> DryRunGuard
+    FormatEngine --> DryRunGuard
+    FileOpsEngine --> DryRunGuard
+    ArchiveEngine --> DryRunGuard
+
+    DryRunGuard -->|dry_run: true (default)| PreviewReport[Detailed Dry-Run Preview Diff & Status]
+    DryRunGuard -->|dry_run: false (explicit)| DiskWrite[Safe Atomic Filesystem Write]
+```
 
 Part of the **ellmos MCP family**:
 
@@ -33,6 +61,8 @@ Part of the **ellmos MCP family**:
 | [ellmos-controlcenter-mcp](https://github.com/ellmos-ai/ellmos-controlcenter-mcp) | MCP stack discovery, profile management, control plane | [`ellmos-controlcenter-mcp`](https://www.npmjs.com/package/ellmos-controlcenter-mcp) |
 | [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp) | LLM memory, knowledge, state, routing, and orchestration | [`ellmos-homebase-mcp`](https://www.npmjs.com/package/ellmos-homebase-mcp) (alpha) |
 | [ellmos-servercommander-mcp](https://github.com/ellmos-ai/ellmos-servercommander-mcp) | Server operations: deploy dry-runs, mail status, log analysis, health checks | [`ellmos-servercommander-mcp`](https://www.npmjs.com/package/ellmos-servercommander-mcp) (alpha) |
+| [ellmos-blender-use-mcp](https://github.com/ellmos-ai/ellmos-blender-use-mcp) | Headless Blender asset QA and FBX reimport verification | [`ellmos-blender-use-mcp`](https://www.npmjs.com/package/ellmos-blender-use-mcp) (alpha) |
+| [open-compute-mcp](https://github.com/ellmos-ai/open-compute-mcp) | Model-agnostic computer use: capture, safety-gated actions, Windows UIA | [`open-compute-mcp`](https://www.npmjs.com/package/open-compute-mcp) (alpha) |
 
 Each server covers a different domain. Use one server, a focused pair, or the full family depending on your workflow.
 
@@ -116,7 +146,7 @@ This MCP server is part of the **[ellmos-ai](https://github.com/ellmos-ai)** eco
 
 | Server | Tools | Focus | npm |
 |--------|-------|-------|-----|
-| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 46 | Filesystem, process management, interactive sessions, cloud-lock-safe operations | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
+| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 47 | Filesystem, process management, interactive sessions, cloud-lock-safe operations | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
 | [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 22 | Code analysis, JSON repair, imports, diffs, regex | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
 | **[Clatcher](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **12** | **File repair, format conversion, batch operations** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
 | [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 18 | n8n workflow management via AI assistants | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |
