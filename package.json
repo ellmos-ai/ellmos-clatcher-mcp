@@ -15,7 +15,9 @@
     "README_de.md",
     "CHANGELOG.md",
     "server.json",
-    "glama.json"
+    "glama.json",
+    "smithery.yaml",
+    "llms.txt"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",
