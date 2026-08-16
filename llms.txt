@@ -19,18 +19,21 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 - [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp): Filesystem, process management, interactive sessions (47 tools)
 - [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp): Code analysis, AST parsing, import management (22 tools)
-- [n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp): n8n workflow management via MCP (18 tools)
+- [n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp): n8n workflow management via MCP (19 tools)
 - [ellmos-controlcenter-mcp](https://github.com/ellmos-ai/ellmos-controlcenter-mcp): MCP stack discovery, profile management, control plane (20 tools)
 - [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp): LLM memory, knowledge, state, routing, and orchestration (45 tools, alpha)
 - [ellmos-servercommander-mcp](https://github.com/ellmos-ai/ellmos-servercommander-mcp): Server operations: deploy dry-runs, mail status, log analysis, health checks (8 tools, alpha)
 - [ellmos-blender-use-mcp](https://github.com/ellmos-ai/ellmos-blender-use-mcp): Headless Blender asset QA and FBX reimport verification (3 tools, alpha)
 - [open-compute-mcp](https://github.com/ellmos-ai/open-compute-mcp): Model-agnostic computer use: capture, safety-gated actions, Windows UIA (10 tools, alpha)
 
-## Broader ellmos ecosystem
+## Broader ellmos & open-bricks ecosystem
 
 - [BACH](https://github.com/ellmos-ai/bach): Full text-based OS for LLMs -- primary consumer of the MCP servers
 - [Rinnsal](https://github.com/ellmos-ai/rinnsal): Lightweight LLM agent infrastructure
 - [USMC](https://github.com/ellmos-ai/usmc): Shared memory primitive
+- [file-bricks/ProFiler](https://github.com/file-bricks/ProFiler): Desktop multi-column workspace file manager
+- [doc-bricks/DokuZen](https://github.com/doc-bricks/DokuZen): Document converter, batch OCR, metadata sanitization
+- [dev-bricks/safe-start-for-codex](https://github.com/dev-bricks/safe-start-for-codex): Secure agent preflight bootstrap framework
 
 ## Optional
 
@@ -48,4 +51,4 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 mcp server json repair; mcp json repair server; fix encoding mcp; mcp encoding fix; format conversion mcp tool; claude code utility tools; cursor mcp utility tools; duplicate file detection mcp; batch rename mcp; checksum mcp; zip archive mcp; fix umlauts mcp; ellmos-clatcher-mcp; clatcher mcp; claude patcher; model context protocol file repair; json fix trailing commas; bom removal mcp; regex batch rename agent; folder diff mcp.
 
-## Last-checked: 2026-08-14
+## Last-checked: 2026-08-16

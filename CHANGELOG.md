@@ -2,13 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.15] - 2026-08-14
+## [1.0.15] - 2026-08-16
 
 ### Changed
 - Add open-bricks umbrella and ellmos-ai ecosystem badges to `README.md` and `README_de.md`.
 - Add interactive Mermaid system architecture & data flow diagrams to both English and German documentation, mapping AI agent tool invocation, parameter validation, dry-run safety guards, and atomic filesystem execution.
-- Harmonize sibling MCP server tables across `README.md`, `README_de.md`, and `llms.txt` to include `ellmos-blender-use-mcp` (3 tools) and `open-compute-mcp` (10 tools), updating `FileCommander` tool count to 47.
-- Refresh `llms.txt` Last-checked timestamp to `2026-08-14`.
+- Harmonize sibling MCP server tables across `README.md`, `README_de.md`, and `llms.txt` to include `n8n-manager-mcp` (19 tools), `ellmos-blender-use-mcp` (3 tools), and `open-compute-mcp` (10 tools), updating `FileCommander` tool count to 47.
+- Add Desktop Software & Sibling Ecosystem cross-linking matrix (`ProFiler`, `DokuZen`, `safe-start-for-codex`, `automation-master`, `DevCenter`, `CodeBox`).
+- Expand metadata consistency test suite with version parity, sibling tool counts, and discoverability manifest validations.
+- Refresh `llms.txt` Last-checked timestamp to `2026-08-16`.
 
 ## Unreleased
 
