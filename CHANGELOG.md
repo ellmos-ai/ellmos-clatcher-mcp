@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security & Hygiene (2026-08-21)
+- Added dedicated `SECURITY.md` defining execution safety, dry-run default invariants, risk classification for modifying vs read-only tools, and vulnerability reporting procedures.
+- Included `SECURITY.md` in `package.json` `files` array for npm package distribution.
+- Extended automated metadata test suite in `test/metadata.test.ts` to verify `SECURITY.md`, `smithery.yaml`, and `llms.txt` presence and package file inclusion (143/143 tests passed).
+
 ## [1.0.15] - 2026-08-16
 
 ### Changed

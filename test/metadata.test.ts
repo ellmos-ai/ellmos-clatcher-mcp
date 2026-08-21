@@ -80,7 +80,14 @@ describe("metadata consistency", () => {
   it("verifies ecosystem discoverability manifests and badges", () => {
     expect(existsSync(path.join(repoRoot, "server.json"))).toBe(true);
     expect(existsSync(path.join(repoRoot, "glama.json"))).toBe(true);
+    expect(existsSync(path.join(repoRoot, "smithery.yaml"))).toBe(true);
     expect(existsSync(path.join(repoRoot, "llms.txt"))).toBe(true);
+    expect(existsSync(path.join(repoRoot, "SECURITY.md"))).toBe(true);
+
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    expect(pkg.files).toContain("SECURITY.md");
+    expect(pkg.files).toContain("smithery.yaml");
+    expect(pkg.files).toContain("llms.txt");
 
     const readme = readRepoFile("README.md");
     const readmeDe = readRepoFile("README_de.md");
