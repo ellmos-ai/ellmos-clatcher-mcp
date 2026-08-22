@@ -17,7 +17,7 @@ describe("metadata consistency", () => {
     const srcIndex = readRepoFile("src/index.ts");
     const changelog = readRepoFile("CHANGELOG.md");
 
-    const expectedVersion = "1.0.15";
+    const expectedVersion = "1.0.16";
     expect(pkg.version).toBe(expectedVersion);
     expect(serverJson.version).toBe(expectedVersion);
     expect(serverJson.packages[0].version).toBe(expectedVersion);
@@ -96,5 +96,34 @@ describe("metadata consistency", () => {
     expect(readme).toContain("ellmos-ai");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
+  });
+
+  it("validates GitHub Actions CI workflow configuration", () => {
+    expect(existsSync(path.join(repoRoot, ".github", "workflows", "tests.yml"))).toBe(true);
+    const ciYaml = readRepoFile(".github/workflows/tests.yml");
+
+    expect(ciYaml).toContain("uses: actions/checkout@v4");
+    expect(ciYaml).toContain("uses: actions/setup-node@v4");
+    expect(ciYaml).toContain("os: [ubuntu-latest, windows-latest, macos-latest]");
+    expect(ciYaml).toContain("node-version: [20, 22, 24]");
+    expect(ciYaml).toContain("npm test");
+    expect(ciYaml).toContain("npm pack --dry-run");
+  });
+
+  it("validates bilingual security policy contents and contact channels", () => {
+    expect(existsSync(path.join(repoRoot, "SECURITY.md"))).toBe(true);
+    const secDoc = readRepoFile("SECURITY.md");
+
+    expect(secDoc).toContain("# Security Policy / Sicherheitsrichtlinie");
+    expect(secDoc).toContain("English: Security Policy");
+    expect(secDoc).toContain("Deutsch: Sicherheitsrichtlinie");
+    expect(secDoc).toContain("Zero-Egress");
+    expect(secDoc).toContain("Local-First");
+    expect(secDoc).toContain("Non-Elevation");
+    expect(secDoc).toContain("dry_run: true");
+    expect(secDoc).toContain("security@ellmos.ai");
+    expect(secDoc).toContain("support@lukasgeiger.com");
+    expect(secDoc).toContain("lukas@open-bricks.org");
+    expect(secDoc).toContain("GitHub Security Advisories");
   });
 });

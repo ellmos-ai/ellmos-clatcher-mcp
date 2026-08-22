@@ -2,12 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.0.16] - 2026-08-22
 
-### Security & Hygiene (2026-08-21)
-- Added dedicated `SECURITY.md` defining execution safety, dry-run default invariants, risk classification for modifying vs read-only tools, and vulnerability reporting procedures.
-- Included `SECURITY.md` in `package.json` `files` array for npm package distribution.
-- Extended automated metadata test suite in `test/metadata.test.ts` to verify `SECURITY.md`, `smithery.yaml`, and `llms.txt` presence and package file inclusion (143/143 tests passed).
+### Security & Hygiene
+- Upgraded GitHub Actions CI workflow (`.github/workflows/tests.yml`) to official `actions/checkout@v4` and `actions/setup-node@v4` with a full Multi-OS matrix (`ubuntu-latest`, `windows-latest`, `macos-latest`) across Node.js versions `[20, 22, 24]`.
+- Implemented comprehensive bilingual `SECURITY.md` (English & German) with Local-First and Zero-Egress guarantees, unprivileged user-mode execution (Non-Elevation), strict default dry-run mode (`dry_run: true`) for mutating tools, stdio transport isolation, path traversal guards, and direct maintainer security channels.
+- Extended automated metadata parity test suite in `test/metadata.test.ts` to include CI matrix workflow integrity, bilingual security policy validation, and package file verification (145/145 tests passed).
+- Synchronized documentation badges, quick navigation bar, and `llms.txt` ecosystem index.
 
 ## [1.0.15] - 2026-08-16
 
