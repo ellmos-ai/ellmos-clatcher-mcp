@@ -94,8 +94,11 @@ describe("metadata consistency", () => {
 
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
+    expect(readme).toContain("146 tests");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
+    expect(readmeDe).toContain("146 Tests");
+    expect(readRepoFile("llms.txt")).toContain("146 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -125,5 +128,27 @@ describe("metadata consistency", () => {
     expect(secDoc).toContain("support@lukasgeiger.com");
     expect(secDoc).toContain("lukas@open-bricks.org");
     expect(secDoc).toContain("GitHub Security Advisories");
+  });
+
+  it("keeps every mutating tool behind a default dry-run guard", () => {
+    const srcIndex = readRepoFile("src/index.ts");
+    const convertBlock = srcIndex.slice(
+      srcIndex.indexOf('// Tool 4: convert_format'),
+      srcIndex.indexOf('// Tool 5: detect_dupes'),
+    );
+    const archiveBlock = srcIndex.slice(
+      srcIndex.indexOf('// Tool 8: archive'),
+      srcIndex.indexOf('// Tool 9: checksum'),
+    );
+
+    expect(convertBlock).toContain('dry_run: z.boolean().default(true)');
+    expect(convertBlock).toContain('if (dry_run)');
+    expect(convertBlock.indexOf('if (dry_run)')).toBeLessThan(convertBlock.indexOf('await fs.writeFile(outPath'));
+
+    expect(archiveBlock).toContain('dry_run: z.boolean().default(true)');
+    expect(archiveBlock).toContain('overwrite: z.boolean().default(false)');
+    expect(archiveBlock).toContain('if (dry_run)');
+    expect(archiveBlock.indexOf('if (dry_run)')).toBeLessThan(archiveBlock.indexOf('zip.writeZip(archPath)'));
+    expect(archiveBlock.lastIndexOf('if (dry_run)')).toBeLessThan(archiveBlock.indexOf('zip.extractAllTo(target, overwrite)'));
   });
 });

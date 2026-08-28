@@ -320,8 +320,9 @@ registerTool(
     output_path: z.string().describe("Target file path"),
     input_format: z.enum(["json", "yaml", "toml", "xml", "csv", "ini"]).describe("Source format"),
     output_format: z.enum(["json", "yaml", "toml", "xml", "csv", "ini"]).describe("Target format"),
+    dry_run: z.boolean().default(true).describe("Preview conversion without writing the target file"),
   },
-  async ({ input_path, output_path, input_format, output_format }) => {
+  async ({ input_path, output_path, input_format, output_format, dry_run }) => {
     try {
       const inPath = norm(input_path);
       const outPath = norm(output_path);
@@ -396,6 +397,10 @@ registerTool(
           break;
         }
         default: return err(`Unsupported output format: ${output_format}`);
+      }
+
+      if (dry_run) {
+        return ok(`Would convert ${input_format.toUpperCase()} → ${output_format.toUpperCase()}\n  Source: ${inPath}\n  Target: ${outPath} (${fmtSize(Buffer.byteLength(output, "utf-8"))})\nNo files changed.`);
       }
 
       await fs.writeFile(outPath, output, "utf-8");
@@ -702,21 +707,31 @@ registerTool(
     archive_path: z.string().describe("Path to the ZIP file"),
     source_paths: z.array(z.string()).optional().describe("Files/directories to add (for create)"),
     extract_to: z.string().optional().describe("Extraction directory (for extract)"),
+    dry_run: z.boolean().default(true).describe("Preview create/extract without changing files"),
+    overwrite: z.boolean().default(false).describe("Allow extraction to overwrite existing files"),
   },
-  async ({ action, archive_path, source_paths, extract_to }) => {
+  async ({ action, archive_path, source_paths, extract_to, dry_run, overwrite }) => {
     try {
       const archPath = norm(archive_path);
 
       if (action === "create") {
         if (!source_paths?.length) return err("source_paths required for create");
-        const zip = new AdmZip();
+        const resolvedSources: { path: string; isDirectory: boolean }[] = [];
         for (const src of source_paths) {
           const srcPath = norm(src);
           const stat = await fs.stat(srcPath);
-          if (stat.isDirectory()) {
-            zip.addLocalFolder(srcPath, path.basename(srcPath));
+          resolvedSources.push({ path: srcPath, isDirectory: stat.isDirectory() });
+        }
+        if (dry_run) {
+          return ok(`Would create archive: ${archPath}\nSources: ${resolvedSources.length}\nNo files changed.`);
+        }
+
+        const zip = new AdmZip();
+        for (const source of resolvedSources) {
+          if (source.isDirectory) {
+            zip.addLocalFolder(source.path, path.basename(source.path));
           } else {
-            zip.addLocalFile(srcPath);
+            zip.addLocalFile(source.path);
           }
         }
         zip.writeZip(archPath);
@@ -728,8 +743,12 @@ registerTool(
         if (!await exists(archPath)) return err(`Archive not found: ${archPath}`);
         const target = norm(extract_to || path.dirname(archPath));
         const zip = new AdmZip(archPath);
-        zip.extractAllTo(target, true);
-        return ok(`Extracted: ${archPath}\nTo: ${target}\nEntries: ${zip.getEntries().length}`);
+        const entries = zip.getEntries();
+        if (dry_run) {
+          return ok(`Would extract: ${archPath}\nTo: ${target}\nEntries: ${entries.length}\nOverwrite: ${overwrite ? "yes" : "no"}\nNo files changed.`);
+        }
+        zip.extractAllTo(target, overwrite);
+        return ok(`Extracted: ${archPath}\nTo: ${target}\nEntries: ${entries.length}\nOverwrite: ${overwrite ? "yes" : "no"}`);
       }
 
       if (action === "list") {

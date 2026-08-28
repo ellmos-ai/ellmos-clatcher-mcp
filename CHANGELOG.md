@@ -22,6 +22,9 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Security (2026-08-28)
+- Enforce the documented `dry_run: true` default for `convert_format` and the mutating `archive` actions. ZIP extraction now also defaults to `overwrite: false` and requires both mutations and overwrites to be requested explicitly.
+
 ### Security (2026-08-11)
 - Close all open Dependabot advisories in lockfile (`express-rate-limit` ^8.6.2, `nanoid` ^3.3.17, `fast-uri` ^3.1.5, `hono` ^4.13.0). `npm audit` reports 0 vulnerabilities.
 

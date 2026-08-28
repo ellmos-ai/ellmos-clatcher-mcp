@@ -26,7 +26,7 @@ All modifying tools enforce a strict **dry-run default** (`dry_run: true`). Muta
 | `fix_encoding` | **Medium** | `dry_run: true` | Resolves encoding artifacts and double-encoded UTF-8. |
 | `fix_umlauts` | **Medium** | `dry_run: true` | Restores corrupted German umlaut character sequences. |
 | `convert_format` | **Medium** | `dry_run: true` | Converts data structures between JSON, YAML, TOML, XML, CSV, INI. |
-| `archive` | **Medium** | Safe Extraction | Creates, extracts, or lists ZIP archives with path bounds. |
+| `archive` | **Medium** | `dry_run: true`, no overwrite | Creates, extracts, or lists ZIP archives with preview-first writes and non-overwriting extraction by default. |
 
 #### Read-Only / Diagnostic Tools (Zero Risk)
 | Tool | Risk Level | Description |
@@ -84,7 +84,7 @@ Alle modifizierenden Werkzeuge erzwingen standardmäßig einen **Dry-Run-Modus**
 | `fix_encoding` | **Mittel** | `dry_run: true` | Behebt Kodierungsartefakte und doppelt kodiertes UTF-8. |
 | `fix_umlauts` | **Mittel** | `dry_run: true` | Stellt beschädigte deutsche Umlaute (Mojibake) wieder her. |
 | `convert_format` | **Mittel** | `dry_run: true` | Konvertiert Datenformate zwischen JSON, YAML, TOML, XML, CSV, INI. |
-| `archive` | **Mittel** | Sichere Extraktion | Erstellt, entpackt oder listet ZIP-Archive mit Pfadgrenzen. |
+| `archive` | **Mittel** | `dry_run: true`, kein Überschreiben | Erstellt, entpackt oder listet ZIP-Archive; Schreibvorgänge sind standardmäßig Vorschauen und die Extraktion überschreibt keine Dateien. |
 
 #### Lesende / Diagnostische Werkzeuge (Kein Risiko)
 | Werkzeug | Risikostufe | Beschreibung |
