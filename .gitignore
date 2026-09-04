@@ -6,6 +6,9 @@ Thumbs.db
 *-protocoll.txt
 *-protocol.txt
 
+# Maintenance run logs - pipeline material, not repository content
+_after-care/
+
 # Local secrets and credentials
 .env
 .env.*
