@@ -1,0 +1,10 @@
+# Normalize line endings so checkouts on Windows do not produce phantom diffs.
+* text=auto eol=lf
+
+# Binary assets must never be touched by EOL normalization.
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.zip binary
