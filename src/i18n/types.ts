@@ -1,6 +1,6 @@
 /**
  * i18n Type Definitions for Clatcher MCP Server
- * Reference: .SOFTWARE/_LANG/LANGUAGE_CODES.md
+ * Language codes follow ISO 639-1 (en, de, es, ja, ru, zh).
  */
 
 export interface Translations {
