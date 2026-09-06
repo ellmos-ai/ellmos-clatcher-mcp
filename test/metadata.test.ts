@@ -26,53 +26,79 @@ describe("metadata consistency", () => {
     expect(changelog).toContain(`## [${expectedVersion}]`);
   });
 
-  it("keeps sibling tool counts synchronized across documentation files", () => {
-    const expectations = [
-      {
-        file: "README.md",
-        expected: [
-          "| [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 22 | Code analysis, JSON repair, imports, diffs, regex |",
-          "| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 47 |",
-          "| [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 19 |",
-        ],
-        stale: [
-          "| [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 21 |",
-          "| [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 18 |",
-        ],
-      },
-      {
-        file: "README_de.md",
-        expected: [
-          "| [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 22 | Code-Analyse, JSON-Reparatur, Imports, Diffs, Regex |",
-          "| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 47 |",
-          "| [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 19 |",
-        ],
-        stale: [
-          "| [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 21 |",
-          "| [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 18 |",
-        ],
-      },
-      {
-        file: "llms.txt",
-        expected: [
-          "[ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp): Code analysis, AST parsing, import management (22 tools)",
-          "[ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp): Filesystem, process management, interactive sessions (47 tools)",
-          "[n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp): n8n workflow management via MCP (19 tools)",
-        ],
-        stale: [
-          "[ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp): Code analysis, AST parsing, import management (21 tools)",
-          "[n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp): n8n workflow management via MCP (18 tools)",
-        ],
-      },
-    ];
+  // Single source of truth for the sibling tool counts advertised by this repo.
+  //
+  // These numbers are NOT invented here -- each one is the count the sibling repository
+  // states about itself (its own README badge / llms.txt headline / tool table).
+  // Verified on 2026-09-04. When a sibling ships new tools, update this map only;
+  // the test then enforces that all three documentation surfaces follow.
+  //
+  // Deliberately no hard-coded "expected" table rows: the previous version of this test
+  // pinned FileCommander at 47 while the sibling had long since shipped 50, so the suite
+  // actively defended a wrong number and would have gone red on the correction.
+  const SIBLING_TOOL_COUNTS: Record<string, number> = {
+    "ellmos-filecommander-mcp": 50,
+    "ellmos-codecommander-mcp": 22,
+    "ellmos-clatcher-mcp": 12,
+    "n8n-manager-mcp": 19,
+    "ellmos-controlcenter-mcp": 34,
+    "ellmos-homebase-mcp": 51,
+    "ellmos-servercommander-mcp": 8,
+    "ellmos-blender-use-mcp": 4,
+    "open-compute-mcp": 16,
+  };
 
-    for (const { file, expected, stale } of expectations) {
-      const contents = readRepoFile(file);
-      for (const exp of expected) {
-        expect(contents, `${file} should contain: ${exp}`).toContain(exp);
+  it("keeps sibling tool counts synchronized across documentation files", () => {
+    // README tables: | [Name](https://github.com/<org>/<repo>) | <count> | ...
+    const readmeRow = (contents: string, repo: string): number | null => {
+      const pattern = new RegExp(
+        `\\|\\s*\\*{0,2}\\[[^\\]]+\\]\\(https://github\\.com/[^/]+/${repo}\\)\\*{0,2}\\s*\\|\\s*\\*{0,2}(\\d+)\\*{0,2}\\s*\\|`,
+      );
+      const match = contents.match(pattern);
+      return match ? Number(match[1]) : null;
+    };
+
+    // llms.txt lines: - [<repo>](...): <description> (<count> tools[, alpha])
+    const llmsEntry = (contents: string, repo: string): number | null => {
+      const pattern = new RegExp(
+        `\\[${repo}\\]\\(https://github\\.com/[^)]+\\):[^\\n]*?\\((\\d+) tools`,
+      );
+      const match = contents.match(pattern);
+      return match ? Number(match[1]) : null;
+    };
+
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+    const llms = readRepoFile("llms.txt");
+
+    for (const [repo, expectedCount] of Object.entries(SIBLING_TOOL_COUNTS)) {
+      expect(readmeRow(readme, repo), `README.md must list ${repo} with a tool count`).toBe(
+        expectedCount,
+      );
+      expect(readmeRow(readmeDe, repo), `README_de.md must list ${repo} with a tool count`).toBe(
+        expectedCount,
+      );
+      // llms.txt lists the *siblings*; this server itself is described in the headline
+      // paragraph instead of the sibling list, so it has no entry there.
+      if (repo !== "ellmos-clatcher-mcp") {
+        expect(llmsEntry(llms, repo), `llms.txt must list ${repo} with a tool count`).toBe(
+          expectedCount,
+        );
       }
-      for (const st of stale) {
-        expect(contents, `${file} should not contain stale snippet: ${st}`).not.toContain(st);
+    }
+  });
+
+  it("does not advertise repositories that are not publicly reachable", () => {
+    // A link to a private repository is a 404 for every reader of this README.
+    // `dev-bricks/automation-master` sat in the ecosystem table while being private.
+    const privateRepos = ["dev-bricks/automation-master"];
+
+    for (const file of ["README.md", "README_de.md", "llms.txt"]) {
+      const contents = readRepoFile(file);
+      for (const repo of privateRepos) {
+        expect(contents, `${file} must not link the private repository ${repo}`).not.toContain(
+          `github.com/${repo}`,
+        );
       }
     }
   });
@@ -94,19 +120,25 @@ describe("metadata consistency", () => {
 
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
-    expect(readme).toContain("146 tests");
+    // The badge and the prose both state a test count -- keep them in step.
+    expect(readme).toContain("147 tests");
+    expect(readme).toContain("badge/tests-147%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("146 Tests");
-    expect(readRepoFile("llms.txt")).toContain("146 tests");
+    expect(readmeDe).toContain("147 Tests");
+    expect(readmeDe).toContain("badge/tests-147%20passed");
+    expect(readRepoFile("llms.txt")).toContain("147 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
     expect(existsSync(path.join(repoRoot, ".github", "workflows", "tests.yml"))).toBe(true);
     const ciYaml = readRepoFile(".github/workflows/tests.yml");
 
-    expect(ciYaml).toContain("uses: actions/checkout@v4");
-    expect(ciYaml).toContain("uses: actions/setup-node@v4");
+    // Accept either a floating major tag or a 40-character commit SHA pin.
+    // Pinning the literal `@v4` here would have made the suite go red on exactly the
+    // SHA pinning that a supply-chain hardening pass is supposed to introduce.
+    expect(ciYaml).toMatch(/uses: actions\/checkout@(v\d+|[0-9a-f]{40})/);
+    expect(ciYaml).toMatch(/uses: actions\/setup-node@(v\d+|[0-9a-f]{40})/);
     expect(ciYaml).toContain("os: [ubuntu-latest, windows-latest, macos-latest]");
     expect(ciYaml).toContain("node-version: [20, 22, 24]");
     expect(ciYaml).toContain("npm test");

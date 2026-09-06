@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Security (2026-08-28)
+- Enforce the documented `dry_run: true` default for `convert_format` and the mutating `archive` actions. ZIP extraction now also defaults to `overwrite: false` and requires both mutations and overwrites to be requested explicitly.
+
+### Release state (verified 2026-09-04)
+- The three release surfaces disagree and have done so for a while. npm `latest` is **1.0.14**
+  (published 2026-07-31); the newest git tag and the newest GitHub release are both **v1.0.10**
+  (2026-07-23); `package.json`, `server.json`, `glama.json` and `src/index.ts` all declare
+  **1.0.16**. Versions 1.0.11 through 1.0.16 have no tag, and 1.0.15/1.0.16 were never published.
+- This matters for the safety promise: the npm artifact predates the 2026-08-28 dry-run fix above,
+  so in the currently installable package `convert_format` writes its target file and
+  `archive`/`extract` overwrites existing files without an explicit opt-in — while the README
+  shipped alongside it states that all destructive tools default to dry-run. Publishing a release
+  is what closes this gap; nothing in the repository can.
+- `server.json` advertises npm package version `1.0.16` to the MCP registry. That version does not
+  exist on npm.
+
+### Documentation & hygiene (2026-09-04)
+- Recount every sibling MCP tool number against the sibling repositories themselves. Five of nine
+  were stale: FileCommander 47 → **50**, ControlCenter 20 → **34**, Homebase 45 → **51**,
+  Blender Use 3 → **4**, Open Compute 10 → **16**. CodeCommander (22), n8n Manager (19),
+  ServerCommander (8) and Clatcher (12) were already correct.
+- Rewrite the sibling-count test so it derives the expectation from one table instead of pinning
+  table rows as string literals. The previous version asserted FileCommander at 47 as the
+  *expected* value, so the suite defended a number the sibling had long outgrown and would have
+  turned red on the correction.
+- Stop advertising `dev-bricks/automation-master` in the ecosystem tables: the repository is
+  private, so the link was a 404 for every reader. The test now forbids linking it.
+- Correct the Vitest badge in both READMEs: it said 145 while the prose in the same files, in
+  `llms.txt` and the actual suite said 146. With the new private-link test the suite is now at
+  **147**, and badge, prose and `llms.txt` all state that number. The test checks badge and prose
+  together so the two cannot drift apart again.
+- Add `.gitattributes` with `* text=auto eol=lf`. All 35 tracked text files were checked out CRLF
+  with no EOL attribute, which produces phantom diffs on Windows clones.
+- Remove the internal pipeline path `.SOFTWARE/_LANG/LANGUAGE_CODES.md` from the header comment of
+  `src/i18n/types.ts`; it is unresolvable for readers and exposes internal directory structure.
+
 ## [1.0.16] - 2026-08-22
 
 ### Security & Hygiene
@@ -20,10 +58,7 @@ All notable changes to this project will be documented in this file.
 - Expand metadata consistency test suite with version parity, sibling tool counts, and discoverability manifest validations.
 - Refresh `llms.txt` Last-checked timestamp to `2026-08-16`.
 
-## Unreleased
-
-### Security (2026-08-28)
-- Enforce the documented `dry_run: true` default for `convert_format` and the mutating `archive` actions. ZIP extraction now also defaults to `overwrite: false` and requires both mutations and overwrites to be requested explicitly.
+## Unreleased (carried over from the 1.0.11-1.0.14 branch reconciliation)
 
 ### Security (2026-08-11)
 - Close all open Dependabot advisories in lockfile (`express-rate-limit` ^8.6.2, `nanoid` ^3.3.17, `fast-uri` ^3.1.5, `hono` ^4.13.0). `npm audit` reports 0 vulnerabilities.
@@ -62,10 +97,15 @@ All notable changes to this project will be documented in this file.
   build and 141/141 Vitest tests stay green.
 
 ### Removed
-- Drop the Smithery.ai badge, the `smithery.yaml` deployment config, its
-  `files` entry, its `llms.txt` link and the `smithery`/`smithery-ai` keywords.
-  The advertised listing does not exist: `smithery.ai/server/@ellmos-ai/ellmos-clatcher-mcp`
-  returns HTTP 404, so the badge pointed at a page that was never created.
+- Drop the Smithery.ai badge, its `llms.txt` link and the `smithery`/`smithery-ai`
+  keywords. The advertised listing does not exist: the server page under
+  `smithery.ai` renders without any server data, so the badge pointed at a page
+  that was never populated.
+- *Correction (2026-09-04):* this entry originally also claimed that
+  `smithery.yaml` and its `package.json` `files` entry had been removed. Both are
+  still present and `test/metadata.test.ts` requires them, so the deployment
+  config was kept while only the outward-facing badge and keywords went. Whether
+  to keep an unpublished deployment config is still open.
 
 ## [1.0.14] - 2026-07-30
 
