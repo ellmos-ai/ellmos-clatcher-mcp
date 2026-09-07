@@ -48,26 +48,26 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 
 ```mermaid
 graph TD
-    Agent[KI-Agent / Claude Code / Cursor / IDE] -->|MCP JSON-RPC Protokoll über Stdio| Transport[MCP Stdio Transport-Schicht]
-    Transport --> Server[Clatcher MCP Server Laufzeit]
-    Server --> Dispatcher{Tool-Dispatcher}
+    Agent["KI-Agent / Claude Code / Cursor / IDE"] -->|"MCP JSON-RPC Protokoll über Stdio"| Transport["MCP Stdio Transport-Schicht"]
+    Transport --> Server["Clatcher MCP Server Laufzeit"]
+    Server --> Dispatcher{"Tool-Dispatcher"}
 
-    Dispatcher -->|fix_json / cleanup_file| JsonEngine[JSON Linter & Auto-Fix Engine]
-    Dispatcher -->|fix_encoding / fix_umlauts| EncodingEngine[Encoding-Normalisierer & Mojibake-Resolver]
-    Dispatcher -->|convert_format| FormatEngine[Format-Konverter: JSON/YAML/TOML/XML/CSV/INI]
-    Dispatcher -->|detect_dupes / checksum| HashEngine[SHA-256 / Multi-Hash Inhaltsprüfer]
-    Dispatcher -->|folder_diff / batch_rename| FileOpsEngine[Ordner-Diff & Regex Batch-Umbenenner]
-    Dispatcher -->|archive / zip| ArchiveEngine[AdmZip Kompressions-Handler]
-    Dispatcher -->|scan_emoji / regex_test| RegexEngine[Emoji-Scanner & Regex-Debugger]
+    Dispatcher -->|"fix_json / cleanup_file"| JsonEngine["JSON Linter & Auto-Fix Engine"]
+    Dispatcher -->|"fix_encoding / fix_umlauts"| EncodingEngine["Encoding-Normalisierer & Mojibake-Resolver"]
+    Dispatcher -->|"convert_format"| FormatEngine["Format-Konverter: JSON/YAML/TOML/XML/CSV/INI"]
+    Dispatcher -->|"detect_dupes / checksum"| HashEngine["SHA-256 / Multi-Hash Inhaltsprüfer"]
+    Dispatcher -->|"folder_diff / batch_rename"| FileOpsEngine["Ordner-Diff & Regex Batch-Umbenenner"]
+    Dispatcher -->|"archive / zip"| ArchiveEngine["AdmZip Kompressions-Handler"]
+    Dispatcher -->|"scan_emoji / regex_test"| RegexEngine["Emoji-Scanner & Regex-Debugger"]
 
-    JsonEngine --> DryRunGuard{Dry-Run Schutz}
+    JsonEngine --> DryRunGuard{"Dry-Run Schutz"}
     EncodingEngine --> DryRunGuard
     FormatEngine --> DryRunGuard
     FileOpsEngine --> DryRunGuard
     ArchiveEngine --> DryRunGuard
 
-    DryRunGuard -->|dry_run: true (Standard)| PreviewReport[Detaillierter Dry-Run Vorschau-Diff & Status]
-    DryRunGuard -->|dry_run: false (explizit)| DiskWrite[Sicherer atomarer Schreibvorgang]
+    DryRunGuard -->|"dry_run: true (Standard)"| PreviewReport["Detaillierter Dry-Run Vorschau-Diff & Status"]
+    DryRunGuard -->|"dry_run: false (explizit)"| DiskWrite["Sicherer atomarer Schreibvorgang"]
 ```
 
 ### End-to-End Ausführungssequenz

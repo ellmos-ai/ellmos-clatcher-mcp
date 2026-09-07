@@ -195,11 +195,54 @@ describe("metadata consistency", () => {
     expect(readme).toContain("## 🧭 Quick Navigation");
     expect(readmeDe).toContain("## 🧭 Schnellnavigation");
 
-    // Dual Mermaid diagrams
+    // Dual Mermaid diagrams & syntax validation
     expect(readme).toContain("graph TD");
     expect(readme).toContain("sequenceDiagram");
     expect(readmeDe).toContain("graph TD");
     expect(readmeDe).toContain("sequenceDiagram");
+
+    const validateMermaidBlocks = (content: string, filename: string) => {
+      const regex = /```mermaid\s*\n([\s\S]*?)\n```/g;
+      let m: RegExpExecArray | null;
+      while ((m = regex.exec(content)) !== null) {
+        const diagram = m[1];
+        const lines = diagram.split("\n");
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+          const edgeLabels = [
+            ...line.matchAll(/-+>\|([^|]+)\|/g),
+            ...line.matchAll(/<-+>\|([^|]+)\|/g),
+          ];
+          for (const edgeMatch of edgeLabels) {
+            const label = edgeMatch[1];
+            const isQuoted = label.startsWith('"') && label.endsWith('"');
+            if (!isQuoted) {
+              const hasUnquotedSpecial = /[()[\]{}<>]/.test(label);
+              expect(
+                hasUnquotedSpecial,
+                `${filename}:${i + 1} Mermaid edge label has unquoted special chars: ${edgeMatch[0]}`,
+              ).toBe(false);
+            }
+          }
+          const nodeMatches = line.matchAll(/\w+\s*\[([^"\n]+)\]/g);
+          for (const nodeMatch of nodeMatches) {
+            const inner = nodeMatch[1];
+            if (!inner.startsWith('"') || !inner.endsWith('"')) {
+              if (!inner.startsWith("(") || !inner.endsWith(")")) {
+                const hasParens = /[()]/.test(inner);
+                expect(
+                  hasParens,
+                  `${filename}:${i + 1} Mermaid node has unquoted parentheses: ${nodeMatch[0]}`,
+                ).toBe(false);
+              }
+            }
+          }
+        }
+      }
+    };
+
+    validateMermaidBlocks(readme, "README.md");
+    validateMermaidBlocks(readmeDe, "README_de.md");
 
     // Core Invariants & Safety Guarantees matrix
     expect(readme).toContain("## Core Invariants & Safety Guarantees");

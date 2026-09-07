@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - **Sibling Ecosystem Matrix:** Harmonized cross-linking matrix across `README.md`, `README_de.md`, and `llms.txt`, covering 9 sibling MCP servers in `ellmos-ai` and partner suites in `open-bricks`, `file-bricks`, `dev-bricks`, and `doc-bricks`.
 - **Security Policy & LLM Context Refresh:** Verified bilingual `SECURITY.md` (Local-First, Zero-Egress, 48h SLA, Supported Versions 1.0.x) and updated `llms.txt` with refreshed `Last-checked: 2026-09-07` timestamp and 148 verified tests.
 - **Automated Metadata & Contract Testsuite (`test/metadata.test.ts`):** Added new contract test assertions verifying quick navigation anchors, dual Mermaid diagrams, core invariant matrix, client configuration sections, and test count parity (suite expanded to 148 passed tests).
+- **Mermaid Diagram Syntax Quoting:** Quoted all edge and node labels containing parentheses or special characters in `README.md` and `README_de.md` to eliminate GitHub Mermaid parse errors (`got 'PS'`), and integrated automated Mermaid syntax validation into the contract testsuite.
 
 ### Security (2026-08-28)
 - Enforce the documented `dry_run: true` default for `convert_format` and the mutating `archive` actions. ZIP extraction now also defaults to `overwrite: false` and requires both mutations and overwrites to be requested explicitly.

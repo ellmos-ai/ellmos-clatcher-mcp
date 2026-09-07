@@ -48,26 +48,26 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 
 ```mermaid
 graph TD
-    Agent[AI Agent / Claude Code / Cursor / IDE] -->|MCP JSON-RPC Protocol over Stdio| Transport[MCP Stdio Transport Layer]
-    Transport --> Server[Clatcher MCP Server Runtime]
-    Server --> Dispatcher{Tool Dispatcher}
+    Agent["AI Agent / Claude Code / Cursor / IDE"] -->|"MCP JSON-RPC Protocol over Stdio"| Transport["MCP Stdio Transport Layer"]
+    Transport --> Server["Clatcher MCP Server Runtime"]
+    Server --> Dispatcher{"Tool Dispatcher"}
 
-    Dispatcher -->|fix_json / cleanup_file| JsonEngine[JSON Linter & Auto-Fix Engine]
-    Dispatcher -->|fix_encoding / fix_umlauts| EncodingEngine[Encoding Normalizer & Mojibake Resolver]
-    Dispatcher -->|convert_format| FormatEngine[Format Converter: JSON/YAML/TOML/XML/CSV/INI]
-    Dispatcher -->|detect_dupes / checksum| HashEngine[SHA-256 / Multi-Hash Content Engine]
-    Dispatcher -->|folder_diff / batch_rename| FileOpsEngine[Folder Diff & Regex Batch Renamer]
-    Dispatcher -->|archive / zip| ArchiveEngine[AdmZip Compression Handler]
-    Dispatcher -->|scan_emoji / regex_test| RegexEngine[Emoji Scanner & Regex Debugger]
+    Dispatcher -->|"fix_json / cleanup_file"| JsonEngine["JSON Linter & Auto-Fix Engine"]
+    Dispatcher -->|"fix_encoding / fix_umlauts"| EncodingEngine["Encoding Normalizer & Mojibake Resolver"]
+    Dispatcher -->|"convert_format"| FormatEngine["Format Converter: JSON/YAML/TOML/XML/CSV/INI"]
+    Dispatcher -->|"detect_dupes / checksum"| HashEngine["SHA-256 / Multi-Hash Content Engine"]
+    Dispatcher -->|"folder_diff / batch_rename"| FileOpsEngine["Folder Diff & Regex Batch Renamer"]
+    Dispatcher -->|"archive / zip"| ArchiveEngine["AdmZip Compression Handler"]
+    Dispatcher -->|"scan_emoji / regex_test"| RegexEngine["Emoji Scanner & Regex Debugger"]
 
-    JsonEngine --> DryRunGuard{Dry-Run Guard}
+    JsonEngine --> DryRunGuard{"Dry-Run Guard"}
     EncodingEngine --> DryRunGuard
     FormatEngine --> DryRunGuard
     FileOpsEngine --> DryRunGuard
     ArchiveEngine --> DryRunGuard
 
-    DryRunGuard -->|dry_run: true (default)| PreviewReport[Detailed Dry-Run Preview Diff & Status]
-    DryRunGuard -->|dry_run: false (explicit)| DiskWrite[Safe Atomic Filesystem Write]
+    DryRunGuard -->|"dry_run: true (default)"| PreviewReport["Detailed Dry-Run Preview Diff & Status"]
+    DryRunGuard -->|"dry_run: false (explicit)"| DiskWrite["Safe Atomic Filesystem Write"]
 ```
 
 ### End-to-End Execution Sequence
