@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)
+- **Bilingual Documentation Overhaul (`README.md` & `README_de.md`):** Synchronized comprehensive Quick Navigation (`🧭 Quick Navigation` / `🧭 Schnellnavigation`) with direct anchor jumps, dual interactive Mermaid diagrams (`graph TD` for component data flow and `sequenceDiagram` for end-to-end agent tool lifecycle), structured Core Invariants & Safety Guarantees matrix, client configuration walkthroughs for Claude Desktop and Cursor, and upgraded Shields.io badges (Node.js >=20, Vitest 148 passed tests, Multi-OS platform matrix, 100% Local-First / Zero-Egress, 48h Security SLA).
+- **Core Invariants & Safety Guarantees:** Documented runtime invariants for default dry-run protection, local-first zero-egress operation, atomic staging, path traversal guards, non-elevation user-mode, lossless character encoding preservation, and multi-hash cryptographic integrity.
+- **Client Configuration Guides:** Added concrete setup snippets for Claude Code CLI, Claude Desktop (`claude_desktop_config.json`), and Cursor / MCP-compatible agents.
+- **Sibling Ecosystem Matrix:** Harmonized cross-linking matrix across `README.md`, `README_de.md`, and `llms.txt`, covering 9 sibling MCP servers in `ellmos-ai` and partner suites in `open-bricks`, `file-bricks`, `dev-bricks`, and `doc-bricks`.
+- **Security Policy & LLM Context Refresh:** Verified bilingual `SECURITY.md` (Local-First, Zero-Egress, 48h SLA, Supported Versions 1.0.x) and updated `llms.txt` with refreshed `Last-checked: 2026-09-07` timestamp and 148 verified tests.
+- **Automated Metadata & Contract Testsuite (`test/metadata.test.ts`):** Added new contract test assertions verifying quick navigation anchors, dual Mermaid diagrams, core invariant matrix, client configuration sections, and test count parity (suite expanded to 148 passed tests).
+
 ### Security (2026-08-28)
 - Enforce the documented `dry_run: true` default for `convert_format` and the mutating `archive` actions. ZIP extraction now also defaults to `overwrite: false` and requires both mutations and overwrites to be requested explicitly.
 

@@ -9,8 +9,11 @@
 [![npm version](https://img.shields.io/npm/v/ellmos-clatcher-mcp.svg)](https://www.npmjs.com/package/ellmos-clatcher-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-147%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-148%20passed-brightgreen.svg)](vitest.config.ts)
+[![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
+[![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -23,6 +26,23 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 
 > [!NOTE]
 > **AI / LLM Integration Note:** All destructive operations (e.g. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) default to **dry-run mode** (`dry_run: true`). Autonomous agents must explicitly specify `dry_run: false` to execute mutations on disk.
+
+## 🧭 Quick Navigation
+
+- [System Architecture & Data Flow](#system-architecture--data-flow)
+- [End-to-End Execution Sequence](#end-to-end-execution-sequence)
+- [Core Invariants & Safety Guarantees](#core-invariants--safety-guarantees)
+- [ellmos MCP Family & Sibling Matrix](#ellmos-mcp-family)
+- [Discoverability & Keywords](#discoverability)
+- [Tool Surface & Capabilities](#tools)
+- [Installation & Client Setup](#installation)
+  - [Claude Code CLI](#claude-code-cli)
+  - [Claude Desktop / Cursor Configuration](#claude-desktop--cursor-configuration)
+  - [npm Global & Source Installation](#npm-global)
+- [Verification & Automated Tests](#testing)
+- [Ecosystem & Partner Suites](#ellmos-ai-ecosystem)
+- [Security Policy & Incident Reporting](#security-policy)
+- [Liability & Legal Notice](#haftung--liability)
 
 ## System Architecture & Data Flow
 
@@ -49,6 +69,59 @@ graph TD
     DryRunGuard -->|dry_run: true (default)| PreviewReport[Detailed Dry-Run Preview Diff & Status]
     DryRunGuard -->|dry_run: false (explicit)| DiskWrite[Safe Atomic Filesystem Write]
 ```
+
+### End-to-End Execution Sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Developer / Agent Orchestrator
+    participant Agent as AI Coding Agent (Claude Code / Cursor)
+    participant Stdio as MCP Stdio Protocol (JSON-RPC)
+    participant Clatcher as Clatcher MCP Server
+    participant Validator as Zod Schema Validator
+    participant Engine as Dedicated Tool Engine
+    participant Guard as Dry-Run Safety Guard
+    participant FS as Local Filesystem
+
+    User->>Agent: Prompt: "Fix broken encoding and trailing commas in config.json"
+    Agent->>Stdio: CallTool(name="fix_json", args={path: "config.json", dry_run: true})
+    Stdio->>Clatcher: Dispatch JSON-RPC Request
+    Clatcher->>Validator: Validate arguments (Zod schema)
+    Validator-->>Clatcher: Validated inputs
+
+    Clatcher->>Engine: Run JSON repair pipeline
+    Engine->>FS: Read target file content (UTF-8)
+    FS-->>Engine: Raw file bytes / string
+    Engine->>Engine: Strip comments, trailing commas, single quotes, NULs
+    Engine->>Guard: Submit repaired AST / string
+
+    alt dry_run == true (Default Mode)
+        Guard->>Guard: Generate diff & mutation preview
+        Guard-->>Clatcher: Return diff preview without disk write
+    else dry_run == false (Explicit Agent Mutation)
+        Guard->>FS: Atomic write to target file via temp buffer
+        FS-->>Guard: Write successful
+        Guard-->>Clatcher: Return success receipt + bytes written
+    end
+
+    Clatcher-->>Stdio: JSON-RPC ToolResult (diff, stats, safety report)
+    Stdio-->>Agent: Formatted MCP response
+    Agent-->>User: Synthesized result & proposed next steps
+```
+
+## Core Invariants & Safety Guarantees
+
+| Invariant | Guarantee | Enforcement Mechanism |
+|---|---|---|
+| **Default Dry-Run Guard** | Mutating tools never alter files silently | All modifying tools (`batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`, `convert_format`, `archive`) default to `dry_run: true`. Requires explicit `dry_run: false` to commit changes. |
+| **Zero-Egress & Local-First** | Zero external telemetry or network calls | 100% offline stdio JSON-RPC processing. No telemetry beacons, no external API requests, zero outbound network sockets. |
+| **Path Traversal Guard** | Confined strictly to authorized file trees | Archive and batch operations validate destination boundaries and resolve relative paths safely against base roots. |
+| **Atomic Operations** | Resilient against interrupted writes | Modifying pipelines write to staged temporary files before replacing targets, preventing half-written or corrupted outputs. |
+| **Non-Elevation User-Mode** | Minimal OS privileges required | Runs entirely inside the executing user's standard permissions without requesting sudo/Administrator privileges. |
+| **Encoding Preservation** | Lossless character encoding round-trip | Fixes Windows cp1252 artifacts, BOM issues, and German umlauts (`ä, ö, ü, ß`) while preserving pristine UTF-8 byte order. |
+| **Multi-Hash Integrity** | Bit-level cryptographic verification | Checksum validation supporting SHA-256, SHA-512, MD5, and SHA-1 algorithms. |
+| **Multi-OS Parity** | Identical behavior across OS platforms | Continuously tested across Linux (`ubuntu-latest`), Windows (`windows-latest`), and macOS (`macos-latest`) with native path separator handling. |
 
 Part of the **ellmos MCP family**:
 
@@ -103,6 +176,21 @@ All destructive tools default to **dry-run mode** and require explicit `dry_run:
 claude mcp add ellmos-clatcher-mcp -- npx ellmos-clatcher-mcp
 ```
 
+### Claude Desktop / Cursor Configuration
+
+Add Clatcher to your `claude_desktop_config.json` or Cursor MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "clatcher": {
+      "command": "npx",
+      "args": ["-y", "ellmos-clatcher-mcp"]
+    }
+  }
+}
+```
+
 ### npm (global)
 
 ```bash
@@ -126,7 +214,7 @@ node dist/index.js
 npm test
 ```
 
-147 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+148 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ## Requirements
 

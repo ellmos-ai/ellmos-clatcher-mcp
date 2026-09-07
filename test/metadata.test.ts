@@ -121,13 +121,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("147 tests");
-    expect(readme).toContain("badge/tests-147%20passed");
+    expect(readme).toContain("148 tests");
+    expect(readme).toContain("badge/tests-148%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("147 Tests");
-    expect(readmeDe).toContain("badge/tests-147%20passed");
-    expect(readRepoFile("llms.txt")).toContain("147 tests");
+    expect(readmeDe).toContain("148 Tests");
+    expect(readmeDe).toContain("badge/tests-148%20passed");
+    expect(readRepoFile("llms.txt")).toContain("148 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -182,5 +182,44 @@ describe("metadata consistency", () => {
     expect(archiveBlock).toContain('if (dry_run)');
     expect(archiveBlock.indexOf('if (dry_run)')).toBeLessThan(archiveBlock.indexOf('zip.writeZip(archPath)'));
     expect(archiveBlock.lastIndexOf('if (dry_run)')).toBeLessThan(archiveBlock.indexOf('zip.extractAllTo(target, overwrite)'));
+  });
+
+  it("validates Pfad B showcase design, sequence diagrams, and safety matrix", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+    const changelog = readRepoFile("CHANGELOG.md");
+    const llmsDoc = readRepoFile("llms.txt");
+    const secDoc = readRepoFile("SECURITY.md");
+
+    // Quick navigation anchors
+    expect(readme).toContain("## 🧭 Quick Navigation");
+    expect(readmeDe).toContain("## 🧭 Schnellnavigation");
+
+    // Dual Mermaid diagrams
+    expect(readme).toContain("graph TD");
+    expect(readme).toContain("sequenceDiagram");
+    expect(readmeDe).toContain("graph TD");
+    expect(readmeDe).toContain("sequenceDiagram");
+
+    // Core Invariants & Safety Guarantees matrix
+    expect(readme).toContain("## Core Invariants & Safety Guarantees");
+    expect(readmeDe).toContain("## Kern-Invarianten & Sicherheitsgarantien");
+    expect(readme).toContain("Default Dry-Run Guard");
+    expect(readmeDe).toContain("Dry-Run als Standard");
+
+    // Client setup
+    expect(readme).toContain("Claude Desktop / Cursor Configuration");
+    expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
+
+    // Badges & metadata
+    expect(readme).toContain("tests-148%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-148%20passed-brightgreen.svg");
+    expect(readme).toContain("security-48h%20SLA-blue.svg");
+    expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
+
+    // Freshness
+    expect(llmsDoc).toContain("Last-checked: 2026-09-07");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-07");
+    expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
   });
 });
