@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)
+- **14-Point Quick Navigation Standard:** Standardized bilingual navigation tables (`README.md` and `README_de.md`) spanning 14 discrete structural sections (Highlights, Architecture, Sequence, 10 Invariants, Tools, Installation, Tests, Sibling Family, Ecosystem, Security, llms.txt, Changelog, Discoverability, Liability & License).
+- **Core Governance & Runtime Invariants Matrix (10 Invariants):** Expanded the invariants specification across English and German READMEs with 2 additional operational guarantees: *Fail-Closed Argument Validation* (strict Zod schema bounds rejecting malformed inputs) and *Deterministic Error Bounds & Receipts* (invariant tool return contracts with diffs, stats, and audit receipts).
+- **CI/CD Concurrency Hardening (`.github/workflows/tests.yml`):** Added a GitHub Actions `concurrency` group (`${{ github.workflow }}-${{ github.ref }}`) with `cancel-in-progress: true` to prevent resource contention and redundant queued CI runs on rapid commits.
+- **Repository Hygiene & Multi-Host Protection (`.gitignore`):** Hardened `.gitignore` against multi-host cloud synchronization conflicts (`*.sync-conflict-*`, `*.conflict`, `*-CONFLIT-*`) and multi-agent lock artifacts (`LOCK.*`, `*.lock`, `LOCK*.txt`) while guaranteeing that `!package-lock.json` remains tracked.
+- **Security Policy & Response SLA Update (`SECURITY.md`):** Refreshed policy timestamp to 2026-09-09, clarified dual SLAs (48-hour acknowledgment, 5-business-day triage), and integrated `security@open-bricks.org` across reporting channels.
+- **Machine-Readable Manifest Refresh (`llms.txt`):** Updated freshness date to 2026-09-09 and synchronized Vitest test count to 153.
+- **Local Marketing & Governance Audit Log (`MARKETING-LOG.txt`):** Established repository-local marketing and architecture audit log adhering to GITHUBBOT multi-agent documentation conventions.
+- **Automated Contract Suite Expansion (`test/metadata.test.ts`):** Added 5 new automated regression tests covering local marketing log presence, 10 runtime invariants, CI concurrency configuration, `.gitignore` conflict shielding, and 14-point navigation parity, elevating the suite to 153 passed tests with 100% green status.
+
 ### Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)
 - **Bilingual Documentation Overhaul (`README.md` & `README_de.md`):** Synchronized comprehensive Quick Navigation (`🧭 Quick Navigation` / `🧭 Schnellnavigation`) with direct anchor jumps, dual interactive Mermaid diagrams (`graph TD` for component data flow and `sequenceDiagram` for end-to-end agent tool lifecycle), structured Core Invariants & Safety Guarantees matrix, client configuration walkthroughs for Claude Desktop and Cursor, and upgraded Shields.io badges (Node.js >=20, Vitest 148 passed tests, Multi-OS platform matrix, 100% Local-First / Zero-Egress, 48h Security SLA).
 - **Core Invariants & Safety Guarantees:** Documented runtime invariants for default dry-run protection, local-first zero-egress operation, atomic staging, path traversal guards, non-elevation user-mode, lossless character encoding preservation, and multi-hash cryptographic integrity.

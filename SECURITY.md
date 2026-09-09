@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-07 | **SLA:** 48 hours / 48 Stunden
+> **Last Updated / Zuletzt aktualisiert:** 2026-09-09 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
 
 ---
 
@@ -50,10 +50,10 @@ All modifying tools enforce a strict **dry-run default** (`dry_run: true`). Muta
 ### Reporting Vulnerabilities
 
 If you discover a security vulnerability or unexpected behavioral bypass in `ellmos-clatcher-mcp`, please report it responsibly:
-- **Email**: [security@ellmos.ai](mailto:security@ellmos.ai) or [support@lukasgeiger.com](mailto:support@lukasgeiger.com) / [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
+- **Email**: [security@ellmos.ai](mailto:security@ellmos.ai), [security@open-bricks.org](mailto:security@open-bricks.org), [support@lukasgeiger.com](mailto:support@lukasgeiger.com), or [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
 - **GitHub**: [GitHub Security Advisories](https://github.com/ellmos-ai/ellmos-clatcher-mcp/security/advisories)
 
-We aim to acknowledge and address security inquiries within 24 hours.
+We commit to acknowledging receipt within 48 hours and providing a structured vulnerability triage within 5 business days.
 
 ### Supported Versions
 
@@ -108,8 +108,10 @@ Alle modifizierenden Werkzeuge erzwingen standardmäßig einen **Dry-Run-Modus**
 ### Schwachstellen melden
 
 Sollten Sie eine Sicherheitslücke oder unerwartetes Verhalten in `ellmos-clatcher-mcp` feststellen, melden Sie diese bitte verantwortungsvoll an:
-- **E-Mail**: [security@ellmos.ai](mailto:security@ellmos.ai) oder [support@lukasgeiger.com](mailto:support@lukasgeiger.com) / [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
+- **E-Mail**: [security@ellmos.ai](mailto:security@ellmos.ai), [security@open-bricks.org](mailto:security@open-bricks.org), [support@lukasgeiger.com](mailto:support@lukasgeiger.com) oder [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
 - **GitHub**: [GitHub Security Advisories](https://github.com/ellmos-ai/ellmos-clatcher-mcp/security/advisories)
+
+Wir bestätigen den Eingang von Sicherheitsmeldungen innerhalb von maximal 48 Stunden und liefern eine strukturierte Triage-Bewertung innerhalb von 5 Werktagen.
 
 ### Unterstützte Versionen
 

@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-148%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-153%20passed-brightgreen.svg)](vitest.config.ts)
 [![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
@@ -27,22 +27,33 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 > [!NOTE]
 > **AI / LLM Integration Note:** All destructive operations (e.g. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) default to **dry-run mode** (`dry_run: true`). Autonomous agents must explicitly specify `dry_run: false` to execute mutations on disk.
 
+## Highlights & Value Proposition
+
+- **12 Specialized Agent Tools**: Extends Claude Code, Cursor, and MCP agents with utilities they lack out-of-the-box (JSON repair, encoding normalization, format conversion, diffing, deduplication, regex batch renaming).
+- **Default Dry-Run Guard**: Mutating tools run in preview mode (`dry_run: true`) by default. Agents must pass `dry_run: false` to write to disk.
+- **100% Local-First & Zero-Egress**: Pure local execution over stdio JSON-RPC. No network calls, no cloud telemetry, zero remote attack surface.
+- **Atomic File Operations**: All disk modifications write to temporary staging buffers before replacement, preventing corrupt or truncated files.
+- **Lossless Encoding Preservation**: Eliminates Windows cp1252 artifacts, BOM headers, and German umlaut Mojibake (`ä, ö, ü, ß`) while guaranteeing pristine UTF-8 bytes.
+- **Universal Multi-OS Parity**: Tested continuously across Ubuntu, Windows, and macOS with native path handling and line endings.
+
 ## 🧭 Quick Navigation
 
-- [System Architecture & Data Flow](#system-architecture--data-flow)
-- [End-to-End Execution Sequence](#end-to-end-execution-sequence)
-- [Core Invariants & Safety Guarantees](#core-invariants--safety-guarantees)
-- [ellmos MCP Family & Sibling Matrix](#ellmos-mcp-family)
-- [Discoverability & Keywords](#discoverability)
-- [Tool Surface & Capabilities](#tools)
-- [Installation & Client Setup](#installation)
-  - [Claude Code CLI](#claude-code-cli)
-  - [Claude Desktop / Cursor Configuration](#claude-desktop--cursor-configuration)
-  - [npm Global & Source Installation](#npm-global)
-- [Verification & Automated Tests](#testing)
-- [Ecosystem & Partner Suites](#ellmos-ai-ecosystem)
-- [Security Policy & Incident Reporting](#security-policy)
-- [Liability & Legal Notice](#haftung--liability)
+| # | Section | Focus |
+|---|---|---|
+| 01 | [✨ Highlights & Value Proposition](#highlights--value-proposition) | 12 essential tools AI agents lack natively: repair, convert, deduplicate, diff, batch |
+| 02 | [📐 System Architecture & Data Flow](#system-architecture--data-flow) | 5-tier architecture flowchart TD for stdio transport and repair engines |
+| 03 | [🔄 End-to-End Execution Sequence](#end-to-end-execution-sequence) | 14-step dry-run safety sequence diagram from user prompt to verified disk write |
+| 04 | [🛡️ Core Invariants & Safety Guarantees](#core-invariants--safety-guarantees) | 10 architectural guarantees ensuring default dry-run, zero-egress, and atomic writes |
+| 05 | [🛠️ Tool Surface & Capabilities](#tools) | Deep-dive into all 12 MCP tools with parameter schemas and default preview modes |
+| 06 | [⚙️ Installation & Client Setup](#installation) | Seamless setup for Claude Code CLI, Claude Desktop, Cursor, and npm global |
+| 07 | [🧪 Verification & Automated Tests](#testing) | 153 Vitest tests, 100% green parity, Multi-OS CI matrix across Node.js 20, 22, 24 |
+| 08 | [🌐 ellmos MCP Family & Sibling Matrix](#ellmos-mcp-family) | 9 sibling MCP servers spanning 200+ specialized agent tools |
+| 09 | [🧱 Ecosystem & Partner Suites](#ellmos-ai-ecosystem) | Integration with open-bricks desktop suites, BACH text OS, and dev-bricks tools |
+| 10 | [🔒 Security Policy & Incident Reporting](#security-policy) | Bilingual security policy, private vulnerability disclosure, 48h response SLA |
+| 11 | [📋 Machine-Readable Context (llms.txt)](#machine-readable-context-llmstxt) | Standardized LLM index for agent discovery and RAG crawlers |
+| 12 | [📝 Changelog & Evolution](#changelog) | Release evolution, dry-run security enforcement, and discoverability history |
+| 13 | [🔍 Discoverability & Keywords](#discoverability) | High-intent search terms and registry metadata for Glama, Smithery & npm |
+| 14 | [⚖️ Liability & Legal Notice](#haftung--liability) | Statutory open-source donation notice under §§ 516 ff. BGB and MIT disclaimer |
 
 ## System Architecture & Data Flow
 
@@ -122,6 +133,8 @@ sequenceDiagram
 | **Encoding Preservation** | Lossless character encoding round-trip | Fixes Windows cp1252 artifacts, BOM issues, and German umlauts (`ä, ö, ü, ß`) while preserving pristine UTF-8 byte order. |
 | **Multi-Hash Integrity** | Bit-level cryptographic verification | Checksum validation supporting SHA-256, SHA-512, MD5, and SHA-1 algorithms. |
 | **Multi-OS Parity** | Identical behavior across OS platforms | Continuously tested across Linux (`ubuntu-latest`), Windows (`windows-latest`), and macOS (`macos-latest`) with native path separator handling. |
+| **Fail-Closed Argument Validation** | Invalid parameters rejected before execution | Zod schema validation enforces strict constraints, rejects malformed paths and types, and prevents partial execution. |
+| **Deterministic Error Bounds & Receipts** | Structured diagnostic reporting on all runs | Invariant tool return contracts: every invocation returns structured JSON-RPC payloads, diff previews, byte counts, and verifiable receipts. |
 
 Part of the **ellmos MCP family**:
 
@@ -214,7 +227,7 @@ node dist/index.js
 npm test
 ```
 
-148 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+153 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ## Requirements
 
@@ -268,6 +281,19 @@ Our partner organization **[open-bricks](https://github.com/open-bricks)** and s
 | [dev-bricks/safe-start-for-codex](https://github.com/dev-bricks/safe-start-for-codex) | Secure workspace preflight and agent bootstrap gates | Active |
 | [dev-bricks/DevCenter](https://github.com/dev-bricks/DevCenter) | Central development cockpit and service manager | Active |
 | [dev-bricks/CodeBox](https://github.com/dev-bricks/CodeBox) | Sandboxed code execution and containerized worker environment | Active |
+
+## Security Policy
+
+For security vulnerability disclosure channels, supported versions, and our 48-hour response SLA, refer to **[SECURITY.md](SECURITY.md)**.
+
+## Machine-Readable Context (llms.txt)
+
+This repository provides a standardized machine-readable context file for AI agents, crawlers, and RAG indexers:
+- **[llms.txt](llms.txt)**: Concise manifest of all 12 tools, dry-run safety invariants, sibling MCP tool counts, and CLI invocation examples.
+
+## Changelog
+
+For the complete release evolution, version notes, and hygiene audits, see **[CHANGELOG.md](CHANGELOG.md)**.
 
 ## Haftung / Liability
 

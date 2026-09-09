@@ -121,13 +121,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("148 tests");
-    expect(readme).toContain("badge/tests-148%20passed");
+    expect(readme).toContain("153 tests");
+    expect(readme).toContain("badge/tests-153%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("148 Tests");
-    expect(readmeDe).toContain("badge/tests-148%20passed");
-    expect(readRepoFile("llms.txt")).toContain("148 tests");
+    expect(readmeDe).toContain("153 Tests");
+    expect(readmeDe).toContain("badge/tests-153%20passed");
+    expect(readRepoFile("llms.txt")).toContain("153 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -255,14 +255,85 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-148%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-148%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-153%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-153%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-07");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-07");
-    expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-09");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-09");
+    expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
+  });
+
+  it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
+    expect(existsSync(path.join(repoRoot, "MARKETING-LOG.txt"))).toBe(true);
+    const mktLog = readRepoFile("MARKETING-LOG.txt");
+    expect(mktLog).toContain("# MARKETING-LOG: ellmos-clatcher-mcp (Pfad B)");
+    expect(mktLog).toContain("Stand: 2026-09-09");
+    expect(mktLog).toContain("Zweisprachige Landingpages (README.md & README_de.md)");
+    expect(mktLog).toContain("10 Governance- & Laufzeitinvarianten");
+  });
+
+  it("validates 10 Core Governance & Runtime Invariants across documentation", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+
+    const englishInvariants = [
+      "Default Dry-Run Guard",
+      "Zero-Egress & Local-First",
+      "Path Traversal Guard",
+      "Atomic Operations",
+      "Non-Elevation User-Mode",
+      "Encoding Preservation",
+      "Multi-Hash Integrity",
+      "Multi-OS Parity",
+      "Fail-Closed Argument Validation",
+      "Deterministic Error Bounds & Receipts",
+    ];
+
+    const germanInvariants = [
+      "Dry-Run als Standard",
+      "Zero-Egress & Local-First",
+      "Pfad-Traversal-Schutz",
+      "Atomare Operationen",
+      "Keine Rechteerweiterung (Non-Elevation)",
+      "Erhalt der Zeichenkodierung",
+      "Kryptografische Integrität",
+      "Plattform-Parität",
+      "Fail-Closed Argumentvalidierung",
+      "Deterministische Fehlergrenzen & Quittungen",
+    ];
+
+    for (const inv of englishInvariants) {
+      expect(readme).toContain(inv);
+    }
+    for (const inv of germanInvariants) {
+      expect(readmeDe).toContain(inv);
+    }
+  });
+
+  it("validates 14-point quick navigation structure across bilingual READMEs", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+
+    for (let i = 1; i <= 14; i++) {
+      const numStr = i < 10 ? `0${i}` : `${i}`;
+      expect(readme).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
+      expect(readmeDe).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
+    }
+  });
+
+  it("validates CI workflow concurrency group and fail-safe configuration", () => {
+    const ciYaml = readRepoFile(".github/workflows/tests.yml");
+    expect(ciYaml).toContain("concurrency:");
+    expect(ciYaml).toContain("cancel-in-progress: true");
+  });
+
+  it("validates .gitignore protection against multi-host sync conflicts and locks", () => {
+    const gitignore = readRepoFile(".gitignore");
+    expect(gitignore).toContain("*.sync-conflict-*");
+    expect(gitignore).toContain("LOCK.*");
+    expect(gitignore).toContain("!package-lock.json");
   });
 });

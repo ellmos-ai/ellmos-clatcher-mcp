@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-148%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-153%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
@@ -27,22 +27,33 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 > [!NOTE]
 > **KI / LLM Integrationshinweis:** Alle destruktiven Operationen (z. B. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) laufen standardmäßig im **Dry-Run-Modus** (`dry_run: true`). Autonome Agenten müssen explizit `dry_run: false` übergeben, um Mutationen auf der Festplatte auszuführen.
 
+## Highlights & Wertversprechen
+
+- **12 spezialisierte Agenten-Werkzeuge**: Erweitert Claude Code, Cursor und MCP-Agenten um Hilfsmittel, die ihnen ab Werk fehlen (JSON-Reparatur, Encoding-Normalisierung, Formatkonvertierung, Ordner-Diffs, Duplikaterkennung, Regex-Batch-Umbenennung).
+- **Dry-Run-Schutz als Standard**: Alle schreibenden Werkzeuge laufen standardmäßig im Vorschaumodus (`dry_run: true`). Mutationen auf der Festplatte erfordern die explizite Angabe von `dry_run: false`.
+- **100% Local-First & Zero-Egress**: Reine lokale Ausführung über Stdio JSON-RPC. Keine Netzwerkabrufe, keine Cloud-Telemetrie, null externe Angriffsfläche.
+- **Atomare Dateisystem-Operationen**: Schreibende Pipelines nutzen temporäre Pufferdateien vor dem Ersetzen, um unvollständige oder korrumpierte Dateien auszuschließen.
+- **Verlustfreier Zeichensatz-Erhalt**: Korrigiert Windows cp1252-Artefakte, BOM-Header und defekte deutsche Umlaute (`ä, ö, ü, ß`) bei garantiert sauberem UTF-8-Byte-Output.
+- **Universelle Multi-OS-Parität**: Kontinuierlich validiert auf Ubuntu, Windows und macOS mit nativer Pfad- und Zeilenumbruch-Behandlung.
+
 ## 🧭 Schnellnavigation
 
-- [Systemarchitektur & Datenfluss](#systemarchitektur--datenfluss)
-- [End-to-End Ausführungssequenz](#end-to-end-ausf%C3%BChrungssequenz)
-- [Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien)
-- [ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie)
-- [Auffindbarkeit & Suchbegriffe](#auffindbarkeit)
-- [Werkzeugübersicht & Fähigkeiten](#werkzeuge)
-- [Installation & Client-Einrichtung](#installation)
-  - [Claude Code CLI](#claude-code-cli)
-  - [Claude Desktop / Cursor Konfiguration](#claude-desktop--cursor-konfiguration)
-  - [npm Global & Installation aus dem Quellcode](#npm-global)
-- [Verifikation & Automatisierte Tests](#testing)
-- [Ökosystem & Partnersuiten](#ellmos-ai-ecosystem)
-- [Sicherheit & Meldewege](#sicherheitsrichtlinie)
-- [Haftung & Rechtlicher Hinweis](#haftung--liability)
+| # | Abschnitt | Fokus |
+|---|---|---|
+| 01 | [✨ Highlights & Wertversprechen](#highlights--wertversprechen) | 12 unverzichtbare Werkzeuge, die KI-Agenten nativ fehlen: Reparatur, Konvertierung, Duplikate |
+| 02 | [📐 Systemarchitektur & Datenfluss](#systemarchitektur--datenfluss) | 5-Schichten Flowchart TD für Stdio-Transport und Reparatur-Engines |
+| 03 | [🔄 End-to-End Ausführungssequenz](#end-to-end-ausf%C3%BChrungssequenz) | 14-stufiges Sequenzdiagramm für den Dry-Run-Schutz vom Prompt bis zum Schreiben |
+| 04 | [🛡️ Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien) | 10 architektonische Garantien für Dry-Run-Standard, Zero-Egress und atomare Schreibvorgänge |
+| 05 | [🛠️ Werkzeugübersicht & Fähigkeiten](#werkzeuge) | Detaillierte Übersicht aller 12 MCP-Tools mit Schemas und Vorschau-Defaults |
+| 06 | [⚙️ Installation & Client-Einrichtung](#installation) | Nahtlose Konfiguration für Claude Code CLI, Claude Desktop, Cursor und npm global |
+| 07 | [🧪 Verifikation & Automatisierte Tests](#tests) | 153 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 08 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
+| 09 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
+| 10 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
+| 11 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
+| 12 | [📝 Changelog & Versionshistorie](#changelog) | Release-Evolution, Dry-Run-Sicherheitsdurchsetzung und Hygiene-Audit |
+| 13 | [🔍 Auffindbarkeit & Suchbegriffe](#auffindbarkeit) | Gezielte Suchbegriffe und Registry-Metadaten für Glama, Smithery und npm |
+| 14 | [⚖️ Haftung & Rechtlicher Hinweis](#haftung) | Gesetzliche Open-Source-Schenkung nach §§ 516 ff. BGB und MIT-Haftungsausschluss |
 
 ## Systemarchitektur & Datenfluss
 
@@ -122,6 +133,8 @@ sequenceDiagram
 | **Erhalt der Zeichenkodierung** | Verlustfreie Round-Trip-Verarbeitung | Behebt cp1252-Artefakte, BOM-Probleme und kaputte deutsche Umlaute (`ä, ö, ü, ß`) bei gleichzeitigem Erhalt sauberer UTF-8-Bytes. |
 | **Kryptografische Integrität** | Bitgenaue Prüfsummenvalidierung | Mehrfach-Hash-Prüfung mit Unterstützung für SHA-256, SHA-512, MD5 und SHA-1. |
 | **Plattform-Parität** | Identisches Verhalten auf allen Betriebssystemen | Kontinuierlich getestet auf Linux (`ubuntu-latest`), Windows (`windows-latest`) und macOS (`macos-latest`) mit nativer Pfadtrenner-Handhabung. |
+| **Fail-Closed Argumentvalidierung** | Ungültige Parameter werden vor der Ausführung abgewiesen | Zod-Schema-Validierung erzwingt strikte Eingabegrenzen, blockiert fehlerhafte Pfade/Typen und verhindert unvollständige Teilausführungen. |
+| **Deterministische Fehlergrenzen & Quittungen** | Strukturierte diagnostische Rückmeldungen bei jedem Aufruf | Invariante Werkzeug-Rückgabeverträge: Jeder Aufruf liefert strukturierte JSON-RPC-Ergebnisse, Diff-Vorschauen, Bytezahlen und prüfbare Quittungen. |
 
 Teil der **ellmos MCP-Familie**:
 
@@ -214,7 +227,7 @@ node dist/index.js
 npm test
 ```
 
-148 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+153 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ## Voraussetzungen
 
@@ -268,6 +281,19 @@ Unsere Partnerorganisation **[open-bricks](https://github.com/open-bricks)** und
 | [dev-bricks/safe-start-for-codex](https://github.com/dev-bricks/safe-start-for-codex) | Sichere Workspace-Preflight- und Agent-Bootstrap-Gates | Aktiv |
 | [dev-bricks/DevCenter](https://github.com/dev-bricks/DevCenter) | Zentrales Entwickler-Cockpit und Service-Manager | Aktiv |
 | [dev-bricks/CodeBox](https://github.com/dev-bricks/CodeBox) | Sandboxed Code-Ausführung und containerisierte Worker-Umgebung | Aktiv |
+
+## Sicherheitsrichtlinie
+
+Für Sicherheitsmeldungen, unterstützte Versionen und unsere 48-Stunden-Reaktions-SLA siehe **[SECURITY.md](SECURITY.md)**.
+
+## Maschinenlesbarer Kontext (llms.txt)
+
+Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für KI-Agenten, Crawler und RAG-Indexer bereit:
+- **[llms.txt](llms.txt)**: Kompaktes Manifest aller 12 Werkzeuge, Dry-Run-Sicherheitsinvarianten, Geschwister-Toolzahlen und CLI-Aufrufbeispiele.
+
+## Changelog
+
+Die vollständige Versionshistorie, Release-Notizen und Hygiene-Audits finden Sie in **[CHANGELOG.md](CHANGELOG.md)**.
 
 ## Haftung
 

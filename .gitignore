@@ -34,3 +34,18 @@ id_ed25519
 
 # mcp-publisher login artifacts (credentials, never commit)
 .mcpregistry_*
+
+# Multi-Host Sync Conflicts & Multi-Agent Locks
+*.sync-conflict-*
+*.conflict
+*-CONFLIT-*
+*-conflict-*
+LOCK.*
+*.lock
+!package-lock.json
+LOCK*.txt
+*.tmp
+*.bak
+*.swp
+*~
+*.log

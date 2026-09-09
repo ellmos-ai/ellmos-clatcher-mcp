@@ -1,0 +1,32 @@
+# MARKETING-LOG: ellmos-clatcher-mcp (Pfad B)
+Stand: 2026-09-09
+Repository: ellmos-ai/ellmos-clatcher-mcp
+Kanonischer Klon: C:\_Local_DEV\repos\ellmos-clatcher-mcp
+Rolle: Lokales MCP-Hilfswerkzeug-Toolkit für Datei-Reparatur, Kodierungsnormalisierung, Formatkonvertierung, Duplikaterkennung und Batch-Operationen
+
+## Pfad B Deliverables & Marketing-Audit
+
+1. Zweisprachige Landingpages (README.md & README_de.md)
+   - 14-Punkte-Schnellnavigation mit Quick-Nav-Sprungmarken (Highlights, Architektur, Sequenzdiagramm, 10 Invarianten, Werkzeuge, Installation, Tests, Geschwister-Matrix, Ökosystem, Sicherheit, llms.txt, Changelog, Auffindbarkeit, Haftung & Lizenz)
+   - Vollständiges Shields.io Badge-Arsenal: npm version, License MIT, Node.js >=20, Multi-OS CI, Vitest (153 passed | 100% grün), Sicherheitsrichtlinie 48h SLA, Zero-Egress Local-First, MCP Registry ready, Glama.ai registered, LLM-Ready llms.txt, Ecosystem ellmos-ai, Umbrella open-bricks
+   - Dual-Mermaid-Diagramme:
+     * Systemarchitektur (graph TD mit Stdio Transport Layer, Server Runtime, Tool Dispatcher, 6 dedizierten Engines, Dry-Run Guard und Preview/Disk-Write Verzweigung)
+     * Sequenzdiagramm (sequenceDiagram mit autonumber: 14-stufiger Lifecycle von Developer Prompt über Zod Validation, Engine Processing, Dry-Run Preview Diff bis zum atomaren Schreiben)
+   - 10 Governance- & Laufzeitinvarianten (Default Dry-Run Guard, Zero-Egress & Local-First, Pfad-Traversal-Schutz, Atomare Operationen, Non-Elevation User-Mode, Verlustfreier Zeichensatzerhalt, Kryptografische Multi-Hash-Integrität, Plattform-Parität, Fail-Closed Argumentvalidierung, Deterministische Fehlergrenzen & Quittungen)
+   - Geschwisterwerkzeuge-Matrix mit 22 Repositories quer durch ellmos-ai, open-bricks, file-bricks, doc-bricks und dev-bricks
+
+2. Sicherheitsrichtlinie (SECURITY.md)
+   - Bilinguale Struktur (Englisch & Deutsch) mit Risikoklassifizierung (7 Modifying / Dry-Run Tools, 5 Read-Only Tools)
+   - 48h Reaktions-SLA und 5-Werktage Triage-Zusage
+   - Private Meldewege: security@ellmos.ai, security@open-bricks.org, support@lukasgeiger.com, lukas@open-bricks.org sowie GitHub Security Advisories Link
+
+3. Maschinenlesbarer LLM-Kontext (llms.txt)
+   - Aktualisierter Zeitstempel 2026-09-09
+   - Verifizierte Testanzahl (153 passed)
+   - RAG-relevante Metadaten, Toolbeschreibungen, Geschwisterzahlen und Suchbegriffe
+
+4. Release-Historie & Protokolle
+   - CHANGELOG.md Eintrag für 2026-09-09 (Pfad B Discoverability, Visual Architecture & Governance Audit)
+   - GitHub Actions CI Workflow gehärtet mit Concurrency Group (cancel-in-progress: true)
+   - .gitignore gehärtet gegen Synchronisationskonflikte (*.sync-conflict-*, *-CONFLIT-*) und Multi-Agent Locks (LOCK.*, *.lock mit !package-lock.json)
+   - Erweiterte Testsuite test/metadata.test.ts (153 Tests passed mit 100% Abdeckung)
