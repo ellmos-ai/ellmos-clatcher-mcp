@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)
+- **.gitignore Hardening:** Added ecosystem-standard ignore patterns for multi-host synchronization conflicts (`*-conflict-*`, `*.sync-conflict-*`, `*.sync-temp-*`), multi-agent lock management (`LOCK`, `LOCK.*`, `LOCK*.txt`, `*.lock` with explicit `!package-lock.json` unignore), test and coverage caches (`.pytest_cache/`, `.ruff_cache/`, `.coverage`, `coverage/`, `.vitest/`), packaging artifacts (`wheelhouse/`, `.wheel-smoke/`), and temporary editor files (`*.tmp`, `*.bak`, `*.swp`, `*~`).
+- **CI Matrix Concurrency Guard:** Configured GitHub Actions workflow concurrency group (`${{ github.workflow }}-${{ github.ref }}`) with `cancel-in-progress: true` in `.github/workflows/tests.yml` across the multi-OS matrix (Ubuntu, Windows, macOS).
+- **Automated Hygiene Contract Testsuite:** Expanded `test/repository-hygiene.test.ts` with 4 new contract tests validating sync-conflict exclusion, lockfile isolation with `package-lock.json` trackability preservation, cache directory ignoring, and workflow concurrency configuration (152/152 tests passed, 100% green).
+- **Documentation & Metadata Parity:** Synchronized test count badges and descriptions to 152 passed tests across `README.md`, `README_de.md`, and `llms.txt`; refreshed timestamps in `SECURITY.md` and `llms.txt` to `2026-09-10`.
+
 ### Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)
 - **Bilingual Documentation Overhaul (`README.md` & `README_de.md`):** Synchronized comprehensive Quick Navigation (`🧭 Quick Navigation` / `🧭 Schnellnavigation`) with direct anchor jumps, dual interactive Mermaid diagrams (`graph TD` for component data flow and `sequenceDiagram` for end-to-end agent tool lifecycle), structured Core Invariants & Safety Guarantees matrix, client configuration walkthroughs for Claude Desktop and Cursor, and upgraded Shields.io badges (Node.js >=20, Vitest 148 passed tests, Multi-OS platform matrix, 100% Local-First / Zero-Egress, 48h Security SLA).
 - **Core Invariants & Safety Guarantees:** Documented runtime invariants for default dry-run protection, local-first zero-egress operation, atomic staging, path traversal guards, non-elevation user-mode, lossless character encoding preservation, and multi-hash cryptographic integrity.

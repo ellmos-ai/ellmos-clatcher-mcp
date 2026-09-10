@@ -34,3 +34,30 @@ id_ed25519
 
 # mcp-publisher login artifacts (credentials, never commit)
 .mcpregistry_*
+
+# Multi-host sync conflicts (OneDrive, Syncthing)
+*-conflict-*
+*.sync-conflict-*
+*.sync-temp-*
+
+# Multi-agent locks & lock system
+LOCK
+LOCK.*
+LOCK*.txt
+*.lock
+!package-lock.json
+
+# Test, coverage & packaging caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+.vitest/
+wheelhouse/
+.wheel-smoke/
+
+# Temporary editor & backup files
+*.tmp
+*.bak
+*.swp
+*~

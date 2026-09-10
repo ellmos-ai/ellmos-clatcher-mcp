@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-07 | **SLA:** 48 hours / 48 Stunden
+> **Last Updated / Zuletzt aktualisiert:** 2026-09-10 | **SLA:** 48 hours / 48 Stunden
 
 ---
 
