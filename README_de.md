@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-153%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-157%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
@@ -46,7 +46,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | 04 | [🛡️ Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien) | 10 architektonische Garantien für Dry-Run-Standard, Zero-Egress und atomare Schreibvorgänge |
 | 05 | [🛠️ Werkzeugübersicht & Fähigkeiten](#werkzeuge) | Detaillierte Übersicht aller 12 MCP-Tools mit Schemas und Vorschau-Defaults |
 | 06 | [⚙️ Installation & Client-Einrichtung](#installation) | Nahtlose Konfiguration für Claude Code CLI, Claude Desktop, Cursor und npm global |
-| 07 | [🧪 Verifikation & Automatisierte Tests](#tests) | 153 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 07 | [🧪 Verifikation & Automatisierte Tests](#tests) | 157 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
 | 08 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
 | 09 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
 | 10 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
@@ -227,7 +227,7 @@ node dist/index.js
 npm test
 ```
 
-153 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+157 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ## Voraussetzungen
 

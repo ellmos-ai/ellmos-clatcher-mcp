@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { existsSync, readFileSync } from "node:fs";
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
@@ -54,5 +55,59 @@ describe("repository hygiene", () => {
     for (const candidate of ignoredPaths) {
       expect(isIgnored(candidate), `${candidate} should be ignored`).toBe(true);
     }
+  });
+
+  it("ignores multi-host synchronization conflict files", () => {
+    const conflictPaths = [
+      "file-conflict-20260910-120000.txt",
+      "test.sync-conflict-20260910.md",
+      "data.sync-temp-001",
+    ];
+
+    for (const candidate of conflictPaths) {
+      expect(isIgnored(candidate), `${candidate} should be ignored`).toBe(true);
+    }
+  });
+
+  it("ignores multi-agent locks and temporary editor files", () => {
+    const ignoredPaths = [
+      "LOCK",
+      "LOCK.txt",
+      "LOCK.user.txt",
+      "LOCK.until.txt",
+      "process.lock",
+      "file.tmp",
+      "file.bak",
+      "file.swp",
+      "file~",
+    ];
+
+    for (const candidate of ignoredPaths) {
+      expect(isIgnored(candidate), `${candidate} should be ignored`).toBe(true);
+    }
+  });
+
+  it("ignores test, coverage, and packaging caches", () => {
+    const cachePaths = [
+      ".pytest_cache/v/cache",
+      ".ruff_cache/content",
+      ".coverage",
+      "coverage/lcov.info",
+      ".vitest/results",
+      "wheelhouse/pkg.whl",
+      ".wheel-smoke/env",
+    ];
+
+    for (const candidate of cachePaths) {
+      expect(isIgnored(candidate), `${candidate} should be ignored`).toBe(true);
+    }
+  });
+
+  it("validates CI workflow concurrency and cancel-in-progress configuration", () => {
+    const ciPath = path.join(repoRoot, ".github", "workflows", "tests.yml");
+    expect(existsSync(ciPath)).toBe(true);
+    const ciContent = readFileSync(ciPath, "utf8");
+    expect(ciContent).toContain("concurrency:");
+    expect(ciContent).toContain("cancel-in-progress: true");
   });
 });
