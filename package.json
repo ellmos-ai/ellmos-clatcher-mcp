@@ -18,7 +18,8 @@
     "glama.json",
     "smithery.yaml",
     "llms.txt",
-    "SECURITY.md"
+    "SECURITY.md",
+    "THIRD_PARTY_LICENSES.md"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)
+- **Third-Party License Audit & Inventory (`THIRD_PARTY_LICENSES.md`):** Conducted comprehensive software license audit across all 7 runtime dependencies and 5 development dependencies. Validated 100% permissive licensing status (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) with zero GPL/AGPL copyleft dependencies and zero cloud network telemetry.
+- **Local Marketing, Personas & Competitive Matrix (`MARKETING-LOG.txt`):** Structured 4 primary target audience personas (Autonomous AI Agents, Full-Stack Developers, DevOps & Release Engineers, Security & Compliance Officers), high-intent EN/DE keyword matrix, and 5-way comparative evaluation across 10 architectural dimensions vs built-in agent bash, ad-hoc jq/sed CLI scripts, heavy desktop apps, and online converters.
+- **Bilingual 16-Point Quick Navigation Standard (`README.md` & `README_de.md`):** Upgraded quick navigation architecture to 16 reciprocal points, integrating dedicated sections for Target Personas (`#target-personas--discoverability` / `#zielgruppen--auffindbarkeit`), Comparative Matrix (`#comparative-matrix--alternatives` / `#vergleichsmatrix--alternativen`), and Third-Party Licenses (`#third-party-licenses--transparency` / `#drittanbieter-lizenzen--transparenz`).
+- **Shields.io Badge Arsenal Expansion:** Added badges for audited third-party licenses, active marketing log, and freshness date (`2026-09-12`).
+- **Automated Contract Suite Expansion (`test/metadata.test.ts`):** Added automated Vitest contract tests enforcing the presence of `THIRD_PARTY_LICENSES.md`, marketing log personas, 16-point navigation structure, and reciprocal anchor parity (161 tests passing).
+- **Manifests & Context Synchronization:** Added `THIRD_PARTY_LICENSES.md` to `package.json` package files array; refreshed `llms.txt` and `SECURITY.md` timestamps to `2026-09-12`.
+
 ### Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)
 - **.gitignore Hardening:** Added ecosystem-standard ignore patterns for multi-host synchronization conflicts (`*-conflict-*`, `*.sync-conflict-*`, `*.sync-temp-*`), multi-agent lock management (`LOCK`, `LOCK.*`, `LOCK*.txt`, `*.lock` with explicit `!package-lock.json` unignore), test and coverage caches (`.pytest_cache/`, `.ruff_cache/`, `.coverage`, `coverage/`, `.vitest/`), packaging artifacts (`wheelhouse/`, `.wheel-smoke/`), and temporary editor files (`*.tmp`, `*.bak`, `*.swp`, `*~`).
 - **CI Matrix Concurrency Guard:** Configured GitHub Actions workflow concurrency group (`${{ github.workflow }}-${{ github.ref }}`) with `cancel-in-progress: true` in `.github/workflows/tests.yml` across the multi-OS matrix (Ubuntu, Windows, macOS).

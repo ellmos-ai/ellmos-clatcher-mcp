@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-10 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
+> **Last Updated / Zuletzt aktualisiert:** 2026-09-12 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
 
 ---
 

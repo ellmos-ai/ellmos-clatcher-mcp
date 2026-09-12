@@ -1,3 +1,177 @@
+================================================================================
+ELLMOS-CLATCHER-MCP - MARKETING, DISCOVERABILITY & ECOSYSTEM LOG
+================================================================================
+Repository:        ellmos-ai/ellmos-clatcher-mcp
+Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
+Version:           1.0.16 (Pfad B Discoverability, Visual Architecture & Bilingual Parity Release)
+Status:            Active / Production Ready (Public Open-Source MCP Server)
+Date:              2026-09-12
+Author:            Gemini (Antigravity Agent Framework)
+Parent Org:        https://github.com/ellmos-ai
+Umbrella Org:      https://github.com/open-bricks
+Security Contact:  security@ellmos.ai, security@open-bricks.org, support@lukasgeiger.com, lukas@open-bricks.org
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & VALUE PROPOSITION (2026-09-12)
+--------------------------------------------------------------------------------
+ellmos-clatcher-mcp (Claude Patcher) delivers an indispensable, local-first MCP utility
+layer that extends AI coding agents (Claude Code, Cursor, Codex, Antigravity) with
+mission-critical file repair, encoding normalization, format conversion, duplicate
+detection, batch operations, and archive handling tools they lack natively.
+
+Standard LLM agents frequently encounter corrupted JSON configs with trailing commas
+or unquoted keys, Windows cp1252 byte artifacts, German umlaut Mojibake, mixed line
+endings, and unhandled format translation tasks. Without specialized local tools,
+agents either fail with parser crashes or waste massive context token windows
+attempting to re-generate entire multi-megabyte files from scratch.
+
+Key Architectural Innovations:
+- 12 Specialized Agent Tools: Fills the gap between raw shell commands and LLM logic
+  with dedicated engines for JSON repair, encoding normalization, format conversion,
+  diffing, deduplication, regex batch renaming, and archive handling.
+- Default Dry-Run Guard (INV-DRYRUN-01): Mutating tools default to preview mode
+  (dry_run: true). Disk writes require explicit opt-in (dry_run: false), preventing
+  catastrophic accidental overwrites by autonomous agent loops.
+- 100% Local-First & Zero-Egress (INV-LOCAL-02): Operates over stdio JSON-RPC.
+  Zero telemetry, zero external network requests, zero remote attack surface.
+- Lossless Encoding Preservation (INV-ENCODING-06): Fixes Windows cp1252 artifacts,
+  BOM headers, and German umlaut Mojibake (ä, ö, ü, ß) with byte-exact UTF-8 safety.
+- Atomic File Operations (INV-ATOMIC-04): Staged buffer replacement eliminates partial
+  file writes or corruptions on process termination.
+
+--------------------------------------------------------------------------------
+2. TARGET AUDIENCE & PERSONAS
+--------------------------------------------------------------------------------
+1. Autonomous AI Agents & Swarm Orchestrators (Claude Code, Cursor, Antigravity, Open-Bricks Swarms):
+   - Primary Needs: Safe, non-destructive file repair, dry-run safety previews,
+     deterministic exit codes, and structured JSON diagnostics without interactive prompts.
+   - Pain Points: Malformed JSON syntax halting autonomous agent loops, undetected
+     encoding errors corrupting source trees, accidental destructive file overwrites.
+   - Discovery Hooks: "mcp json repair tool", "local-first mcp file utilities",
+     "dry-run safe agent tools", "claude code utility mcp".
+
+2. Full-Stack Developers & System Integrators:
+   - Primary Needs: Fast format conversion between JSON, YAML, TOML, XML, CSV, and INI
+     without managing multiple CLI tools; mass renaming of files using regular expressions.
+   - Pain Points: Cumbersome multi-format config migration, tedious manual regex renaming,
+     inconsistent line endings (CRLF vs LF) and BOM artifacts between Windows and Linux.
+   - Discovery Hooks: "json to toml mcp", "yaml xml conversion tool", "batch regex rename mcp",
+     "clean crlf bom mcp".
+
+3. DevOps & Release Engineers:
+   - Primary Needs: Automated SHA-256/SHA-512 checksum generation, snapshot-based folder diffing,
+     archive creation/extraction during automated CI/CD pipelines.
+   - Pain Points: External CLI tool dependency drift across CI runners, unreliable file
+     hash verification, bloated zip utilities.
+   - Discovery Hooks: "mcp sha256 checksum", "folder diff mcp tool", "zip archive mcp runner",
+     "ci cd file validation mcp".
+
+4. Security & Compliance Officers:
+   - Primary Needs: 100% local-first zero-egress architecture, audited permissive open-source
+     licenses (0 copyleft / 0 AGPL), non-elevated user-mode execution.
+   - Pain Points: Hidden cloud telemetry in developer tools, unknown supply chain dependencies,
+     uncontrolled network egress.
+   - Discovery Hooks: "zero-egress mcp server", "local-first claude mcp", "permissive license mcp tools",
+     "air-gapped ai utilities".
+
+--------------------------------------------------------------------------------
+3. TECHNICAL DIFFERENTIATORS & 10 RUNTIME INVARIANTS
+--------------------------------------------------------------------------------
+1. INV-DRYRUN-01:    Default Dry-Run Guard - Mutating tools default to preview mode; writes require dry_run: false.
+2. INV-LOCAL-02:     100% Local-First & Zero-Egress - Pure stdio JSON-RPC; zero network calls or cloud telemetry.
+3. INV-TRAVERSAL-03: Path Traversal Guard - Safe target checks and path normalization prevent escaping root scopes.
+4. INV-ATOMIC-04:    Atomic File Operations - Staged disk writes prevent truncated or corrupted target files.
+5. INV-UNPRIV-05:    Non-Elevation User Mode - Strictly runs unprivileged in user-space (RunAsInvoker).
+6. INV-ENCODING-06:  Lossless Encoding Preservation - Eliminates cp1252 artifacts, BOMs, and Mojibake (ä, ö, ü, ß).
+7. INV-CRYPTO-07:    Cryptographic Multi-Hash Integrity - Deterministic SHA-256, MD5, SHA-1, SHA-512 via node:crypto.
+8. INV-PLATFORM-08:  Universal Multi-OS Parity - Uniform behavior verified on Ubuntu, Windows, and macOS.
+9. INV-VALIDATION-09: Fail-Closed Argument Validation - Every argument validated via strict Zod schemas before run.
+10. INV-SLA-10:      Deterministic Error Bounds & SLA - Structured status receipts; binding 48h vulnerability response.
+
+--------------------------------------------------------------------------------
+4. 12 MCP TOOLS & CAPABILITY TIERS
+--------------------------------------------------------------------------------
+Tier 1: File Repair & Hygiene (Safe Staged Disk Operations)
+- fix_json: Strip comments, trailing commas, single quotes, BOM/NUL, python booleans.
+- fix_encoding: Remove BOM, fix double-encoded UTF-8, repair cp1252 byte sequences.
+- fix_umlauts: Reconstruct broken German umlauts (Ã¤ -> ä, Ã¶ -> ö, Ã¼ -> ü, ÃŸ -> ß).
+- cleanup_file: Strip trailing whitespace, normalize line endings (CRLF -> LF), purge NUL bytes.
+
+Tier 2: Structure & Format Transformation
+- convert_format: High-speed cross-format conversion: JSON, YAML, TOML, XML, CSV, INI.
+- scan_emoji: Detect, catalog, and locate emojis across codebase files.
+- regex_test: Interactive regex evaluation with capture group inspection and match indices.
+
+Tier 3: Filesystem Organization & Cryptographic Integrity
+- detect_dupes: Fast SHA-256 content hash clustering to identify duplicate files.
+- folder_diff: Snapshot-based two-directory structural and content comparison.
+- batch_rename: Pattern-based mass file renaming with regex and dry-run safety preview.
+- archive: Inspect, list, create, and extract ZIP archives with overwrite protection.
+- checksum: Multi-algorithm cryptographic hash generation (SHA-256, MD5, SHA-1, SHA-512).
+
+--------------------------------------------------------------------------------
+5. DISCOVERABILITY, KEYWORDS & 5-WAY COMPARATIVE MATRIX
+--------------------------------------------------------------------------------
+A. High-Intent Keyword Matrix:
+- English Keywords:
+  mcp server json repair, mcp json repair server, fix encoding mcp, mcp encoding fix,
+  format conversion mcp tool, claude code utility tools, cursor mcp utility tools,
+  duplicate file detection mcp, batch rename mcp, checksum mcp, zip archive mcp,
+  fix umlauts mcp, ellmos-clatcher-mcp, clatcher mcp, claude patcher,
+  model context protocol file repair, json fix trailing commas, bom removal mcp,
+  regex batch rename agent, folder diff mcp, local-first mcp tools
+- Deutsche Schlüsselwörter:
+  mcp server json reparatur, dateien reparieren mcp, encoding reparieren mcp,
+  formatkonvertierung mcp, claude code hilfswerkzeuge, cursor mcp werkzeuge,
+  duplikate finden mcp, dateien umbenennen mcp, checksummen mcp, zip archiv mcp,
+  umlaute reparieren mcp, clatcher mcp deutsch, dateisystem utilities mcp,
+  lokale mcp server, zero egress agenten tools, vitest mcp server
+
+B. 5-Way Comparative Evaluation (10 Technical Dimensions):
++------------------------------------+--------------------------+------------------------+------------------------+-------------------------+------------------------+
+| Dimension                          | ellmos-clatcher-mcp      | Standard Agent Shell   | Ad-Hoc CLI (jq/sed)    | Heavy Desktop Apps      | Cloud Converters/APIs  |
++------------------------------------+--------------------------+------------------------+------------------------+-------------------------+------------------------+
+| 1. Execution Interface             | Native MCP JSON-RPC      | Raw Shell / Bash Exec  | Standalone Terminal CLI| GUI Application Window  | HTTP REST / Web Page   |
+| 2. Safety Guardrails               | Built-in dry_run Default | Blind Overwrite Risk   | Unchecked Shell Writes | Manual Confirmation GUI | Remote Server Storage  |
+| 3. Data Privacy & Egress           | 100% Local / Zero-Egress | Local Execution        | Local Execution        | Local Execution         | Remote Cloud Upload    |
+| 4. JSON Auto-Repair                | Heuristic 6-Rule Repair  | Re-generate Full File  | Complex JQ Scripting   | Manual Syntax Editing   | Third-Party Web Paste  |
+| 5. Encoding Normalization          | Lossless Mojibake Fix    | Guesswork / iconv      | iconv / enca CLI       | Manual File Encoding Chg| Inconsistent Web UTF-8 |
+| 6. Multi-Format Conversion         | JSON/YAML/TOML/XML/CSV   | Prompt Re-writing      | Separate CLI Packages  | Complex File Exports    | Rate-Limited Cloud API |
+| 7. Duplicate File Detection        | SHA-256 Hash Clustering  | None (Custom Script)   | Custom bash / find     | Standalone Tool (Anti-D)| Not Supported          |
+| 8. Batch Regex Renaming            | Dry-Run Staged Renamer   | Sequential 'mv' loop   | rename / sed Scripts   | Bulk Rename GUI Utility | Not Supported          |
+| 9. Multi-OS Platform Parity        | Windows, Linux, macOS    | Shell Syntax Quirks    | Linux-centric Toolsets | OS-Specific Binaries    | Browser-Dependent      |
+| 10. License & Audited Transparency | 100% Permissive MIT/BSD  | Variable / Unaudited   | GPL / Mixed Toolchains | Mixed / Proprietary     | Closed Commercial SaaS |
++------------------------------------+--------------------------+------------------------+------------------------+-------------------------+------------------------+
+
+--------------------------------------------------------------------------------
+6. SIBLING MATRIX & CROSS-ECOSYSTEM INTEGRATION
+--------------------------------------------------------------------------------
+ellmos MCP Family (9 Sibling Servers / 200+ Agent Tools):
+- ellmos-filecommander-mcp: 50 tools (Filesystem, processes, sessions, cloud-lock safe)
+- ellmos-codecommander-mcp: 22 tools (AST analysis, imports, Python structural edits)
+- ellmos-clatcher-mcp:       12 tools (File repair, format convert, dupes, archives)
+- n8n-manager-mcp:           19 tools (n8n workflow creation, activation, backups)
+- ellmos-controlcenter-mcp:  34 tools (MCP discovery, tool profiles, permission gates)
+- ellmos-homebase-mcp:       51 tools (LLM memory, knowledge, swarm orchestration)
+- ellmos-servercommander-mcp: 8 tools (Server operations, log analysis, deploy dry-runs)
+- ellmos-blender-use-mcp:     4 tools (Headless Blender asset QA, FBX validation)
+- open-compute-mcp:          16 tools (Model-agnostic computer use, Windows UIA)
+
+Ecosystem Integration:
+- open-bricks desktop suites: ProFiler (file manager), DokuZen (docs), CodeBox (sandboxing).
+- BACH text-based operating system: Core provider for repair and format transformation.
+
+--------------------------------------------------------------------------------
+7. RELEASE STATE & VERIFICATION AUDIT
+--------------------------------------------------------------------------------
+- Automated Vitest Testsuite: 161 passed tests (100% green).
+- Multi-OS CI Matrix: Ubuntu, Windows, macOS across Node.js 20, 22, 24.
+- Third-Party License Audit: 100% permissive (0 copyleft, 0 AGPL, 0 cloud telemetry).
+- Bilingual Documentation Parity: 16-point reciprocal quick navigation in README.md & README_de.md.
+
+================================================================================
+HISTORISCHES AUDIT-PROTOKOLL
+================================================================================
 # MARKETING-LOG: ellmos-clatcher-mcp (Pfad B)
 Stand: 2026-09-09
 Repository: ellmos-ai/ellmos-clatcher-mcp

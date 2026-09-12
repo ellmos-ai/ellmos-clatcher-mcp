@@ -4,16 +4,19 @@
 
 # ellmos-clatcher-mcp
 
-**🇬🇧 [English Version](README.md)** | **🛡️ [Sicherheitsrichtlinie](SECURITY.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
+**🇬🇧 [English Version](README.md)** | **🛡️ [Sicherheitsrichtlinie](SECURITY.md)** | **📜 [Lizenzen](THIRD_PARTY_LICENSES.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
 
 [![npm version](https://img.shields.io/npm/v/ellmos-clatcher-mcp.svg)](https://www.npmjs.com/package/ellmos-clatcher-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-157%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-161%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
+[![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft-success.svg)](THIRD_PARTY_LICENSES.md)
+[![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--12-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -41,19 +44,45 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | # | Abschnitt | Fokus |
 |---|---|---|
 | 01 | [✨ Highlights & Wertversprechen](#highlights--wertversprechen) | 12 unverzichtbare Werkzeuge, die KI-Agenten nativ fehlen: Reparatur, Konvertierung, Duplikate |
-| 02 | [📐 Systemarchitektur & Datenfluss](#systemarchitektur--datenfluss) | 5-Schichten Flowchart TD für Stdio-Transport und Reparatur-Engines |
-| 03 | [🔄 End-to-End Ausführungssequenz](#end-to-end-ausf%C3%BChrungssequenz) | 14-stufiges Sequenzdiagramm für den Dry-Run-Schutz vom Prompt bis zum Schreiben |
-| 04 | [🛡️ Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien) | 10 architektonische Garantien für Dry-Run-Standard, Zero-Egress und atomare Schreibvorgänge |
-| 05 | [🛠️ Werkzeugübersicht & Fähigkeiten](#werkzeuge) | Detaillierte Übersicht aller 12 MCP-Tools mit Schemas und Vorschau-Defaults |
-| 06 | [⚙️ Installation & Client-Einrichtung](#installation) | Nahtlose Konfiguration für Claude Code CLI, Claude Desktop, Cursor und npm global |
-| 07 | [🧪 Verifikation & Automatisierte Tests](#tests) | 157 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
-| 08 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
-| 09 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
-| 10 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
-| 11 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
-| 12 | [📝 Changelog & Versionshistorie](#changelog) | Release-Evolution, Dry-Run-Sicherheitsdurchsetzung und Hygiene-Audit |
-| 13 | [🔍 Auffindbarkeit & Suchbegriffe](#auffindbarkeit) | Gezielte Suchbegriffe und Registry-Metadaten für Glama, Smithery und npm |
-| 14 | [⚖️ Haftung & Rechtlicher Hinweis](#haftung) | Gesetzliche Open-Source-Schenkung nach §§ 516 ff. BGB und MIT-Haftungsausschluss |
+| 02 | [🎯 Zielgruppen & Auffindbarkeit](#zielgruppen--auffindbarkeit) | Autonome Agenten, Full-Stack-Entwickler, Release-Engineers und Sicherheits-Compliance |
+| 03 | [⚖️ Vergleichsmatrix & Alternativen](#vergleichsmatrix--alternativen) | 10-Dimensionen-Vergleich vs Standard-Shell, ad-hoc jq/sed, Desktop-Apps und Cloud-APIs |
+| 04 | [📐 Systemarchitektur & Datenfluss](#systemarchitektur--datenfluss) | 5-Schichten Flowchart TD für Stdio-Transport und Reparatur-Engines |
+| 05 | [🔄 End-to-End Ausführungssequenz](#end-to-end-ausf%C3%BChrungssequenz) | 14-stufiges Sequenzdiagramm für den Dry-Run-Schutz vom Prompt bis zum Schreiben |
+| 06 | [🛡️ Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien) | 10 architektonische Garantien für Dry-Run-Standard, Zero-Egress und atomare Schreibvorgänge |
+| 07 | [🛠️ Werkzeugübersicht & Fähigkeiten](#werkzeuge) | Detaillierte Übersicht aller 12 MCP-Tools mit Schemas und Vorschau-Defaults |
+| 08 | [⚙️ Installation & Client-Einrichtung](#installation) | Nahtlose Konfiguration für Claude Code CLI, Claude Desktop, Cursor und npm global |
+| 09 | [🧪 Verifikation & Automatisierte Tests](#tests) | 161 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 10 | [📜 Drittanbieter-Lizenzen & Transparenz](#drittanbieter-lizenzen--transparenz) | 100% permissive Open-Source-Bestandteile (0 AGPL / Copyleft, null Telemetrie) |
+| 11 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
+| 12 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
+| 13 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
+| 14 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
+| 15 | [📝 Changelog & Versionshistorie](#changelog) | Release-Evolution, Dry-Run-Sicherheitsdurchsetzung und Hygiene-Audit |
+| 16 | [⚖️ Haftung & Rechtlicher Hinweis](#haftung) | Gesetzliche Open-Source-Schenkung nach §§ 516 ff. BGB und MIT-Haftungsausschluss |
+
+## Zielgruppen & Auffindbarkeit
+
+| Zielgruppe / Persona | Kernanforderungen | Gelöste Probleme | Gezielte Suchbegriffe |
+|---|---|---|---|
+| **Autonome KI-Agenten & Schwärme** | Zerstörungsfreie Dateireparatur, Dry-Run-Vorschauen, deterministische Quittungen | Syntaxfehler in JSON stoppen Agentenläufe, unbemerktes Mojibake beschädigt Dateien | `mcp server json reparatur`, `dateien reparieren mcp`, `lokale mcp server` |
+| **Full-Stack-Entwickler** | Schnelle Konvertierung (JSON/YAML/TOML/XML), Regex-Massenumbenennung | Komplizierte CLI-Tools, fehlerhafte Batch-Skripte, störende Windows-BOMs & CRLF | `formatkonvertierung mcp`, `dateien umbenennen mcp`, `umlaute reparieren mcp` |
+| **DevOps & Release-Engineers** | Kryptografische Prüfsummen (SHA-256/SHA-512), Ordner-Diffs, ZIP-Archive | Tool-Drift auf CI-Runnern, unzuverlässige Hash-Prüfungen, instabile Archiv-Skripte | `checksummen mcp`, `zip archiv mcp`, `ordner vergleichen mcp` |
+| **Sicherheits- & Compliance-Beauftragte** | 100% Local-First Stdio-Isolation, Null Telemetrie, geprüfte permissive Lizenzen | Unerwünschter Datenabfluss in die Cloud, ungeprüfte Copyleft-Lizenzen, Rechteausweitung | `zero egress agenten tools`, `permissive lizenzen mcp`, `air-gapped ki utilities` |
+
+## Vergleichsmatrix & Alternativen
+
+| Dimension | ellmos-clatcher-mcp | Standard Agent Shell | Ad-Hoc CLI (jq/sed) | Desktop-Hilfsprogramme | Cloud-Konverter / Web-APIs |
+|---|---|---|---|---|---|
+| **Schnittstelle** | Natives MCP Stdio (JSON-RPC) | Rohe Shell / Bash Exec | Standalone Terminal-CLI | Desktop-GUI-Fenster | HTTP REST / Web-Browser |
+| **Sicherheits-Schutz** | Standard `dry_run: true` | Risiko blindes Überschreiben | Ungeprüfte Shell-Schreibvorgänge | Manuelle Bestätigung | Speicherung auf Cloud-Servern |
+| **Datenschutz & Egress** | 100% Local-First / Zero-Egress | Lokale Ausführung | Lokale Ausführung | Lokale Ausführung | Öffentlicher Cloud-Upload |
+| **JSON-Autoreparatur** | Heuristische 6-Regeln-Reparatur | Komplette Neugenerierung | Aufwändige JQ-Skripte | Manuelle Syntax-Korrektur | Upload auf Drittanbieter-Websites |
+| **Encoding-Normalisierung** | Verlustfreier Mojibake-Fix | Ratespiel / iconv | iconv / enca Werkzeuge | Manuelle Codierungs-Wahl | Inkonsistente Web-UTF-8-Konvertierung |
+| **Multi-Format-Konvertierung** | JSON/YAML/TOML/XML/CSV/INI | Prompt-Neuschreiben | Verschiedene CLI-Pakete | Komplexe Export-Dialoge | Limitierte Cloud-API-Kontingente |
+| **Duplikat-Erkennung** | SHA-256 Hash-Clustering | Keine (Eigenbau-Skript) | Komplexe find/md5-Befehle | Standalone-Tool (Anti-D) | Nicht unterstützt |
+| **Batch Regex-Umbenennung** | Gestufte Umbenennung mit Vorschau | Sequenzielle mv-Schleife | rename / sed Befehle | Bulk Rename GUI-Utility | Nicht unterstützt |
+| **Plattform-Parität** | Windows, Linux, macOS | Shell-Unterschiede | Linux-zentrierte Tools | Betriebssystem-spezifisch | Browser-abhängig |
+| **Lizenz & Transparenz** | 100% Permissiv MIT / BSD | Variabel / Ungeprüft | GPL / Gemischte Toolchains | Gemischt / Proprietär | Geschlossenes kommerzielles SaaS |
 
 ## Systemarchitektur & Datenfluss
 
@@ -227,7 +256,7 @@ node dist/index.js
 npm test
 ```
 
-157 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+161 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ## Voraussetzungen
 
@@ -236,6 +265,12 @@ npm test
 ## Lizenz
 
 [MIT](LICENSE)
+
+## Drittanbieter-Lizenzen & Transparenz
+
+`ellmos-clatcher-mcp` erfüllt alle Open-Source-Governance-Standards von open-bricks und ellmos-ai. Alle 7 direkten Laufzeit-Abhängigkeiten und 5 Entwicklungs-Abhängigkeiten unterliegen zu 100% permissiven Lizenzen (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) ohne Copyleft-Risiken (0% GPL/AGPL) und ohne externe Cloud-Telemetrie.
+
+Das vollständige Abhängigkeitsinventar, SPDX-Identifikatoren und Lizenztexte sind dokumentiert in **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)**.
 
 ---
 

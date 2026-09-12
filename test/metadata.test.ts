@@ -114,6 +114,7 @@ describe("metadata consistency", () => {
     expect(pkg.files).toContain("SECURITY.md");
     expect(pkg.files).toContain("smithery.yaml");
     expect(pkg.files).toContain("llms.txt");
+    expect(pkg.files).toContain("THIRD_PARTY_LICENSES.md");
 
     const readme = readRepoFile("README.md");
     const readmeDe = readRepoFile("README_de.md");
@@ -121,13 +122,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("157 tests");
-    expect(readme).toContain("badge/tests-157%20passed");
+    expect(readme).toContain("161 tests");
+    expect(readme).toContain("badge/tests-161%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("157 Tests");
-    expect(readmeDe).toContain("badge/tests-157%20passed");
-    expect(readRepoFile("llms.txt")).toContain("157 tests");
+    expect(readmeDe).toContain("161 Tests");
+    expect(readmeDe).toContain("badge/tests-161%20passed");
+    expect(readRepoFile("llms.txt")).toContain("161 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -257,17 +258,18 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-157%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-157%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-161%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-161%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-10");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-10");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-12");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-12");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
+    expect(changelog).toContain("Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -317,11 +319,11 @@ describe("metadata consistency", () => {
     }
   });
 
-  it("validates 14-point quick navigation structure across bilingual READMEs", () => {
+  it("validates 16-point quick navigation structure across bilingual READMEs", () => {
     const readme = readRepoFile("README.md");
     const readmeDe = readRepoFile("README_de.md");
 
-    for (let i = 1; i <= 14; i++) {
+    for (let i = 1; i <= 16; i++) {
       const numStr = i < 10 ? `0${i}` : `${i}`;
       expect(readme).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
       expect(readmeDe).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
@@ -339,5 +341,74 @@ describe("metadata consistency", () => {
     expect(gitignore).toContain("*.sync-conflict-*");
     expect(gitignore).toContain("LOCK.*");
     expect(gitignore).toContain("!package-lock.json");
+  });
+
+  it("validates THIRD_PARTY_LICENSES.md existence, 100% permissive status, and package.json files entry", () => {
+    expect(existsSync(path.join(repoRoot, "THIRD_PARTY_LICENSES.md"))).toBe(true);
+    const licensesDoc = readRepoFile("THIRD_PARTY_LICENSES.md");
+    expect(licensesDoc).toContain("100% Permissive Open Source (0 AGPL, 0 Copyleft, 0 Cloud Telemetry)");
+    expect(licensesDoc).toContain("@modelcontextprotocol/sdk");
+    expect(licensesDoc).toContain("adm-zip");
+    expect(licensesDoc).toContain("fast-xml-parser");
+    expect(licensesDoc).toContain("js-yaml");
+    expect(licensesDoc).toContain("smol-toml");
+    expect(licensesDoc).toContain("update-notifier");
+    expect(licensesDoc).toContain("zod");
+    expect(licensesDoc).toContain("INV-DRYRUN-01");
+    expect(licensesDoc).toContain("INV-SLA-10");
+    expect(licensesDoc).toContain("The MIT License");
+    expect(licensesDoc).toContain("The 3-Clause BSD License");
+    expect(licensesDoc).toContain("Apache License, Version 2.0");
+
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    expect(pkg.files).toContain("THIRD_PARTY_LICENSES.md");
+  });
+
+  it("validates Target Personas, Comparative Matrix, and Third-Party Licenses reciprocal anchors", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+
+    expect(readme).toContain("## Target Personas & Discoverability");
+    expect(readmeDe).toContain("## Zielgruppen & Auffindbarkeit");
+
+    expect(readme).toContain("## Comparative Matrix & Alternatives");
+    expect(readmeDe).toContain("## Vergleichsmatrix & Alternativen");
+
+    expect(readme).toContain("## Third-Party Licenses & Transparency");
+    expect(readmeDe).toContain("## Drittanbieter-Lizenzen & Transparenz");
+
+    expect(readme).toContain("(#target-personas--discoverability)");
+    expect(readmeDe).toContain("(#zielgruppen--auffindbarkeit)");
+    expect(readme).toContain("(#comparative-matrix--alternatives)");
+    expect(readmeDe).toContain("(#vergleichsmatrix--alternativen)");
+    expect(readme).toContain("(#third-party-licenses--transparency)");
+    expect(readmeDe).toContain("(#drittanbieter-lizenzen--transparenz)");
+  });
+
+  it("validates expanded Shields.io badge links and verified dates across documentation", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+
+    expect(readme).toContain("THIRD_PARTY_LICENSES.md");
+    expect(readmeDe).toContain("THIRD_PARTY_LICENSES.md");
+    expect(readme).toContain("MARKETING-LOG.txt");
+    expect(readmeDe).toContain("MARKETING-LOG.txt");
+    expect(readme).toContain("2026--09--12");
+    expect(readmeDe).toContain("2026--09--12");
+  });
+
+  it("validates 5-way comparative evaluation matrix and 4 target personas in MARKETING-LOG.txt", () => {
+    const mktLog = readRepoFile("MARKETING-LOG.txt");
+    expect(mktLog).toContain("2. TARGET AUDIENCE & PERSONAS");
+    expect(mktLog).toContain("Autonomous AI Agents & Swarm Orchestrators");
+    expect(mktLog).toContain("Full-Stack Developers & System Integrators");
+    expect(mktLog).toContain("DevOps & Release Engineers");
+    expect(mktLog).toContain("Security & Compliance Officers");
+    expect(mktLog).toContain("B. 5-Way Comparative Evaluation (10 Technical Dimensions)");
+    expect(mktLog).toContain("ellmos-clatcher-mcp");
+    expect(mktLog).toContain("Standard Agent Shell");
+    expect(mktLog).toContain("Ad-Hoc CLI (jq/sed)");
+    expect(mktLog).toContain("Heavy Desktop Apps");
+    expect(mktLog).toContain("Cloud Converters/APIs");
   });
 });
