@@ -3,9 +3,9 @@ ELLMOS-CLATCHER-MCP - MARKETING, DISCOVERABILITY & ECOSYSTEM LOG
 ================================================================================
 Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
-Version:           1.0.16 (Pfad B Discoverability, Visual Architecture & Bilingual Parity Release)
+Version:           1.0.17 (Pfad A Technical Hygiene, CI Timeout Hardening & Multi-Host Lock Defense)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-09-12
+Date:              2026-09-14
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
@@ -164,7 +164,10 @@ Ecosystem Integration:
 --------------------------------------------------------------------------------
 7. RELEASE STATE & VERIFICATION AUDIT
 --------------------------------------------------------------------------------
-- Automated Vitest Testsuite: 161 passed tests (100% green).
+- Pfad A Technical Hygiene Audit: 2026-09-14 (v1.0.17).
+- CI Workflow Hardening: Added `timeout-minutes: 15` on multi-OS matrix in `tests.yml`, deduplicated concurrency group, added timeout guardrails (5-10m) across auxiliary workflows (`stale.yml`, `welcome.yml`, `auto-assign.yml`, `label-sync.yml`).
+- Multi-Host Sync & Lock Shielding: .gitignore hardened with full OneDrive duplicate copy patterns (`* (kopie)*`, `* (copy)*`, `*conflicted copy*`, host tokens), multi-agent lock management (`LOCK.permissions.json`, `uv.lock`), and coverage/tool caches (`.tox/`, `.turbo/`, `.hypothesis/`, `htmlcov/`, `.nyc_output/`).
+- Automated Vitest Testsuite: 100% green parity across all contract and hygiene tests.
 - Multi-OS CI Matrix: Ubuntu, Windows, macOS across Node.js 20, 22, 24.
 - Third-Party License Audit: 100% permissive (0 copyleft, 0 AGPL, 0 cloud telemetry).
 - Bilingual Documentation Parity: 16-point reciprocal quick navigation in README.md & README_de.md.

@@ -17,7 +17,7 @@ describe("metadata consistency", () => {
     const srcIndex = readRepoFile("src/index.ts");
     const changelog = readRepoFile("CHANGELOG.md");
 
-    const expectedVersion = "1.0.16";
+    const expectedVersion = "1.0.17";
     expect(pkg.version).toBe(expectedVersion);
     expect(serverJson.version).toBe(expectedVersion);
     expect(serverJson.packages[0].version).toBe(expectedVersion);
@@ -122,13 +122,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("161 tests");
-    expect(readme).toContain("badge/tests-161%20passed");
+    expect(readme).toContain("163 tests");
+    expect(readme).toContain("badge/tests-163%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("161 Tests");
-    expect(readmeDe).toContain("badge/tests-161%20passed");
-    expect(readRepoFile("llms.txt")).toContain("161 tests");
+    expect(readmeDe).toContain("163 Tests");
+    expect(readmeDe).toContain("badge/tests-163%20passed");
+    expect(readRepoFile("llms.txt")).toContain("163 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -258,18 +258,19 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-161%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-161%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-163%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-163%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-12");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-12");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-14");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-14");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
     expect(changelog).toContain("Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)");
+    expect(changelog).toContain("Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -393,8 +394,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.md");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--09--12");
-    expect(readmeDe).toContain("2026--09--12");
+    expect(readme).toContain("2026--09--14");
+    expect(readmeDe).toContain("2026--09--14");
   });
 
   it("validates 5-way comparative evaluation matrix and 4 target personas in MARKETING-LOG.txt", () => {
@@ -410,5 +411,14 @@ describe("metadata consistency", () => {
     expect(mktLog).toContain("Ad-Hoc CLI (jq/sed)");
     expect(mktLog).toContain("Heavy Desktop Apps");
     expect(mktLog).toContain("Cloud Converters/APIs");
+  });
+
+  it("validates that all GitHub Actions workflows enforce timeout-minutes guardrails", () => {
+    const workflowsDir = path.join(repoRoot, ".github", "workflows");
+    const workflowFiles = ["tests.yml", "stale.yml", "welcome.yml", "auto-assign.yml", "label-sync.yml"];
+    for (const file of workflowFiles) {
+      const content = readFileSync(path.join(workflowsDir, file), "utf8");
+      expect(content, `${file} must enforce timeout-minutes`).toMatch(/timeout-minutes:\s*\d+/);
+    }
   });
 });

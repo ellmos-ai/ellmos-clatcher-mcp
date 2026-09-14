@@ -62,6 +62,15 @@ describe("repository hygiene", () => {
       "file-conflict-20260910-120000.txt",
       "test.sync-conflict-20260910.md",
       "data.sync-temp-001",
+      "report (kopie).txt",
+      "report (copy).txt",
+      "doc (Kopie).md",
+      "doc (Copy).md",
+      "file conflicted copy 2026-09-14.txt",
+      "data-ASUS-GEI.json",
+      "config-WORKSTATION-LG.txt",
+      "notes-LAPTOP.md",
+      "backup-Mac Studio.tar",
     ];
 
     for (const candidate of conflictPaths) {
@@ -75,6 +84,8 @@ describe("repository hygiene", () => {
       "LOCK.txt",
       "LOCK.user.txt",
       "LOCK.until.txt",
+      "LOCK.permissions.json",
+      "uv.lock",
       "process.lock",
       "file.tmp",
       "file.bak",
@@ -92,8 +103,14 @@ describe("repository hygiene", () => {
       ".pytest_cache/v/cache",
       ".ruff_cache/content",
       ".coverage",
+      ".coverage.worker1",
       "coverage/lcov.info",
+      "htmlcov/index.html",
       ".vitest/results",
+      ".tox/py311/bin",
+      ".turbo/cache",
+      ".nyc_output/process.json",
+      ".hypothesis/examples",
       "wheelhouse/pkg.whl",
       ".wheel-smoke/env",
     ];
@@ -103,11 +120,26 @@ describe("repository hygiene", () => {
     }
   });
 
-  it("validates CI workflow concurrency and cancel-in-progress configuration", () => {
+  it("validates CI workflow concurrency, timeout, and cancel-in-progress configuration", () => {
     const ciPath = path.join(repoRoot, ".github", "workflows", "tests.yml");
     expect(existsSync(ciPath)).toBe(true);
     const ciContent = readFileSync(ciPath, "utf8");
     expect(ciContent).toContain("concurrency:");
     expect(ciContent).toContain("cancel-in-progress: true");
+    expect(ciContent).toContain("timeout-minutes: 15");
+  });
+
+  it("validates auxiliary CI workflows timeout guardrails", () => {
+    const staleYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "stale.yml"), "utf8");
+    expect(staleYaml).toContain("timeout-minutes: 10");
+
+    const welcomeYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "welcome.yml"), "utf8");
+    expect(welcomeYaml).toContain("timeout-minutes: 5");
+
+    const assignYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "auto-assign.yml"), "utf8");
+    expect(assignYaml).toContain("timeout-minutes: 5");
+
+    const labelYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "label-sync.yml"), "utf8");
+    expect(labelYaml).toContain("timeout-minutes: 5");
   });
 });

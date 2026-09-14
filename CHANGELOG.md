@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+## [1.0.17] - 2026-09-14
+
+### Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)
+- **CI Workflow Timeout- & Concurrency-Härtung (`.github/workflows/tests.yml`):** Configured strict `timeout-minutes: 15` on the multi-OS test matrix job (`ubuntu-latest`, `windows-latest`, `macos-latest` across Node.js 20, 22, 24) and removed duplicate `concurrency:` block definition. Hardened auxiliary workflows with timeout guardrails: `stale.yml` (`timeout-minutes: 10`), `welcome.yml` (`timeout-minutes: 5`), `auto-assign.yml` (`timeout-minutes: 5`), and `label-sync.yml` (`timeout-minutes: 5`).
+- **.gitignore Multi-Host Cloud-Sync & Lock Defense:** Comprehensive hardening against OneDrive multi-host duplicate/conflict copies (`* (kopie)*`, `* (copy)*`, `* (Kopie)*`, `* (Copy)*`, `*conflicted copy*`, `*-ASUS-GEI.*`, `*-ASUS.*`, `*-WORKSTATION-LG.*`, `*-WORKSTATION.*`, `*-LAPTOP.*`, `*-LAPTOP-*`, `*-Mac Studio.*`), multi-agent lock files (`LOCK.permissions.json`, `uv.lock`), and coverage/cache artifacts (`.tox/`, `.turbo/`, `.nyc_output/`, `.hypothesis/`, `htmlcov/`).
+- **Automated Hygiene & Contract Test Expansion (`test/repository-hygiene.test.ts` & `test/metadata.test.ts`):** Added automated contract tests for CI workflow timeout guardrails, expanded multi-host conflict and lock pattern protections in `.gitignore`, verified manifest version parity on 1.0.17, and updated test suite count baselines.
+- **Documentation, Badges & Metadata Freshness:** Synchronized version `1.0.17` across `package.json`, `package-lock.json`, `server.json`, `glama.json`, and `src/index.ts`. Updated `SECURITY.md` and `llms.txt` freshness timestamps to `2026-09-14`, harmonized test badges and count descriptions in `README.md` and `README_de.md`.
+
 ### Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)
 - **Third-Party License Audit & Inventory (`THIRD_PARTY_LICENSES.md`):** Conducted comprehensive software license audit across all 7 runtime dependencies and 5 development dependencies. Validated 100% permissive licensing status (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) with zero GPL/AGPL copyleft dependencies and zero cloud network telemetry.
 - **Local Marketing, Personas & Competitive Matrix (`MARKETING-LOG.txt`):** Structured 4 primary target audience personas (Autonomous AI Agents, Full-Stack Developers, DevOps & Release Engineers, Security & Compliance Officers), high-intent EN/DE keyword matrix, and 5-way comparative evaluation across 10 architectural dimensions vs built-in agent bash, ad-hoc jq/sed CLI scripts, heavy desktop apps, and online converters.

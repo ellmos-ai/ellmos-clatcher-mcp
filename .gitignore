@@ -36,16 +36,30 @@ id_ed25519
 .mcpregistry_*
 
 # Multi-host sync conflicts (OneDrive, Syncthing)
+* (kopie)*
+* (copy)*
+* (Kopie)*
+* (Copy)*
+*conflicted copy*
 *-conflict-*
 *.sync-conflict-*
 *.sync-temp-*
 *.conflict
 *-CONFLIT-*
+*-ASUS-GEI.*
+*-ASUS.*
+*-WORKSTATION-LG.*
+*-WORKSTATION.*
+*-LAPTOP.*
+*-LAPTOP-*
+*-Mac Studio.*
 
 # Multi-agent locks & lock system
 LOCK
 LOCK.*
 LOCK*.txt
+LOCK.permissions.json
+uv.lock
 *.lock
 !package-lock.json
 
@@ -53,8 +67,14 @@ LOCK*.txt
 .pytest_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 coverage/
+htmlcov/
 .vitest/
+.tox/
+.turbo/
+.nyc_output/
+.hypothesis/
 wheelhouse/
 .wheel-smoke/
 
