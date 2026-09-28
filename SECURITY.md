@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-14 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
+> **Last Updated / Zuletzt aktualisiert:** 2026-09-25 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
 
 ---
 
@@ -13,7 +13,7 @@
 
 **This MCP server runs locally with the permissions of the invoking operating system user.**
 
-`ellmos-clatcher-mcp` is designed as a local-first utility MCP server for text and data file operations, format conversions, encoding repairs, and archive management with built-in dry-run safety and non-destructive defaults. It adheres strictly to **Local-First** and **Zero-Egress** principles: no telemetry, no cloud transmission of user data, and strictly unprivileged standard user-mode execution.
+`ellmos-clatcher-mcp` is designed as a local-first utility MCP server for text and data file operations, format conversions, encoding repairs, and archive management with built-in dry-run safety and non-destructive defaults. It adheres strictly to **Local-First** and **Zero-Egress** principles: no telemetry, no cloud transmission of user data, and strictly unprivileged standard user-mode execution (`RunAsInvoker`). Formal copyright notice and attribution are defined in [`NOTICE`](NOTICE). Liability is limited pursuant to § 521 BGB (German Civil Code).
 
 ### Tool Risk Classification & Execution Safety
 
@@ -71,7 +71,7 @@ We commit to acknowledging receipt within 48 hours and providing a structured vu
 
 **Dieser MCP-Server arbeitet lokal mit den Berechtigungen des ausführenden Betriebssystem-Benutzers.**
 
-`ellmos-clatcher-mcp` ist ein lokaler MCP-Hilfswerkzeug-Server für Text- und Datendatei-Operationen, Formatkonvertierungen, Kodierungsreparaturen und Archivverwaltung mit standardmäßigem Dry-Run-Schutz. Das Design folgt strikten **Local-First-** und **Zero-Egress-**Prinzipien: keine Telemetrie, keine Datenübertragung an externe Server und reiner Betrieb im unprivilegierten Standard-Benutzerkontext.
+`ellmos-clatcher-mcp` ist ein lokaler MCP-Hilfswerkzeug-Server für Text- und Datendatei-Operationen, Formatkonvertierungen, Kodierungsreparaturen und Archivverwaltung mit standardmäßigem Dry-Run-Schutz. Das Design folgt strikten **Local-First-** und **Zero-Egress-**Prinzipien: keine Telemetrie, keine Datenübertragung an externe Server und reiner Betrieb im unprivilegierten Standard-Benutzerkontext (`RunAsInvoker`). Formale Urheberrechts- und Lizenz-Attributionen sind in [`NOTICE`](NOTICE) hinterlegt. Die Haftung ist gemäß § 521 BGB beschränkt.
 
 ### Risikoklassifizierung der Werkzeuge & Ausführungssicherheit
 

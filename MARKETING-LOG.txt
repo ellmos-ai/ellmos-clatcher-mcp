@@ -3,9 +3,9 @@ ELLMOS-CLATCHER-MCP - MARKETING, DISCOVERABILITY & ECOSYSTEM LOG
 ================================================================================
 Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
-Version:           1.0.17 (Pfad A Technical Hygiene, CI Timeout Hardening & Multi-Host Lock Defense)
+Version:           1.0.17 (Pfad B 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM Audit)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-09-14
+Date:              2026-09-25
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
@@ -164,13 +164,19 @@ Ecosystem Integration:
 --------------------------------------------------------------------------------
 7. RELEASE STATE & VERIFICATION AUDIT
 --------------------------------------------------------------------------------
+- Pfad B Discoverability, 18-Point Bilateral Navigation & Level 1 SBOM Audit: 2026-09-25 (v1.0.17).
+- 18-Point Bilateral Quick Navigation: Standardized across README.md and README_de.md with dual reciprocal HTML anchors (`<a id="sec-01">` .. `<a id="sec-18">`), introducing practical usage workflows, dry-run safety verification, encoding/mojibake handling, and Windows path robustness.
+- Statutory NOTICE File: Codified formal copyright notice for Lukas Geiger, ellmos-ai, and open-bricks in root NOTICE file, whitelisted in package.json files array.
+- Level 1 SBOM Invariant Cross-Reference Matrix: Standardized in THIRD_PARTY_LICENSES.md mapping 10 runtime invariants (INV-DRYRUN-01 .. INV-SLA-10), RunAsInvoker non-elevation certification, and zero-egress network isolation.
+- Statutory German Law Liability Disclaimer (§ 521 BGB): Embedded in README.md, README_de.md, and SECURITY.md for gratuitous open-source donation.
+- Keyword Saturated Discoverability: Expanded package.json keywords to 20 topics aligned with GitHub registry topics.
 - Pfad A Technical Hygiene Audit: 2026-09-14 (v1.0.17).
 - CI Workflow Hardening: Added `timeout-minutes: 15` on multi-OS matrix in `tests.yml`, deduplicated concurrency group, added timeout guardrails (5-10m) across auxiliary workflows (`stale.yml`, `welcome.yml`, `auto-assign.yml`, `label-sync.yml`).
 - Multi-Host Sync & Lock Shielding: .gitignore hardened with full OneDrive duplicate copy patterns (`* (kopie)*`, `* (copy)*`, `*conflicted copy*`, host tokens), multi-agent lock management (`LOCK.permissions.json`, `uv.lock`), and coverage/tool caches (`.tox/`, `.turbo/`, `.hypothesis/`, `htmlcov/`, `.nyc_output/`).
 - Automated Vitest Testsuite: 100% green parity across all contract and hygiene tests.
 - Multi-OS CI Matrix: Ubuntu, Windows, macOS across Node.js 20, 22, 24.
 - Third-Party License Audit: 100% permissive (0 copyleft, 0 AGPL, 0 cloud telemetry).
-- Bilingual Documentation Parity: 16-point reciprocal quick navigation in README.md & README_de.md.
+- Bilingual Documentation Parity: 18-point reciprocal quick navigation in README.md & README_de.md.
 
 ================================================================================
 HISTORISCHES AUDIT-PROTOKOLL

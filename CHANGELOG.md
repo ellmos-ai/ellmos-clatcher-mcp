@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)
+- **18-Point Bilateral Quick Navigation Standard (`README.md` & `README_de.md`):** Expanded and standardized bilateral navigation across 18 discrete sections with dual reciprocal anchor points (`<a id="sec-01">` through `<a id="sec-18">`), introducing dedicated practical usage workflows, dry-run safety verification protocols, encoding/mojibake handling, and multi-OS Windows path robustness sections.
+- **Statutory Notice & Attribution Standard (`NOTICE`):** Created root `NOTICE` file containing canonical MIT copyright attribution for Lukas Geiger, `ellmos-ai`, and `open-bricks`. Whitelisted `NOTICE` in `package.json` `files` array for downstream distribution and cross-linked attribution in `SECURITY.md`, `THIRD_PARTY_LICENSES.md`, and `llms.txt`.
+- **Level 1 SBOM & Invariant Traceability (`THIRD_PARTY_LICENSES.md`):** Upgraded Section 5 with an explicit Level 1 Software Bill of Materials (SBOM) Invariant Cross-Reference Matrix mapping 10 core runtime invariants (`INV-DRYRUN-01` through `INV-SLA-10`), explicit `RunAsInvoker` non-elevation certification, and zero-egress air-gapped network isolation.
+- **Statutory German Law Liability Clause (§ 521 BGB):** Embedded formal statutory German liability disclaimer for gratuitous open-source provision (§ 521 BGB) in both `README.md`, `README_de.md`, and `SECURITY.md`.
+- **Topic Saturation & Discoverability Enhancement (`package.json`):** Expanded package keywords to a saturated 20-topic vocabulary aligned with GitHub registry topics (`ai-agents`, `batch-rename`, `checksum`, `claude-code`, `developer-tools`, `duplicate-detection`, `duplicate-files`, `encoding-fix`, `file-repair`, `format-conversion`, `glama`, `json-repair`, `llm-agents`, `local-first`, `mcp`, `mcp-registry`, `mcp-server`, `model-context-protocol`, `regex-tester`, `zip-archive`).
+- **Comprehensive Quality Shields & Metadata Parity:** Added shields for NOTICE attribution, RunAsInvoker non-elevation, Level 1 SBOM, and freshness verification timestamp (`2026-09-25`) across English and German README documentation, synchronized with `llms.txt`.
+
 ## [1.0.17] - 2026-09-14
 
 ### Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)

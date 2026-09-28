@@ -1,9 +1,10 @@
 # Third-Party Licenses & Software Inventory
 
 - **Repository:** `ellmos-ai/ellmos-clatcher-mcp`
-- **Version:** `1.0.16`
-- **Audit Date:** `2026-09-12`
+- **Version:** `1.0.17`
+- **Audit Date:** `2026-09-25`
 - **License Status:** `100% Permissive Open Source (0 AGPL, 0 Copyleft, 0 Cloud Telemetry)`
+- **Attribution:** Formal copyright notice and attribution defined in [`NOTICE`](NOTICE)
 - **Umbrella Organization:** [`open-bricks`](https://github.com/open-bricks) | **Parent Organization:** [`ellmos-ai`](https://github.com/ellmos-ai)
 - **Security Contact:** `security@ellmos.ai`, `security@open-bricks.org`, `support@lukasgeiger.com`, `lukas@open-bricks.org`
 
@@ -69,20 +70,27 @@ Development and build tools are utilized solely for compiling TypeScript, execut
 
 ---
 
-## 5. Governance & Runtime Invariant Compliance
+## 5. Governance & Runtime Invariant Compliance (Level 1 SBOM)
 
-The dependency stack and implementation architecture adhere strictly to the 10 Governance and Runtime Invariants of `ellmos-clatcher-mcp`:
+The dependency stack and implementation architecture adhere strictly to the 10 Governance and Runtime Invariants of `ellmos-clatcher-mcp`, certified for unprivileged execution (`RunAsInvoker`) and zero cloud telemetry:
 
-1. **Default Dry-Run Guard (INV-DRYRUN-01):** Mutating tools (`batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`, `convert_format`, `archive`) execute in preview mode (`dry_run: true`) by default. Disk mutations require explicit `dry_run: false`.
-2. **100% Local-First & Zero-Egress (INV-LOCAL-02):** Stdio JSON-RPC transport guarantees complete air-gapped isolation. Zero network calls, zero telemetry, and zero outbound socket connections.
-3. **Path Traversal Guard (INV-TRAVERSAL-03):** Strict filesystem boundary checks and path sanitization via `path.normalize` and safe target validation prevent directory traversal outside authorized scopes.
-4. **Atomic File Operations (INV-ATOMIC-04):** Disk modifications write to isolated staging buffers before atomic replacement, ensuring file integrity against abrupt process termination.
-5. **Non-Elevation User-Mode (INV-UNPRIV-05):** Server operates strictly under standard user privileges (`RunAsInvoker`) without requiring administrator elevation or root privileges.
-6. **Lossless Encoding Preservation (INV-ENCODING-06):** Reversible UTF-8 normalization removes BOM artifacts and repairs German umlaut Mojibake (`ä, ö, ü, ß`) without byte corruption.
-7. **Cryptographic Multi-Hash Integrity (INV-CRYPTO-07):** Employs native Node.js `crypto` primitives for deterministic, collision-resistant SHA-256, MD5, SHA-1, and SHA-512 digests.
-8. **Universal Multi-OS Parity (INV-PLATFORM-08):** Continuous CI verification across Windows, Linux, and macOS guarantees uniform behavior across path conventions and line endings.
-9. **Fail-Closed Argument Validation (INV-VALIDATION-09):** All incoming tool invocations are validated against strict Zod schemas; malformed or unverified arguments are rejected prior to execution.
-10. **Deterministic Error Bounds & SLA (INV-SLA-10):** All tools return structured status receipts with diff previews and error metrics; security vulnerability disclosures adhere to a strict 48-hour response SLA.
+| Invariant Code | Invariant Name | Architectural Commitment | Verification & Audit Mechanism |
+|:---|:---|:---|:---|
+| `INV-DRYRUN-01` | Default Dry-Run Guard | Mutating tools (`batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`, `convert_format`, `archive`) default to `dry_run: true`. | Verified by unit & contract tests; writes require explicit `dry_run: false`. |
+| `INV-LOCAL-02` | 100% Local-First & Zero-Egress | Stdio JSON-RPC transport guarantees complete air-gapped isolation; zero phone-home sockets. | Zero network dependencies, pure local execution audited in test suite. |
+| `INV-TRAVERSAL-03` | Path Traversal Guard | Filesystem operations validate target path boundaries against directory traversal. | Normalized path checks via `path.normalize` and root boundary validation. |
+| `INV-ATOMIC-04` | Atomic File Operations | Modifying pipelines write to isolated temporary buffers before replacement. | Staged disk writes prevent truncated or corrupted outputs on interrupt. |
+| `INV-UNPRIV-05` | Non-Elevation User-Mode (`RunAsInvoker`) | Server operates purely within standard unprivileged operating system user scope. | Non-elevated execution tests; zero admin/sudo elevation requirements. |
+| `INV-ENCODING-06` | Lossless Encoding Preservation | Reversible UTF-8 normalization eliminates cp1252 artifacts and German umlaut Mojibake. | Byte-exact UTF-8 conversion suites covering `ä, ö, ü, ß` and BOM stripping. |
+| `INV-CRYPTO-07` | Cryptographic Multi-Hash Integrity | Native collision-resistant digest calculation (SHA-256, MD5, SHA-1, SHA-512). | Native Node.js `crypto` primitives audited in test suite. |
+| `INV-PLATFORM-08` | Universal Multi-OS Parity | Bit-level identical behavior across Linux, Windows, and macOS environments. | Multi-OS CI matrix across Ubuntu, Windows, and macOS on Node.js 20, 22, 24. |
+| `INV-VALIDATION-09` | Fail-Closed Argument Validation | All tool calls are validated against strict Zod runtime schemas before execution. | Malformed or type-divergent arguments fail closed prior to tool dispatch. |
+| `INV-SLA-10` | Contractual 48h Security SLA | Structured status receipts with diff previews and binding 48-hour vulnerability response SLA. | Enforced in `SECURITY.md`, `README.md`, and monitored disclosure channels. |
+
+### Level 1 SBOM & Unprivileged Execution Certification
+- **Attribution & Provenance:** Full copyright attribution and ecosystem affiliations are cataloged in [`NOTICE`](NOTICE).
+- **Security Context:** Certified for standard unprivileged desktop and CI runner environments (`RunAsInvoker`).
+- **No External Sockets:** Zero outbound HTTP/TCP sockets instantiated by runtime packages.
 
 ---
 

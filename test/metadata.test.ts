@@ -111,6 +111,8 @@ describe("metadata consistency", () => {
     expect(existsSync(path.join(repoRoot, "SECURITY.md"))).toBe(true);
 
     const pkg = JSON.parse(readRepoFile("package.json"));
+    expect(existsSync(path.join(repoRoot, "NOTICE"))).toBe(true);
+    expect(pkg.files).toContain("NOTICE");
     expect(pkg.files).toContain("SECURITY.md");
     expect(pkg.files).toContain("smithery.yaml");
     expect(pkg.files).toContain("llms.txt");
@@ -122,13 +124,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("163 tests");
-    expect(readme).toContain("badge/tests-163%20passed");
+    expect(readme).toContain("164 tests");
+    expect(readme).toContain("badge/tests-164%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("163 Tests");
-    expect(readmeDe).toContain("badge/tests-163%20passed");
-    expect(readRepoFile("llms.txt")).toContain("163 tests");
+    expect(readmeDe).toContain("164 Tests");
+    expect(readmeDe).toContain("badge/tests-164%20passed");
+    expect(readRepoFile("llms.txt")).toContain("164 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -258,19 +260,20 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-163%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-163%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-164%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-164%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-14");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-14");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-25");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-25");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
     expect(changelog).toContain("Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)");
     expect(changelog).toContain("Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)");
+    expect(changelog).toContain("Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -320,14 +323,16 @@ describe("metadata consistency", () => {
     }
   });
 
-  it("validates 16-point quick navigation structure across bilingual READMEs", () => {
+  it("validates 18-point quick navigation structure across bilingual READMEs", () => {
     const readme = readRepoFile("README.md");
     const readmeDe = readRepoFile("README_de.md");
 
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 18; i++) {
       const numStr = i < 10 ? `0${i}` : `${i}`;
       expect(readme).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
       expect(readmeDe).toMatch(new RegExp(`\\|\\s*${numStr}\\s*\\|`));
+      expect(readme).toContain(`<a id="sec-${numStr}"></a>`);
+      expect(readmeDe).toContain(`<a id="sec-${numStr}"></a>`);
     }
   });
 
@@ -344,7 +349,7 @@ describe("metadata consistency", () => {
     expect(gitignore).toContain("!package-lock.json");
   });
 
-  it("validates THIRD_PARTY_LICENSES.md existence, 100% permissive status, and package.json files entry", () => {
+  it("validates THIRD_PARTY_LICENSES.md existence, 100% permissive status, Level 1 SBOM, and package.json files entry", () => {
     expect(existsSync(path.join(repoRoot, "THIRD_PARTY_LICENSES.md"))).toBe(true);
     const licensesDoc = readRepoFile("THIRD_PARTY_LICENSES.md");
     expect(licensesDoc).toContain("100% Permissive Open Source (0 AGPL, 0 Copyleft, 0 Cloud Telemetry)");
@@ -356,13 +361,15 @@ describe("metadata consistency", () => {
     expect(licensesDoc).toContain("update-notifier");
     expect(licensesDoc).toContain("zod");
     expect(licensesDoc).toContain("INV-DRYRUN-01");
-    expect(licensesDoc).toContain("INV-SLA-10");
+    expect(licensesDoc).toContain("Level 1 SBOM");
+    expect(licensesDoc).toContain("RunAsInvoker");
     expect(licensesDoc).toContain("The MIT License");
     expect(licensesDoc).toContain("The 3-Clause BSD License");
     expect(licensesDoc).toContain("Apache License, Version 2.0");
 
     const pkg = JSON.parse(readRepoFile("package.json"));
     expect(pkg.files).toContain("THIRD_PARTY_LICENSES.md");
+    expect(pkg.files).toContain("NOTICE");
   });
 
   it("validates Target Personas, Comparative Matrix, and Third-Party Licenses reciprocal anchors", () => {
@@ -394,8 +401,34 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.md");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--09--14");
-    expect(readmeDe).toContain("2026--09--14");
+    expect(readme).toContain("2026--09--25");
+    expect(readmeDe).toContain("2026--09--25");
+    expect(readme).toContain("Attribution-NOTICE");
+    expect(readmeDe).toContain("Attribution-NOTICE");
+    expect(readme).toContain("RunAsInvoker");
+    expect(readmeDe).toContain("RunAsInvoker");
+    expect(readme).toContain("Level%201%20SBOM");
+    expect(readmeDe).toContain("Level%201%20SBOM");
+  });
+
+  it("validates statutory liability disclaimer (§ 521 BGB) and saturated package keywords", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+    const secDoc = readRepoFile("SECURITY.md");
+    const pkg = JSON.parse(readRepoFile("package.json"));
+
+    expect(readme).toContain("§ 521 BGB");
+    expect(readmeDe).toContain("§ 521 BGB");
+    expect(secDoc).toContain("§ 521 BGB");
+
+    expect(pkg.keywords).toHaveLength(20);
+    expect(pkg.keywords).toContain("ai-agents");
+    expect(pkg.keywords).toContain("batch-rename");
+    expect(pkg.keywords).toContain("duplicate-detection");
+    expect(pkg.keywords).toContain("encoding-fix");
+    expect(pkg.keywords).toContain("format-conversion");
+    expect(pkg.keywords).toContain("json-repair");
+    expect(pkg.keywords).toContain("mcp-server");
   });
 
   it("validates 5-way comparative evaluation matrix and 4 target personas in MARKETING-LOG.txt", () => {

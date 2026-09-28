@@ -11,12 +11,15 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-163%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-164%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
-[![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft-success.svg)](THIRD_PARTY_LICENSES.md)
+[![RunAsInvoker](https://img.shields.io/badge/Sicherheit-RunAsInvoker-success.svg)](SECURITY.md)
+[![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
+[![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--14-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-09-25](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--25-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--25-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -30,6 +33,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 > [!NOTE]
 > **KI / LLM Integrationshinweis:** Alle destruktiven Operationen (z. B. `batch_rename`, `cleanup_file`, `fix_json`, `fix_encoding`, `fix_umlauts`) laufen standardmäßig im **Dry-Run-Modus** (`dry_run: true`). Autonome Agenten müssen explizit `dry_run: false` übergeben, um Mutationen auf der Festplatte auszuführen.
 
+<a id="sec-01"></a><a id="1-highlights--wertversprechen"></a><a id="highlights--wertversprechen"></a>
 ## Highlights & Wertversprechen
 
 - **12 spezialisierte Agenten-Werkzeuge**: Erweitert Claude Code, Cursor und MCP-Agenten um Hilfsmittel, die ihnen ab Werk fehlen (JSON-Reparatur, Encoding-Normalisierung, Formatkonvertierung, Ordner-Diffs, Duplikaterkennung, Regex-Batch-Umbenennung).
@@ -51,15 +55,18 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | 06 | [🛡️ Kern-Invarianten & Sicherheitsgarantien](#kern-invarianten--sicherheitsgarantien) | 10 architektonische Garantien für Dry-Run-Standard, Zero-Egress und atomare Schreibvorgänge |
 | 07 | [🛠️ Werkzeugübersicht & Fähigkeiten](#werkzeuge) | Detaillierte Übersicht aller 12 MCP-Tools mit Schemas und Vorschau-Defaults |
 | 08 | [⚙️ Installation & Client-Einrichtung](#installation) | Nahtlose Konfiguration für Claude Code CLI, Claude Desktop, Cursor und npm global |
-| 09 | [🧪 Verifikation & Automatisierte Tests](#tests) | 163 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
-| 10 | [📜 Drittanbieter-Lizenzen & Transparenz](#drittanbieter-lizenzen--transparenz) | 100% permissive Open-Source-Bestandteile (0 AGPL / Copyleft, null Telemetrie) |
-| 11 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
-| 12 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
-| 13 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
-| 14 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
-| 15 | [📝 Changelog & Versionshistorie](#changelog) | Release-Evolution, Dry-Run-Sicherheitsdurchsetzung und Hygiene-Audit |
-| 16 | [⚖️ Haftung & Rechtlicher Hinweis](#haftung) | Gesetzliche Open-Source-Schenkung nach §§ 516 ff. BGB und MIT-Haftungsausschluss |
+| 09 | [💡 Praktische Anwendungs-Workflows](#praktische-workflows) | Schritt-für-Schritt Reparatur-Rezepte: JSON-Fix, Encoding-Normalisierung, Batch-Rename |
+| 10 | [🛡️ Dry-Run-Protokoll & Sicherheitsverifikation](#dry-run-protokoll) | Vorschau-Verifikation und fehlersichere Festplatten-Schreibkontrollen |
+| 11 | [🔤 Encoding, Mojibake & Formatkonvertierung](#encoding-engine-de) | Verlustfreie UTF-8-Normalisierung, BOM-Bereinigung, deutsche Umlaute und Format-Parser |
+| 12 | [💻 Multi-OS Plattform-Parität & Pfad-Robustheit](#plattform-paritaet) | Deterministische Pfadbehandlung unter Windows CRLF, Linux LF und macOS |
+| 13 | [🌐 ellmos MCP-Familie & Geschwister-Matrix](#ellmos-mcp-familie) | 9 Geschwister-MCP-Server mit über 200 spezialisierten Agenten-Werkzeugen |
+| 14 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
+| 15 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
+| 16 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
+| 17 | [🧪 Verifikation & Automatisierte Tests](#tests) | 163 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 18 | [⚖️ Drittanbieter-Lizenzen & Transparenz](#drittanbieter-lizenzen--transparenz) | 100% permissive Level 1 SBOM, NOTICE-Attribution und gesetzlicher § 521 BGB Haftungshinweis |
 
+<a id="sec-02"></a><a id="2-zielgruppen--auffindbarkeit"></a><a id="zielgruppen--auffindbarkeit"></a>
 ## Zielgruppen & Auffindbarkeit
 
 | Zielgruppe / Persona | Kernanforderungen | Gelöste Probleme | Gezielte Suchbegriffe |
@@ -69,6 +76,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | **DevOps & Release-Engineers** | Kryptografische Prüfsummen (SHA-256/SHA-512), Ordner-Diffs, ZIP-Archive | Tool-Drift auf CI-Runnern, unzuverlässige Hash-Prüfungen, instabile Archiv-Skripte | `checksummen mcp`, `zip archiv mcp`, `ordner vergleichen mcp` |
 | **Sicherheits- & Compliance-Beauftragte** | 100% Local-First Stdio-Isolation, Null Telemetrie, geprüfte permissive Lizenzen | Unerwünschter Datenabfluss in die Cloud, ungeprüfte Copyleft-Lizenzen, Rechteausweitung | `zero egress agenten tools`, `permissive lizenzen mcp`, `air-gapped ki utilities` |
 
+<a id="sec-03"></a><a id="3-vergleichsmatrix--alternativen"></a><a id="vergleichsmatrix--alternativen"></a>
 ## Vergleichsmatrix & Alternativen
 
 | Dimension | ellmos-clatcher-mcp | Standard Agent Shell | Ad-Hoc CLI (jq/sed) | Desktop-Hilfsprogramme | Cloud-Konverter / Web-APIs |
@@ -84,6 +92,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | **Plattform-Parität** | Windows, Linux, macOS | Shell-Unterschiede | Linux-zentrierte Tools | Betriebssystem-spezifisch | Browser-abhängig |
 | **Lizenz & Transparenz** | 100% Permissiv MIT / BSD | Variabel / Ungeprüft | GPL / Gemischte Toolchains | Gemischt / Proprietär | Geschlossenes kommerzielles SaaS |
 
+<a id="sec-04"></a><a id="4-systemarchitektur--datenfluss"></a><a id="systemarchitektur--datenfluss"></a>
 ## Systemarchitektur & Datenfluss
 
 ```mermaid
@@ -110,6 +119,7 @@ graph TD
     DryRunGuard -->|"dry_run: false (explizit)"| DiskWrite["Sicherer atomarer Schreibvorgang"]
 ```
 
+<a id="sec-05"></a><a id="5-end-to-end-ausf%C3%BChrungssequenz"></a><a id="end-to-end-ausf%C3%BChrungssequenz"></a>
 ### End-to-End Ausführungssequenz
 
 ```mermaid
@@ -150,6 +160,7 @@ sequenceDiagram
     Agent-->>User: Ergebnisübersicht & vorgeschlagene Folgeschritte
 ```
 
+<a id="sec-06"></a><a id="6-kern-invarianten--sicherheitsgarantien"></a><a id="kern-invarianten--sicherheitsgarantien"></a>
 ## Kern-Invarianten & Sicherheitsgarantien
 
 | Invariante | Garantie | Durchsetzungs-Mechanismus |
@@ -165,39 +176,14 @@ sequenceDiagram
 | **Fail-Closed Argumentvalidierung** | Ungültige Parameter werden vor der Ausführung abgewiesen | Zod-Schema-Validierung erzwingt strikte Eingabegrenzen, blockiert fehlerhafte Pfade/Typen und verhindert unvollständige Teilausführungen. |
 | **Deterministische Fehlergrenzen & Quittungen** | Strukturierte diagnostische Rückmeldungen bei jedem Aufruf | Invariante Werkzeug-Rückgabeverträge: Jeder Aufruf liefert strukturierte JSON-RPC-Ergebnisse, Diff-Vorschauen, Bytezahlen und prüfbare Quittungen. |
 
-Teil der **ellmos MCP-Familie**:
-
-| Server | Fokus | npm |
-|---|---|---|
-| [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | Dateisystem-Operationen, Prozessverwaltung, interaktive Sitzungen | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
-| [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | Code-Analyse, AST-Parsing, Import-Verwaltung | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
-| **[ellmos-clatcher-mcp](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **Hilfswerkzeuge: Reparatur, Konvertierung, Erkennung, Batch-Operationen** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
-| [n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp) | n8n-Workflow-Verwaltung über KI-Assistenten | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |
-| [ellmos-controlcenter-mcp](https://github.com/ellmos-ai/ellmos-controlcenter-mcp) | MCP-Stack-Discovery, Profilverwaltung, Control Plane | [`ellmos-controlcenter-mcp`](https://www.npmjs.com/package/ellmos-controlcenter-mcp) |
-| [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp) | LLM-Memory, Wissen, Zustandsverwaltung, Routing und Orchestrierung | [`ellmos-homebase-mcp`](https://www.npmjs.com/package/ellmos-homebase-mcp) (alpha) |
-| [ellmos-servercommander-mcp](https://github.com/ellmos-ai/ellmos-servercommander-mcp) | Server-Operationen: Deploy-Dry-Runs, Mail-Status, Log-Analyse, Health-Checks | [`ellmos-servercommander-mcp`](https://www.npmjs.com/package/ellmos-servercommander-mcp) (alpha) |
-| [ellmos-blender-use-mcp](https://github.com/ellmos-ai/ellmos-blender-use-mcp) | Headless Blender Asset QA und FBX-Reimport-Verifikation | [`ellmos-blender-use-mcp`](https://www.npmjs.com/package/ellmos-blender-use-mcp) (alpha) |
-| [open-compute-mcp](https://github.com/ellmos-ai/open-compute-mcp) | Modell-agnostischer Computer-Use: Capture, safety-gated Aktionen, Windows UIA | [`open-compute-mcp`](https://www.npmjs.com/package/open-compute-mcp) (alpha) |
-
-Jeder Server deckt einen anderen Bereich ab. Verwende einen Server, ein fokussiertes Paar oder die ganze Familie — je nach Workflow.
-
-## Auffindbarkeit
-
-- **npm:** [`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)
-- **GitHub:** [`ellmos-ai/ellmos-clatcher-mcp`](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
-- **MCP-Registry-Metadaten:** [`server.json`](server.json) deklariert die offizielle Paketidentität `io.github.ellmos-ai/ellmos-clatcher-mcp`.
-- **Glama.ai-Registry:** [`glama.json`](glama.json) Manifest für das Glama-MCP-Ökosystem.
-- **LLM-Index:** [`llms.txt`](llms.txt) fasst die Tool-Oberfläche für Agenten und Registry-Crawler zusammen.
-
-Primäre Suchbegriffe: `ellmos-clatcher-mcp`, `clatcher mcp`, `claude patcher`, `mcp json repair server`, `mcp encoding fix`, `model context protocol file repair`, `claude code utility tools`, `format conversion mcp tool`, `duplicate file detection mcp`, `batch rename mcp`, `checksum mcp`, `zip archive mcp`.
-
+<a id="sec-07"></a><a id="7-werkzeuguebersicht--faehigkeiten"></a><a id="werkzeuge"></a>
 ## Werkzeuge
 
 | Tool | Beschreibung |
 |---|---|
 | `fix_json` | Defektes JSON reparieren: Kommentare, abschließende Kommas, einfache Anführungszeichen, BOM/NUL entfernen |
 | `fix_encoding` | Encoding-Probleme beheben: BOM-Entfernung, doppelt kodiertes UTF-8, cp1252-Artefakte |
-| `fix_umlauts` | Kaputte deutsche Umlaute aus Doppel-Encoding reparieren (z. B. `\u00C3\u00A4` → `ä`) |
+| `fix_umlauts` | Kaputte deutsche Umlaute aus Doppel-Encoding reparieren (z. B. `Ã¤` → `ä`) |
 | `convert_format` | Zwischen JSON, YAML, TOML, XML, CSV und INI konvertieren |
 | `detect_dupes` | Doppelte Dateien anhand von Content-Hash (SHA256) finden, gruppiert nach identischem Inhalt |
 | `folder_diff` | Zwei Verzeichnisse vergleichen oder einen Snapshot erstellen und beim nächsten Aufruf abgleichen |
@@ -210,6 +196,7 @@ Primäre Suchbegriffe: `ellmos-clatcher-mcp`, `clatcher mcp`, `claude patcher`, 
 
 Alle destruktiven Werkzeuge laufen standardmäßig im **Dry-Run-Modus** und erfordern explizit `dry_run: false`, um Änderungen zu schreiben.
 
+<a id="sec-08"></a><a id="8-installation--client-einrichtung"></a><a id="installation"></a>
 ## Installation
 
 ### Claude Code CLI
@@ -250,47 +237,125 @@ npm run build
 node dist/index.js
 ```
 
-## Tests
+<a id="sec-09"></a><a id="9-praktische-anwendungs-workflows"></a><a id="praktische-workflows"></a>
+## Praktische Anwendungs-Workflows
 
-```bash
-npm test
+Clatcher bietet deterministische, einstufige Hilfsaktionen für KI-Coding-Workflows:
+
+### 1. Automatische JSON-Reparatur (`fix_json`)
+Autonome Agentenläufe scheitern häufig an Konfigurationsdateien mit nachgestellten Kommas, einfachen Anführungszeichen oder Inline-Kommentaren:
+```json
+{
+  "name": "fix_json",
+  "arguments": {
+    "path": "tsconfig.json",
+    "dry_run": false
+  }
+}
+```
+*Ergebnis:* Kommentare und Kommas werden bereinigt und striktes, spezifikationskonformes JSON wird geschrieben.
+
+### 2. Verlustfreie Encoding-Normalisierung (`fix_encoding` / `fix_umlauts`)
+Behebt Windows cp1252-Artefakte, BOM-Header und doppelt kodierte UTF-8-Sequenzen ohne Informationsverlust:
+```json
+{
+  "name": "fix_umlauts",
+  "arguments": {
+    "path": "docs/Anleitung.md",
+    "dry_run": false
+  }
+}
+```
+*Ergebnis:* Korrumpierte Sequenzen wie `Ã¤`, `Ã¶`, `Ã¼`, `ÃŸ` werden sauber in `ä`, `ö`, `ü`, `ß` überführt.
+
+### 3. Multi-Format-Konvertierung (`convert_format`)
+Konvertiert strukturierte Daten zwischen JSON, YAML, TOML, XML, CSV und INI in einem einzigen Durchlauf:
+```json
+{
+  "name": "convert_format",
+  "arguments": {
+    "source_path": "config.yaml",
+    "target_format": "json",
+    "dry_run": false
+  }
+}
 ```
 
-163 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+### 4. Duplikaterkennung & Prüfsummen (`detect_dupes` / `checksum`)
+Durchsucht Verzeichnisbäume nach identischen Inhalten per SHA-256-Clustering ohne Netzwerkübertragung:
+```json
+{
+  "name": "detect_dupes",
+  "arguments": {
+    "directory": "src/assets"
+  }
+}
+```
 
-## Voraussetzungen
+### 5. Sichere Regex-Batch-Umbenennung (`batch_rename`)
+Vorschau und Durchführung von Massen-Dateiumbenennungen mittels regulärer Ausdrücke:
+```json
+{
+  "name": "batch_rename",
+  "arguments": {
+    "directory": "berichte",
+    "pattern": "^entwurf_(.*)\\.txt$",
+    "replacement": "final_$1.txt",
+    "dry_run": true
+  }
+}
+```
 
-- Node.js >= 20
+<a id="sec-10"></a><a id="10-dry-run-protokoll--sicherheitsverifikation"></a><a id="dry-run-protokoll"></a>
+## Dry-Run-Protokoll & Sicherheitsverifikation
 
-## Lizenz
+Alle modifizierenden Werkzeuge in `ellmos-clatcher-mcp` erzwingen das **Vorschau-Prinzip** (`dry_run: true` als Standard):
 
-[MIT](LICENSE)
+1. **Sicherheits-Vorschau:** Der Aufruf von `fix_json`, `cleanup_file`, `batch_rename`, `fix_encoding` oder `archive` ohne Parameter liefert einen detaillierten Diff und eine Mutationsvorschau, ohne die Festplatte zu berühren.
+2. **Explizites Opt-In:** Dateisystem-Schreibvorgänge erfolgen nur, wenn der Agent explizit `dry_run: false` übergibt.
+3. **Fail-Closed Argumentvalidierung:** Pfad-Parameter werden strikt gegen Directory Traversal (`..`) abgesichert und auf das Projektverzeichnis begrenzt.
+4. **Quittungs-Erzeugung:** Jeder schreibende Lauf generiert eine verbindliche JSON-Quittung mit gelesenen/geschriebenen Bytes und Hash-Prüfstatus.
 
-## Drittanbieter-Lizenzen & Transparenz
+<a id="sec-11"></a><a id="11-encoding-mojibake--formatkonvertierung"></a><a id="encoding-engine-de"></a>
+## Encoding, Mojibake & Formatkonvertierung
 
-`ellmos-clatcher-mcp` erfüllt alle Open-Source-Governance-Standards von open-bricks und ellmos-ai. Alle 7 direkten Laufzeit-Abhängigkeiten und 5 Entwicklungs-Abhängigkeiten unterliegen zu 100% permissiven Lizenzen (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) ohne Copyleft-Risiken (0% GPL/AGPL) und ohne externe Cloud-Telemetrie.
+Clatcher beinhaltet spezialisierte Textmanipulations-Engines zur Behebung plattformübergreifender Zeichenfehler:
+- **BOM-Bereinigung:** Entfernt automatisch UTF-8 BOM-Header (`0xEF, 0xBB, 0xBF`), die CI-Linter und Parser stören.
+- **Mojibake-Wiederherstellung:** Rekonstruiert beschädigte Mehrbyte-Sequenzen aus ISO-8859-1- oder Windows-1252-Fehlinterpretationen.
+- **Zeilenumbruch-Standardisierung:** Vereinheitlicht gemischte Zeilenenden (Windows CRLF `\r\n` und Unix LF `\n`) konsistent auf Unix LF.
+- **NUL-Byte-Entfernung:** Bereinigt versehentlich eingeschleuste binäre NUL-Zeichen aus abgebrochenen Streams.
 
-Das vollständige Abhängigkeitsinventar, SPDX-Identifikatoren und Lizenztexte sind dokumentiert in **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)**.
+<a id="sec-12"></a><a id="12-multi-os-plattform-paritaet--pfad-robustheit"></a><a id="plattform-paritaet"></a>
+## Multi-OS Plattform-Parität & Pfad-Robustheit
 
----
+Die plattformübergreifende Konsistenz wird kontinuierlich auf Linux, macOS und Windows validiert:
+- **Pfadnormalisierung:** Löst Backslashes (`\`) und Slashes (`/`) transparent über native Node.js `path`-Module auf.
+- **Unterstützung langer Pfade:** Arbeitet sicher auf tief verschachtelten Windows-Ordnerstrukturen jenseits des MAX_PATH-Limits.
+- **Unprivilegierte Ausführung:** Arbeitet rein unter Standard-Benutzerrechten (`RunAsInvoker`) ohne administrative Privilegien.
 
+<a id="sec-13"></a><a id="13-ellmos-mcp-familie--geschwister-matrix"></a><a id="ellmos-mcp-familie"></a>
+## ellmos MCP-Familie & Geschwister-Matrix
+
+Teil der **ellmos MCP-Familie**:
+
+| Server | Tools | Fokus | npm |
+|---|---|---|---|
+| [ellmos-filecommander-mcp](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 50 | Dateisystem-Operationen, Prozessverwaltung, interaktive Sitzungen | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
+| [ellmos-codecommander-mcp](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 22 | Code-Analyse, AST-Parsing, Import-Verwaltung | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
+| **[ellmos-clatcher-mcp](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **12** | **Hilfswerkzeuge: Reparatur, Konvertierung, Erkennung, Batch-Operationen** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
+| [n8n-manager-mcp](https://github.com/ellmos-ai/n8n-manager-mcp) | 19 | n8n-Workflow-Verwaltung über KI-Assistenten | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |
+| [ellmos-controlcenter-mcp](https://github.com/ellmos-ai/ellmos-controlcenter-mcp) | 34 | MCP-Stack-Discovery, Profilverwaltung, Control Plane | [`ellmos-controlcenter-mcp`](https://www.npmjs.com/package/ellmos-controlcenter-mcp) |
+| [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp) | 51 | LLM-Memory, Wissen, Zustandsverwaltung, Routing und Orchestrierung | [`ellmos-homebase-mcp`](https://www.npmjs.com/package/ellmos-homebase-mcp) (alpha) |
+| [ServerCommander](https://github.com/ellmos-ai/ellmos-servercommander-mcp) | 8 | Server-Operationen: Deploy-Dry-Runs, Mail-Status, Log-Analyse, Health-Checks | [`ellmos-servercommander-mcp`](https://www.npmjs.com/package/ellmos-servercommander-mcp) (alpha) |
+| [Blender Use](https://github.com/ellmos-ai/ellmos-blender-use-mcp) | 4 | Headless Blender-Asset-QA und FBX-Reimport-Verifikation | [`ellmos-blender-use-mcp`](https://www.npmjs.com/package/ellmos-blender-use-mcp) (alpha) |
+| [Open Compute](https://github.com/ellmos-ai/open-compute-mcp) | 16 | Modell-agnostischer Computer-Use: Capture, safety-gated Aktionen, Windows UIA | [`open-compute-mcp`](https://www.npmjs.com/package/open-compute-mcp) (alpha) |
+
+Jeder Server deckt einen anderen Bereich ab. Verwende einen Server, ein fokussiertes Paar oder die ganze Familie — je nach Workflow.
+
+<a id="sec-14"></a><a id="14-oekosystem--partnersuiten"></a><a id="ellmos-ai-ecosystem"></a>
 ## ellmos-ai-Ökosystem
 
 Dieser MCP-Server ist Teil des **[ellmos-ai](https://github.com/ellmos-ai)**-Ökosystems — KI-Infrastruktur, MCP-Server und intelligente Werkzeuge.
-
-### MCP-Server-Familie
-
-| Server | Tools | Fokus | npm |
-|--------|-------|-------|-----|
-| [FileCommander](https://github.com/ellmos-ai/ellmos-filecommander-mcp) | 50 | Dateisystem, Prozessverwaltung, interaktive Sitzungen, Cloud-Lock-sichere Operationen | [`ellmos-filecommander-mcp`](https://www.npmjs.com/package/ellmos-filecommander-mcp) |
-| [CodeCommander](https://github.com/ellmos-ai/ellmos-codecommander-mcp) | 22 | Code-Analyse, JSON-Reparatur, Imports, Diffs, Regex | [`ellmos-codecommander-mcp`](https://www.npmjs.com/package/ellmos-codecommander-mcp) |
-| **[Clatcher](https://github.com/ellmos-ai/ellmos-clatcher-mcp)** | **12** | **Dateireparatur, Formatkonvertierung, Batch-Operationen** | **[`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)** |
-| [n8n Manager](https://github.com/ellmos-ai/n8n-manager-mcp) | 19 | n8n-Workflow-Verwaltung über KI-Assistenten | [`n8n-manager-mcp`](https://www.npmjs.com/package/n8n-manager-mcp) |
-| [ControlCenter](https://github.com/ellmos-ai/ellmos-controlcenter-mcp) | 34 | MCP-Stack-Discovery, Profilverwaltung, Control Plane | [`ellmos-controlcenter-mcp`](https://www.npmjs.com/package/ellmos-controlcenter-mcp) |
-| [Homebase](https://github.com/ellmos-ai/ellmos-homebase-mcp) | 51 | Local-first LLM-Gedächtnis, Wissen, Zustand, Routing, Schwarm-Orchestrierung | [`ellmos-homebase-mcp`](https://www.npmjs.com/package/ellmos-homebase-mcp) (alpha) |
-| [ServerCommander](https://github.com/ellmos-ai/ellmos-servercommander-mcp) | 8 | Server-Operationen: Health-Checks, Log-Analyse, Deploy-Dry-Runs, Mail-Diagnose | [`ellmos-servercommander-mcp`](https://www.npmjs.com/package/ellmos-servercommander-mcp) (alpha) |
-| [Blender Use](https://github.com/ellmos-ai/ellmos-blender-use-mcp) | 4 | Headless Blender-Asset-QA und FBX-Reimport-Verifikation | [`ellmos-blender-use-mcp`](https://www.npmjs.com/package/ellmos-blender-use-mcp) (alpha) |
-| [Open Compute](https://github.com/ellmos-ai/open-compute-mcp) | 16 | Modell-agnostischer Computer-Use: Capture, safety-gated Aktionen, Windows-UIA | [`open-compute-mcp`](https://www.npmjs.com/package/open-compute-mcp) (alpha) |
 
 ### KI-Infrastruktur
 
@@ -317,14 +382,50 @@ Unsere Partnerorganisation **[open-bricks](https://github.com/open-bricks)** und
 | [dev-bricks/DevCenter](https://github.com/dev-bricks/DevCenter) | Zentrales Entwickler-Cockpit und Service-Manager | Aktiv |
 | [dev-bricks/CodeBox](https://github.com/dev-bricks/CodeBox) | Sandboxed Code-Ausführung und containerisierte Worker-Umgebung | Aktiv |
 
+<a id="sec-15"></a><a id="15-sicherheitsrichtlinie--meldewege"></a><a id="sicherheitsrichtlinie"></a>
 ## Sicherheitsrichtlinie
 
 Für Sicherheitsmeldungen, unterstützte Versionen und unsere 48-Stunden-Reaktions-SLA siehe **[SECURITY.md](SECURITY.md)**.
 
+<a id="sec-16"></a><a id="16-maschinenlesbarer-kontext-llmstxt"></a><a id="maschinenlesbarer-kontext-llmstxt"></a>
 ## Maschinenlesbarer Kontext (llms.txt)
 
 Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für KI-Agenten, Crawler und RAG-Indexer bereit:
 - **[llms.txt](llms.txt)**: Kompaktes Manifest aller 12 Werkzeuge, Dry-Run-Sicherheitsinvarianten, Geschwister-Toolzahlen und CLI-Aufrufbeispiele.
+
+<a id="sec-17"></a><a id="17-verifikation--automatisierte-tests"></a><a id="tests"></a>
+## Tests
+
+```bash
+npm test
+```
+
+164 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+
+### Voraussetzungen
+
+- Node.js >= 20
+
+### Lizenz
+
+[MIT](LICENSE)
+
+<a id="sec-18"></a><a id="18-drittanbieter-lizenzen--transparenz"></a><a id="drittanbieter-lizenzen--transparenz"></a><a id="haftung"></a>
+## Drittanbieter-Lizenzen & Transparenz
+
+`ellmos-clatcher-mcp` erfüllt alle Open-Source-Governance-Standards von open-bricks und ellmos-ai. Alle 7 direkten Laufzeit-Abhängigkeiten und 5 Entwicklungs-Abhängigkeiten unterliegen zu 100% permissiven Lizenzen (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) ohne Copyleft-Risiken (0% GPL/AGPL) und ohne externe Cloud-Telemetrie.
+
+Formale Urheberrechts- und Verbund-Attributionen sind verbindlich in **[`NOTICE`](NOTICE)** hinterlegt. Das vollständige Abhängigkeitsinventar, SPDX-Identifikatoren, die Level 1 SBOM Invariantenmatrix und Lizenztexte sind dokumentiert in **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)**.
+
+## Auffindbarkeit
+
+- **npm:** [`ellmos-clatcher-mcp`](https://www.npmjs.com/package/ellmos-clatcher-mcp)
+- **GitHub:** [`ellmos-ai/ellmos-clatcher-mcp`](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
+- **MCP-Registry-Metadaten:** [`server.json`](server.json) deklariert die offizielle Paketidentität `io.github.ellmos-ai/ellmos-clatcher-mcp`.
+- **Glama.ai-Registry:** [`glama.json`](glama.json) Manifest für das Glama-MCP-Ökosystem.
+- **LLM-Index:** [`llms.txt`](llms.txt) fasst die Tool-Oberfläche für Agenten und Registry-Crawler zusammen.
+
+Primäre Suchbegriffe: `ellmos-clatcher-mcp`, `clatcher mcp`, `claude patcher`, `mcp json repair server`, `mcp encoding fix`, `model context protocol file repair`, `claude code utility tools`, `format conversion mcp tool`, `duplicate file detection mcp`, `batch rename mcp`, `checksum mcp`, `zip archive mcp`.
 
 ## Changelog
 
