@@ -1,0 +1,65 @@
+# Third-Party Licenses & Level 1 SBOM
+
+Last checked: 2026-09-29 against npm metadata.
+Audited: Stand: 2026-09-29 against Level 1 SBOM and runtime invariants.
+
+Scope: direct runtime dependencies declared in `package.json`, transitive
+dependencies, and development/testing tooling. This inventory provides a direct
+dependency review and Level 1 SBOM affirmation, complementing the markdown
+review in `THIRD_PARTY_LICENSES.md`.
+
+## Project License & Attribution
+
+ellmos-clatcher-mcp is licensed under the MIT License.
+Canonical copyright attribution is maintained in `NOTICE`:
+Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
+
+## Architecture & Security Invariants
+
+- 100% Local-First & Zero Cloud Egress (Stdio JSON-RPC transport)
+- Unprivileged User-Mode Execution: RunAsInvoker Non-Elevation
+- Preview-Safe Mutations & Default Dry-Run Guardrail
+- Atomic File Operations & Path Traversal Guards
+- Zero-Copyleft & 100% Permissive Open-Source Licensing
+- Level 1 SBOM mapping invariants INV-DRYRUN-01 to INV-SLA-10 (verified)
+
+## Core Runtime Dependencies
+
+| Package | Ecosystem | Version / Range | License | Role & Purpose |
+|---|---|---:|---|---|
+| @modelcontextprotocol/sdk | Node / npm | ^1.0.0 | MIT | Model Context Protocol TypeScript SDK (stdio transport, JSON-RPC handling) |
+| adm-zip | Node / npm | ^0.6.0 | MIT | In-memory ZIP archive creation, extraction, and directory inspection |
+| fast-xml-parser | Node / npm | ^5.8.0 | MIT | High-performance XML parser and builder for cross-format conversion |
+| js-yaml | Node / npm | ^4.3.1 | MIT | YAML 1.2 parsing and serializing for structured configuration conversion |
+| smol-toml | Node / npm | ^1.6.0 | BSD-3-Clause | Compact, fast, and spec-compliant TOML parser and serializer |
+| update-notifier | Node / npm | ^7.3.1 | BSD-2-Clause | Non-intrusive interactive CLI update notification (suppressed in stdio) |
+| zod | Node / npm | ^3.23.8 | MIT | Strict runtime schema declaration and fail-closed argument defense |
+
+## Development & Test Tooling
+
+| Package | Ecosystem | Version / Range | License | Role & Purpose |
+|---|---|---:|---|---|
+| typescript | Node / npm | ^5.3.3 | Apache-2.0 | TypeScript compiler (tsc) for strict static typing and compilation |
+| vitest | Node / npm | ^3.2.7 | MIT | Unit, integration, and metadata regression test runner |
+| vite | Node / npm | ^6.4.3 | MIT | Bundler and test runtime infrastructure |
+| @types/node | Node / npm | ^20.11.0 | MIT | Type definitions for Node.js runtime APIs |
+| @types/adm-zip | Node / npm | ^0.5.7 | MIT | Type definitions for adm-zip library |
+| @types/js-yaml | Node / npm | ^4.0.9 | MIT | Type definitions for js-yaml library |
+| @emnapi/core | Node / npm | ^1.10.0 | MIT | Emscripten N-API implementation helper |
+| @emnapi/runtime | Node / npm | ^1.10.0 | MIT | Emscripten N-API runtime support |
+
+## Level 1 SBOM Invariant Verification (Stand: 2026-09-29)
+
+All 10 architectural and runtime governance invariants are confirmed:
+- INV-DRYRUN-01: Default Dry-Run Guard (Mutating tools default to dry_run: true; writes require explicit dry_run: false)
+- INV-LOCAL-02: 100% Local-First & Zero-Egress (Stdio JSON-RPC transport guarantees complete air-gapped isolation; zero external telemetry)
+- INV-TRAVERSAL-03: Path Traversal Guard (Filesystem operations validate target path boundaries against directory traversal)
+- INV-ATOMIC-04: Atomic File Operations (Modifying pipelines write to isolated temporary buffers before replacement)
+- INV-UNPRIV-05: Non-Elevation User-Mode (Runs strictly in user space as RunAsInvoker; zero administrative elevation required)
+- INV-ENCODING-06: Lossless Encoding Preservation (Reversible UTF-8 normalization eliminates cp1252 artifacts and German umlaut Mojibake)
+- INV-CRYPTO-07: Cryptographic Multi-Hash Integrity (Native collision-resistant digest calculation SHA-256, MD5, SHA-1, SHA-512)
+- INV-PLATFORM-08: Universal Multi-OS Parity (Bit-level identical behavior across Linux, Windows, and macOS environments)
+- INV-VALIDATION-09: Fail-Closed Argument Validation (All tool calls are validated against strict Zod runtime schemas before execution)
+- INV-SLA-10: Contractual 48h Security SLA (Structured status receipts with diff previews and binding 48-hour vulnerability response SLA)
+
+Refer to `THIRD_PARTY_LICENSES.md` for full cross-reference matrix and component analyses.

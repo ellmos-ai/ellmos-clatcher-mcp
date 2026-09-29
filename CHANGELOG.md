@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Repository Lifecycle Hardening, Plain-Text SBOM Companion & Multi-Host Defense (Pfad A) (2026-09-29)
+- **Level 1 SBOM Plain-Text Companion (`THIRD_PARTY_LICENSES.txt`):** Added plain-text SBOM companion with runtime and development dependency inventory, unprivileged `RunAsInvoker` mode certification, and verification mapping for invariants `INV-DRYRUN-01` through `INV-SLA-10`. Declared `THIRD_PARTY_LICENSES.txt` in `package.json` `files` array and cross-linked across documentation.
+- **Multi-Host Cloud-Sync & Lock Defense Expansion (`.gitignore`):** Hardened `.gitignore` against additional multi-host token variants (`*_WORKSTATION*`, `*_WORKSTATION-LG*`, `*-WORKSTATION.*`, `*-WORKSTATION-LG.*`, `*-IDEAPAD*`, `*-MacBook*`, `Desktop.ini`, `desktop.ini`, and `.pytest_temp/`).
+- **CI Workflow Concurrency Optimization (`.github/workflows/stale.yml`):** Added concurrency group with `cancel-in-progress: true` to prevent concurrent redundant stale runs.
+- **Audit Date & Verified Badge Synchronization:** Updated verification badges and audit dates across `README.md`, `README_de.md`, `llms.txt`, and `THIRD_PARTY_LICENSES.md` to `2026-09-29`.
+
 ### Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)
 - **18-Point Bilateral Quick Navigation Standard (`README.md` & `README_de.md`):** Expanded and standardized bilateral navigation across 18 discrete sections with dual reciprocal anchor points (`<a id="sec-01">` through `<a id="sec-18">`), introducing dedicated practical usage workflows, dry-run safety verification protocols, encoding/mojibake handling, and multi-OS Windows path robustness sections.
 - **Statutory Notice & Attribution Standard (`NOTICE`):** Created root `NOTICE` file containing canonical MIT copyright attribution for Lukas Geiger, `ellmos-ai`, and `open-bricks`. Whitelisted `NOTICE` in `package.json` `files` array for downstream distribution and cross-linked attribution in `SECURITY.md`, `THIRD_PARTY_LICENSES.md`, and `llms.txt`.

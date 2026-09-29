@@ -48,11 +48,19 @@ id_ed25519
 *-CONFLIT-*
 *-ASUS-GEI.*
 *-ASUS.*
-*-WORKSTATION-LG.*
+*-WORKSTATION-LG*
+*_WORKSTATION*
+*_WORKSTATION-LG*
 *-WORKSTATION.*
+*-WORKSTATION-LG.*
 *-LAPTOP.*
 *-LAPTOP-*
 *-Mac Studio.*
+*-Mac Studio*
+*-MacBook*
+*-IDEAPAD*
+Desktop.ini
+desktop.ini
 
 # Multi-agent locks & lock system
 LOCK
@@ -65,6 +73,7 @@ uv.lock
 
 # Test, coverage & packaging caches
 .pytest_cache/
+.pytest_temp/
 .ruff_cache/
 .coverage
 .coverage.*

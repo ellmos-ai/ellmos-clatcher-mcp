@@ -266,14 +266,15 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-25");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-25");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-29");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-29");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
     expect(changelog).toContain("Bilingual Quick Navigation, 10 Runtime Invariants, License Audit & Metadata Parity (Pfad B) (2026-09-12)");
     expect(changelog).toContain("Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)");
     expect(changelog).toContain("Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)");
+    expect(changelog).toContain("Repository Lifecycle Hardening, Plain-Text SBOM Companion & Multi-Host Defense (Pfad A) (2026-09-29)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -399,10 +400,12 @@ describe("metadata consistency", () => {
 
     expect(readme).toContain("THIRD_PARTY_LICENSES.md");
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.md");
+    expect(readme).toContain("THIRD_PARTY_LICENSES.txt");
+    expect(readmeDe).toContain("THIRD_PARTY_LICENSES.txt");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--09--25");
-    expect(readmeDe).toContain("2026--09--25");
+    expect(readme).toContain("2026--09--29");
+    expect(readmeDe).toContain("2026--09--29");
     expect(readme).toContain("Attribution-NOTICE");
     expect(readmeDe).toContain("Attribution-NOTICE");
     expect(readme).toContain("RunAsInvoker");
@@ -453,5 +456,46 @@ describe("metadata consistency", () => {
       const content = readFileSync(path.join(workflowsDir, file), "utf8");
       expect(content, `${file} must enforce timeout-minutes`).toMatch(/timeout-minutes:\s*\d+/);
     }
+  });
+
+  it("verifies THIRD_PARTY_LICENSES.txt Level 1 SBOM text companion and invariant matrix", () => {
+    const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
+    expect(textCompanion).toContain("Audited: Stand: 2026-09-29");
+    expect(textCompanion).toContain("ellmos-clatcher-mcp");
+    expect(textCompanion).toContain("RunAsInvoker");
+    expect(textCompanion).toContain("Zero Cloud Egress");
+    expect(textCompanion).toContain("@modelcontextprotocol/sdk");
+    expect(textCompanion).toContain("adm-zip");
+    expect(textCompanion).toContain("fast-xml-parser");
+    expect(textCompanion).toContain("js-yaml");
+    expect(textCompanion).toContain("smol-toml");
+    expect(textCompanion).toContain("update-notifier");
+    expect(textCompanion).toContain("zod");
+    expect(textCompanion).toContain("vitest");
+    expect(textCompanion).toContain("typescript");
+
+    for (const inv of [
+      "INV-DRYRUN-01",
+      "INV-LOCAL-02",
+      "INV-TRAVERSAL-03",
+      "INV-ATOMIC-04",
+      "INV-UNPRIV-05",
+      "INV-ENCODING-06",
+      "INV-CRYPTO-07",
+      "INV-PLATFORM-08",
+      "INV-VALIDATION-09",
+      "INV-SLA-10",
+    ]) {
+      expect(textCompanion).toContain(inv);
+    }
+
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    expect(pkg.files).toContain("THIRD_PARTY_LICENSES.txt");
+  });
+
+  it("verifies stale workflow has concurrency cancel-in-progress", () => {
+    const staleWf = readRepoFile(".github/workflows/stale.yml");
+    expect(staleWf).toContain("timeout-minutes: 10");
+    expect(staleWf).toContain("cancel-in-progress: true");
   });
 });

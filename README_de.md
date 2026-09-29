@@ -18,8 +18,8 @@
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Geprüft: 2026-09-25](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--25-blue.svg)](CHANGELOG.md)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--25-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-09-29](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--29-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--29-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -415,7 +415,7 @@ npm test
 
 `ellmos-clatcher-mcp` erfüllt alle Open-Source-Governance-Standards von open-bricks und ellmos-ai. Alle 7 direkten Laufzeit-Abhängigkeiten und 5 Entwicklungs-Abhängigkeiten unterliegen zu 100% permissiven Lizenzen (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) ohne Copyleft-Risiken (0% GPL/AGPL) und ohne externe Cloud-Telemetrie.
 
-Formale Urheberrechts- und Verbund-Attributionen sind verbindlich in **[`NOTICE`](NOTICE)** hinterlegt. Das vollständige Abhängigkeitsinventar, SPDX-Identifikatoren, die Level 1 SBOM Invariantenmatrix und Lizenztexte sind dokumentiert in **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)**.
+Formale Urheberrechts- und Verbund-Attributionen sind verbindlich in **[`NOTICE`](NOTICE)** hinterlegt. Das vollständige Abhängigkeitsinventar, SPDX-Identifikatoren, die Level 1 SBOM Invariantenmatrix und Lizenztexte sind dokumentiert in **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)** sowie im Plain-Text-Begleitdokument **[THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt)**.
 
 ## Auffindbarkeit
 

@@ -12,6 +12,7 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 - [README (Deutsch)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_de.md): German version
 - [NOTICE](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/NOTICE): Formal copyright attribution (Lukas Geiger, ellmos-ai, open-bricks)
 - [THIRD_PARTY_LICENSES.md](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/THIRD_PARTY_LICENSES.md): Audited permissive dependencies (100% MIT/BSD/Apache, 0 AGPL, Level 1 SBOM)
+- [THIRD_PARTY_LICENSES.txt](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/THIRD_PARTY_LICENSES.txt): Level 1 SBOM plain-text companion and runtime invariants
 - [MARKETING-LOG.txt](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/MARKETING-LOG.txt): Personas, comparative matrix & 10 runtime invariants
 - [SECURITY.md](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/SECURITY.md): Bilingual security policy, local-first & dry-run invariants, § 521 BGB disclaimer
 - [CHANGELOG.md](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/CHANGELOG.md): Release notes and evolution history
@@ -56,4 +57,4 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 mcp server json repair; mcp json repair server; fix encoding mcp; mcp encoding fix; format conversion mcp tool; claude code utility tools; cursor mcp utility tools; duplicate file detection mcp; batch rename mcp; checksum mcp; zip archive mcp; fix umlauts mcp; ellmos-clatcher-mcp; clatcher mcp; claude patcher; model context protocol file repair; json fix trailing commas; bom removal mcp; regex batch rename agent; folder diff mcp.
 
-## Last-checked: 2026-09-25
+## Last-checked: 2026-09-29

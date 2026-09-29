@@ -18,8 +18,8 @@
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Third-Party Licenses](https://img.shields.io/badge/licenses-audited%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/marketing--log-active-informational.svg)](MARKETING-LOG.txt)
-[![Verified: 2026-09-25](https://img.shields.io/badge/Verified-2026--09--25-blue.svg)](CHANGELOG.md)
-[![Last Checked](https://img.shields.io/badge/last--checked-2026--09--25-blue.svg)](MARKETING-LOG.txt)
+[![Verified: 2026-09-29](https://img.shields.io/badge/Verified-2026--09--29-blue.svg)](CHANGELOG.md)
+[![Last Checked](https://img.shields.io/badge/last--checked-2026--09--29-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -415,7 +415,7 @@ npm test
 
 `ellmos-clatcher-mcp` adheres strictly to open-bricks and ellmos-ai open-source governance standards. All 7 direct runtime dependencies and 5 development dependencies are 100% permissively licensed (MIT, BSD-3-Clause, BSD-2-Clause, Apache-2.0) with zero copyleft (0% GPL/AGPL) and zero cloud telemetry.
 
-Formal copyright notice and ecosystem attribution are codified in **[`NOTICE`](NOTICE)**. For the comprehensive dependency inventory, SPDX identifiers, Level 1 SBOM cross-reference matrix, and full license texts, see **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)**.
+Formal copyright notice and ecosystem attribution are codified in **[`NOTICE`](NOTICE)**. For the comprehensive dependency inventory, SPDX identifiers, Level 1 SBOM cross-reference matrix, and full license texts, see **[THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)** and the plain-text companion **[THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt)**.
 
 ## Discoverability
 

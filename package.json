@@ -20,7 +20,8 @@
     "smithery.yaml",
     "llms.txt",
     "SECURITY.md",
-    "THIRD_PARTY_LICENSES.md"
+    "THIRD_PARTY_LICENSES.md",
+    "THIRD_PARTY_LICENSES.txt"
   ],
   "scripts": {
     "build": "node node_modules/typescript/bin/tsc",
