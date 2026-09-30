@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### AI Security & Dependency Audit, Supply-Chain Hardening & 30d SLA (2026-09-30)
+- **Supply-Chain & Dependency Hardening (`package.json`, `package-lock.json`):** Eliminated 9 vulnerabilities (4 high, 5 moderate) reported by `npm audit` across direct and transitive dependencies:
+  - Bumped `adm-zip` to `^0.6.1` resolving 7 advisories (GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc, GHSA-rcw4-f5rp-g42v, GHSA-j5f4-cc29-5x44, GHSA-p634-w6r4-rjp2, GHSA-c6fg-446q-cg94, GHSA-8238-w5pm-2374).
+  - Bumped `vitest` devDependency and override to `^4.1.11` and added `@vitest/mocker` `^4.1.11` override, resolving Path Traversal advisory GHSA-82fw-gwwq-j7x9.
+  - Bumped `smol-toml` to `^1.9.0` resolving DoS advisory GHSA-7w5x-hrqm-74c2.
+  - Bumped `js-yaml` to `^4.3.2` resolving CPU merge keys advisory GHSA-2883-xcg3-v3hh.
+  - Added overrides for `hono` (`^4.13.8`), `@hono/node-server` (`^2.0.12`), `ip-address` (`^10.7.2`), `fast-uri` (`^3.1.8`), and `qs` (`^6.16.0`), achieving 0 vulnerabilities across 209 audited packages.
+- **Security Policy SLA Harmonization (`SECURITY.md`, `THIRD_PARTY_LICENSES.md`, `THIRD_PARTY_LICENSES.txt`):** Codified binding 30-calendar-day remediation SLA (`INV-SLA-10`) in bilingual English and German policy sections alongside 48h acknowledgement and 5 business days triage.
+- **Gitignore Defense Hardening (`.gitignore`):** Expanded exclusions for wildcard SSH keys (`id_rsa*`, `id_dsa*`, `id_ecdsa*`, `id_ed25519*`), certificates and CSRs (`*.cert`, `*.csr`), tokens/secrets (`*.secret`, `*.token`, `*secret*.json`), multi-host conflict review logs (`CONFLICT_REVIEW_LOG*`), and patch artifacts (`*.orig`, `*.rej`).
+- **Hygiene & Contract Test Expansion (`test/repository-hygiene.test.ts`, `test/metadata.test.ts`):** Added automated assertions for SSH wildcards, certificates, CSRs, tokens, secrets, `CONFLICT_REVIEW_LOG*`, patch remnants, and 30-day remediation SLA compliance across documentation.
+- **Audit Recency & Documentation Freshness:** Synchronized audit dates to `2026-09-30` across `SECURITY.md`, `THIRD_PARTY_LICENSES.md`, `THIRD_PARTY_LICENSES.txt`, `llms.txt`, `MARKETING-LOG.txt`, and README badges.
+
 ### Repository Lifecycle Hardening, Plain-Text SBOM Companion & Multi-Host Defense (Pfad A) (2026-09-29)
 - **Level 1 SBOM Plain-Text Companion (`THIRD_PARTY_LICENSES.txt`):** Added plain-text SBOM companion with runtime and development dependency inventory, unprivileged `RunAsInvoker` mode certification, and verification mapping for invariants `INV-DRYRUN-01` through `INV-SLA-10`. Declared `THIRD_PARTY_LICENSES.txt` in `package.json` `files` array and cross-linked across documentation.
 - **Multi-Host Cloud-Sync & Lock Defense Expansion (`.gitignore`):** Hardened `.gitignore` against additional multi-host token variants (`*_WORKSTATION*`, `*_WORKSTATION-LG*`, `*-WORKSTATION.*`, `*-WORKSTATION-LG.*`, `*-IDEAPAD*`, `*-MacBook*`, `Desktop.ini`, `desktop.ini`, and `.pytest_temp/`).

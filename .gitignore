@@ -25,10 +25,15 @@ tokens.json
 *.pfx
 *.crt
 *.cer
-id_rsa
-id_dsa
-id_ecdsa
-id_ed25519
+*.cert
+*.csr
+*.secret
+*.token
+*secret*.json
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
 *recovery*code*.txt
 *recovery*codes*.txt
 
@@ -59,6 +64,9 @@ id_ed25519
 *-Mac Studio*
 *-MacBook*
 *-IDEAPAD*
+CONFLICT_REVIEW_LOG*
+*.orig
+*.rej
 Desktop.ini
 desktop.ini
 

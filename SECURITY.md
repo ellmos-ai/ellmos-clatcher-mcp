@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-29 | **SLA:** 48 hours acknowledgment, 5 business days triage / 48 Stunden Eingangsbestätigung, 5 Werktage Triage
+> **Last Updated / Zuletzt aktualisiert:** 2026-09-30 | **SLA:** 48 hours acknowledgment, 5 business days triage, 30 calendar days remediation SLA / 48 Stunden Eingangsbestätigung, 5 Werktage Triage, 30 Kalendertage Behebungszusage
 
 ---
 
@@ -53,7 +53,7 @@ If you discover a security vulnerability or unexpected behavioral bypass in `ell
 - **Email**: [security@ellmos.ai](mailto:security@ellmos.ai), [security@open-bricks.org](mailto:security@open-bricks.org), [support@lukasgeiger.com](mailto:support@lukasgeiger.com), or [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
 - **GitHub**: [GitHub Security Advisories](https://github.com/ellmos-ai/ellmos-clatcher-mcp/security/advisories)
 
-We commit to acknowledging receipt within 48 hours and providing a structured vulnerability triage within 5 business days.
+We commit to acknowledging receipt within 48 hours, providing a structured vulnerability triage within 5 business days, and releasing an official patch or remediation within 30 calendar days for confirmed vulnerabilities (`INV-SLA-10`).
 
 ### Supported Versions
 
@@ -111,7 +111,7 @@ Sollten Sie eine Sicherheitslücke oder unerwartetes Verhalten in `ellmos-clatch
 - **E-Mail**: [security@ellmos.ai](mailto:security@ellmos.ai), [security@open-bricks.org](mailto:security@open-bricks.org), [support@lukasgeiger.com](mailto:support@lukasgeiger.com) oder [lukas@open-bricks.org](mailto:lukas@open-bricks.org)
 - **GitHub**: [GitHub Security Advisories](https://github.com/ellmos-ai/ellmos-clatcher-mcp/security/advisories)
 
-Wir bestätigen den Eingang von Sicherheitsmeldungen innerhalb von maximal 48 Stunden und liefern eine strukturierte Triage-Bewertung innerhalb von 5 Werktagen.
+Wir bestätigen den Eingang von Sicherheitsmeldungen innerhalb von maximal 48 Stunden, liefern eine strukturierte Triage-Bewertung innerhalb von 5 Werktagen und stellen für bestätigte Sicherheitslücken innerhalb von 30 Kalendertagen eine offizielle Behebung oder einen Patch bereit (`INV-SLA-10`).
 
 ### Unterstützte Versionen
 

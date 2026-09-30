@@ -60,8 +60,18 @@ describe("repository hygiene", () => {
       "tokens.json",
       "id_ed25519",
       "id_rsa",
+      "id_rsa.pub",
+      "id_ed25519.pub",
+      "id_ecdsa.pub",
+      "id_dsa.pub",
       "private.pem",
       "client.key",
+      "server.crt",
+      "ca.cert",
+      "domain.csr",
+      "auth.token",
+      "api.secret",
+      "app-secret.json",
       "npm_recovery_codes.txt",
     ];
 
@@ -100,6 +110,10 @@ describe("repository hygiene", () => {
       "config-WORKSTATION-LG.txt",
       "notes-LAPTOP.md",
       "backup-Mac Studio.tar",
+      "CONFLICT_REVIEW_LOG-WORKSTATION-LG.txt",
+      "CONFLICT_REVIEW_LOG-ASUS-GEI.md",
+      "update.orig",
+      "patch.rej",
     ];
 
     for (const candidate of conflictPaths) {

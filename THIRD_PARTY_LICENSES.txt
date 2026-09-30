@@ -1,7 +1,7 @@
 # Third-Party Licenses & Level 1 SBOM
 
-Last checked: 2026-09-29 against npm metadata.
-Audited: Stand: 2026-09-29 against Level 1 SBOM and runtime invariants.
+Last checked: 2026-09-30 against npm metadata.
+Audited: Stand: 2026-09-30 against Level 1 SBOM and runtime invariants.
 
 Scope: direct runtime dependencies declared in `package.json`, transitive
 dependencies, and development/testing tooling. This inventory provides a direct
@@ -28,10 +28,10 @@ Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
 | Package | Ecosystem | Version / Range | License | Role & Purpose |
 |---|---|---:|---|---|
 | @modelcontextprotocol/sdk | Node / npm | ^1.0.0 | MIT | Model Context Protocol TypeScript SDK (stdio transport, JSON-RPC handling) |
-| adm-zip | Node / npm | ^0.6.0 | MIT | In-memory ZIP archive creation, extraction, and directory inspection |
+| adm-zip | Node / npm | ^0.6.1 | MIT | In-memory ZIP archive creation, extraction, and directory inspection |
 | fast-xml-parser | Node / npm | ^5.8.0 | MIT | High-performance XML parser and builder for cross-format conversion |
-| js-yaml | Node / npm | ^4.3.1 | MIT | YAML 1.2 parsing and serializing for structured configuration conversion |
-| smol-toml | Node / npm | ^1.6.0 | BSD-3-Clause | Compact, fast, and spec-compliant TOML parser and serializer |
+| js-yaml | Node / npm | ^4.3.2 | MIT | YAML 1.2 parsing and serializing for structured configuration conversion |
+| smol-toml | Node / npm | ^1.9.0 | BSD-3-Clause | Compact, fast, and spec-compliant TOML parser and serializer |
 | update-notifier | Node / npm | ^7.3.1 | BSD-2-Clause | Non-intrusive interactive CLI update notification (suppressed in stdio) |
 | zod | Node / npm | ^3.23.8 | MIT | Strict runtime schema declaration and fail-closed argument defense |
 
@@ -40,7 +40,7 @@ Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
 | Package | Ecosystem | Version / Range | License | Role & Purpose |
 |---|---|---:|---|---|
 | typescript | Node / npm | ^5.3.3 | Apache-2.0 | TypeScript compiler (tsc) for strict static typing and compilation |
-| vitest | Node / npm | ^3.2.7 | MIT | Unit, integration, and metadata regression test runner |
+| vitest | Node / npm | ^4.1.11 | MIT | Unit, integration, and metadata regression test runner |
 | vite | Node / npm | ^6.4.3 | MIT | Bundler and test runtime infrastructure |
 | @types/node | Node / npm | ^20.11.0 | MIT | Type definitions for Node.js runtime APIs |
 | @types/adm-zip | Node / npm | ^0.5.7 | MIT | Type definitions for adm-zip library |
@@ -48,7 +48,7 @@ Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
 | @emnapi/core | Node / npm | ^1.10.0 | MIT | Emscripten N-API implementation helper |
 | @emnapi/runtime | Node / npm | ^1.10.0 | MIT | Emscripten N-API runtime support |
 
-## Level 1 SBOM Invariant Verification (Stand: 2026-09-29)
+## Level 1 SBOM Invariant Verification (Stand: 2026-09-30)
 
 All 10 architectural and runtime governance invariants are confirmed:
 - INV-DRYRUN-01: Default Dry-Run Guard (Mutating tools default to dry_run: true; writes require explicit dry_run: false)
@@ -60,6 +60,6 @@ All 10 architectural and runtime governance invariants are confirmed:
 - INV-CRYPTO-07: Cryptographic Multi-Hash Integrity (Native collision-resistant digest calculation SHA-256, MD5, SHA-1, SHA-512)
 - INV-PLATFORM-08: Universal Multi-OS Parity (Bit-level identical behavior across Linux, Windows, and macOS environments)
 - INV-VALIDATION-09: Fail-Closed Argument Validation (All tool calls are validated against strict Zod runtime schemas before execution)
-- INV-SLA-10: Contractual 48h Security SLA (Structured status receipts with diff previews and binding 48-hour vulnerability response SLA)
+- INV-SLA-10: Binding 30d Remediation SLA (Structured status receipts with diff previews, binding 48-hour response, 5 business days triage, and 30 calendar days remediation SLA)
 
 Refer to `THIRD_PARTY_LICENSES.md` for full cross-reference matrix and component analyses.

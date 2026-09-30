@@ -11,15 +11,15 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-164%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-167%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/Sicherheit-RunAsInvoker-success.svg)](SECURITY.md)
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Geprüft: 2026-09-29](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--29-blue.svg)](CHANGELOG.md)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--29-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-09-30](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--30-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--30-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -400,7 +400,7 @@ Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für
 npm test
 ```
 
-164 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+167 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ### Voraussetzungen
 

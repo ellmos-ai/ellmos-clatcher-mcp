@@ -124,13 +124,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("164 tests");
-    expect(readme).toContain("badge/tests-164%20passed");
+    expect(readme).toContain("167 tests");
+    expect(readme).toContain("badge/tests-167%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("164 Tests");
-    expect(readmeDe).toContain("badge/tests-164%20passed");
-    expect(readRepoFile("llms.txt")).toContain("164 tests");
+    expect(readmeDe).toContain("167 Tests");
+    expect(readmeDe).toContain("badge/tests-167%20passed");
+    expect(readRepoFile("llms.txt")).toContain("167 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -260,14 +260,14 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-164%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-164%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-167%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-167%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-29");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-29");
+    expect(llmsDoc).toContain("Last-checked: 2026-09-30");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-30");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
@@ -275,6 +275,7 @@ describe("metadata consistency", () => {
     expect(changelog).toContain("Repository Hygiene, CI Timeout Hardening & Multi-Host Protection (Pfad A) (2026-09-14)");
     expect(changelog).toContain("Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)");
     expect(changelog).toContain("Repository Lifecycle Hardening, Plain-Text SBOM Companion & Multi-Host Defense (Pfad A) (2026-09-29)");
+    expect(changelog).toContain("AI Security & Dependency Audit, Supply-Chain Hardening & 30d SLA (2026-09-30)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -404,8 +405,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.txt");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--09--29");
-    expect(readmeDe).toContain("2026--09--29");
+    expect(readme).toContain("2026--09--30");
+    expect(readmeDe).toContain("2026--09--30");
     expect(readme).toContain("Attribution-NOTICE");
     expect(readmeDe).toContain("Attribution-NOTICE");
     expect(readme).toContain("RunAsInvoker");
@@ -460,7 +461,7 @@ describe("metadata consistency", () => {
 
   it("verifies THIRD_PARTY_LICENSES.txt Level 1 SBOM text companion and invariant matrix", () => {
     const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
-    expect(textCompanion).toContain("Audited: Stand: 2026-09-29");
+    expect(textCompanion).toContain("Audited: Stand: 2026-09-30");
     expect(textCompanion).toContain("ellmos-clatcher-mcp");
     expect(textCompanion).toContain("RunAsInvoker");
     expect(textCompanion).toContain("Zero Cloud Egress");
@@ -497,5 +498,17 @@ describe("metadata consistency", () => {
     const staleWf = readRepoFile(".github/workflows/stale.yml");
     expect(staleWf).toContain("timeout-minutes: 10");
     expect(staleWf).toContain("cancel-in-progress: true");
+  });
+
+  it("validates 30-day remediation SLA (INV-SLA-10) across documentation and policy", () => {
+    const secDoc = readRepoFile("SECURITY.md");
+    const licensesDoc = readRepoFile("THIRD_PARTY_LICENSES.md");
+    const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
+
+    expect(secDoc).toContain("30 calendar days remediation SLA");
+    expect(secDoc).toContain("30 Kalendertage Behebungszusage");
+    expect(licensesDoc).toContain("Binding 30d Remediation SLA");
+    expect(textCompanion).toContain("Binding 30d Remediation SLA");
+    expect(textCompanion).toContain("30 calendar days remediation SLA");
   });
 });

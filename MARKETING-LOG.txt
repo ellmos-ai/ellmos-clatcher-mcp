@@ -5,7 +5,7 @@ Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
 Version:           1.0.17 (Pfad A/B Parity, Level 1 SBOM Text Companion & Multi-Host Defense)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-09-29
+Date:              2026-09-30
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
