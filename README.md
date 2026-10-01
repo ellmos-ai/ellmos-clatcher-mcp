@@ -11,15 +11,15 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-167%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-168%20passed-brightgreen.svg)](vitest.config.ts)
 [![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/security-RunAsInvoker-success.svg)](SECURITY.md)
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Third-Party Licenses](https://img.shields.io/badge/licenses-audited%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/marketing--log-active-informational.svg)](MARKETING-LOG.txt)
-[![Verified: 2026-09-30](https://img.shields.io/badge/Verified-2026--09--30-blue.svg)](CHANGELOG.md)
-[![Last Checked](https://img.shields.io/badge/last--checked-2026--09--30-blue.svg)](MARKETING-LOG.txt)
+[![Verified: 2026-10-01](https://img.shields.io/badge/Verified-2026--10--01-blue.svg)](CHANGELOG.md)
+[![Last Checked](https://img.shields.io/badge/last--checked-2026--10--01-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -94,6 +94,54 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 
 <a id="sec-04"></a><a id="4-system-architecture--data-flow"></a><a id="system-architecture--data-flow"></a>
 ## System Architecture & Data Flow
+
+### ASCII Four-View Architectural Topology
+
+```text
++--------------------------------------------------------------------------------------------------+
+|                              ELLMOS CLATCHER MCP ARCHITECTURAL TOPOLOGY                          |
++--------------------------------------------------------------------------------------------------+
+| [VIEW 1: CALLER RUNTIMES & AGENT CLIENTS]                                                        |
+|   * Autonomous Agents   : Claude Code, OpenAI Codex, Antigravity / Gemini, Kimi, Cursor          |
+|   * Agent Frameworks    : AutoGen, CrewAI, LangChain, LlamaIndex, Custom Python / TS Clients    |
+|   * Transport Protocols : Model Context Protocol (MCP stdio), JSON-RPC 2.0 Framing               |
+|   * Tool Surface        : 12 Specialized Agent Tools (file repair, formatting, hash & archives)  |
+|   * Schema Contract     : Stdio transport, dynamic runtime Zod schema validation & parameter guards|
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [VIEW 2: CLATCHER MCP CORE ENGINE & TOOL DISPATCH ORCHESTRATOR]                                  |
+|   * Protocol Dispatch   : ESM stdio router with Zod schema validation & parameter checking      |
+|   * Safety Interceptor  : Built-in Dry-Run Guard (INV-DRYRUN-01) defaulting mutating tools to preview|
+|   * Fault Diagnostics   : Multi-pass JSON syntax linter & self-healing AST repair pipeline       |
+|   * Encoding Resolver   : Lossless UTF-8 normalization, BOM stripper & German umlaut Mojibake fix|
+|   * Format Converter    : Bi-directional translation across 6 formats (JSON, YAML, TOML, XML...)|
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [VIEW 3: RUNTIME UTILITIES, FORMAT CONVERTERS & ATOMIC REPAIR PIPELINE]                          |
+|   * Atomic File Ops     : Staged temporary buffer writes before replacement (INV-ATOMIC-04)      |
+|   * Traversal Guard     : Archive extraction & batch rename strictly bounded to root trees       |
+|   * Duplication Analysis: Collision-resistant SHA-256 cluster detection across workspace files   |
+|   * Cryptographic Hashes: Native multi-algorithm digest verification (SHA-256, SHA-512, MD5, SHA-1)|
+|   * Directory Diffs     : Fast recursive folder structural and content delta comparison engine   |
+|   * In-Memory Archives  : Streamlined ZIP creation, inspection, and extraction with adm-zip      |
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [VIEW 4: AIR-GAP DEFENSE PERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]                       |
+|   * Execution Privilege : RunAsInvoker unprivileged user-mode (Zero administrative elevation)    |
+|   * Transport Boundary  : 100% Local stdio transport, zero telemetry, zero open listening ports  |
+|   * Air-Gap Isolation   : 100% Offline execution, zero outbound network sockets, zero egress     |
+|   * Statutory Protection: § 521 BGB gratuitous open-source liability disclaimer & 48h SLA        |
+|   * Governance & Supply : Level 1 SBOM, 100% permissive runtime (MIT/BSD), NOTICE attribution    |
++--------------------------------------------------------------------------------------------------+
+```
+
+### Component Data Flow Diagram
 
 ```mermaid
 graph TD
@@ -400,7 +448,7 @@ This repository provides a standardized machine-readable context file for AI age
 npm test
 ```
 
-167 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+168 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ### Requirements
 

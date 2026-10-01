@@ -2,7 +2,7 @@
 
 [English](#english) | [Deutsch](#deutsch)
 
-> **Last Updated / Zuletzt aktualisiert:** 2026-09-30 | **SLA:** 48 hours acknowledgment, 5 business days triage, 30 calendar days remediation SLA / 48 Stunden Eingangsbestätigung, 5 Werktage Triage, 30 Kalendertage Behebungszusage
+> **Last Updated / Zuletzt aktualisiert:** 2026-10-01 | **SLA:** 48 hours acknowledgment, 5 business days triage, 30 calendar days remediation SLA / 48 Stunden Eingangsbestätigung, 5 Werktage Triage, 30 Kalendertage Behebungszusage
 
 ---
 

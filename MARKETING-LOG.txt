@@ -3,9 +3,9 @@ ELLMOS-CLATCHER-MCP - MARKETING, DISCOVERABILITY & ECOSYSTEM LOG
 ================================================================================
 Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
-Version:           1.0.17 (Pfad A/B Parity, Level 1 SBOM Text Companion & Multi-Host Defense)
+Version:           1.0.17 (Pfad B ASCII 4-View Topology, Level 1 SBOM & Multi-Host Defense)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-09-30
+Date:              2026-10-01
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
@@ -164,6 +164,12 @@ Ecosystem Integration:
 --------------------------------------------------------------------------------
 7. RELEASE STATE & VERIFICATION AUDIT
 --------------------------------------------------------------------------------
+- Pfad B ASCII Four-View Architectural Topology, 18-Point Navigation & Level 1 SBOM Audit: 2026-10-01 (v1.0.17).
+- ASCII Four-View Architectural Topology: Embedded comprehensive 4-view topology projection in Section 04 across README.md and README_de.md (View 1: Caller Runtimes & Agent Clients, View 2: Clatcher MCP Core Engine & Tool Dispatch Orchestrator, View 3: Runtime Utilities, Format Converters & Atomic Repair Pipeline, View 4: Air-Gap Defense Perimeter, RunAsInvoker & Zero-Egress Governance; German Sicht 1..Sicht 4).
+- Quality Shields & Badge Synchronization: Verified and last-checked badges updated to 2026-10-01 across bilingual documentation.
+- Level 1 SBOM Text Companion: Re-audited runtime and development dependencies (Stand: 2026-10-01) mapping invariants INV-DRYRUN-01 through INV-SLA-10, unprivileged RunAsInvoker mode, and zero-egress architecture.
+- Security Policy & SLA Verification: Re-verified 48-hour response SLA, 5 business days triage, 30 calendar days remediation SLA, and statutory liability disclaimer (§ 521 BGB).
+- Automated Contract Tests: 100% green parity in Vitest test suite with dedicated contract assertion for ASCII 4-view architectural topology parity.
 - Pfad B Discoverability, 18-Point Bilateral Navigation & Level 1 SBOM Audit: 2026-09-25 (v1.0.17).
 - 18-Point Bilateral Quick Navigation: Standardized across README.md and README_de.md with dual reciprocal HTML anchors (`<a id="sec-01">` .. `<a id="sec-18">`), introducing practical usage workflows, dry-run safety verification, encoding/mojibake handling, and Windows path robustness.
 - Statutory NOTICE File: Codified formal copyright notice for Lukas Geiger, ellmos-ai, and open-bricks in root NOTICE file, whitelisted in package.json files array.

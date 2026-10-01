@@ -124,13 +124,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("167 tests");
-    expect(readme).toContain("badge/tests-167%20passed");
+    expect(readme).toContain("168 tests");
+    expect(readme).toContain("badge/tests-168%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("167 Tests");
-    expect(readmeDe).toContain("badge/tests-167%20passed");
-    expect(readRepoFile("llms.txt")).toContain("167 tests");
+    expect(readmeDe).toContain("168 Tests");
+    expect(readmeDe).toContain("badge/tests-168%20passed");
+    expect(readRepoFile("llms.txt")).toContain("168 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -260,14 +260,14 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-167%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-167%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-168%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-168%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-09-30");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-09-30");
+    expect(llmsDoc).toContain("Last-checked: 2026-10-01");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-10-01");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
@@ -276,6 +276,7 @@ describe("metadata consistency", () => {
     expect(changelog).toContain("Discoverability, 18-Point Bilateral Navigation, NOTICE Attribution & Level 1 SBOM (Pfad B) (2026-09-25)");
     expect(changelog).toContain("Repository Lifecycle Hardening, Plain-Text SBOM Companion & Multi-Host Defense (Pfad A) (2026-09-29)");
     expect(changelog).toContain("AI Security & Dependency Audit, Supply-Chain Hardening & 30d SLA (2026-09-30)");
+    expect(changelog).toContain("ASCII Four-View Architectural Topology, 18-Point Bilingual Navigation & Level 1 SBOM Audit (Pfad B) (2026-10-01)");
   });
 
   it("validates local MARKETING-LOG.txt existence and Pfad B deliverables", () => {
@@ -405,8 +406,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.txt");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--09--30");
-    expect(readmeDe).toContain("2026--09--30");
+    expect(readme).toContain("2026--10--01");
+    expect(readmeDe).toContain("2026--10--01");
     expect(readme).toContain("Attribution-NOTICE");
     expect(readmeDe).toContain("Attribution-NOTICE");
     expect(readme).toContain("RunAsInvoker");
@@ -461,7 +462,7 @@ describe("metadata consistency", () => {
 
   it("verifies THIRD_PARTY_LICENSES.txt Level 1 SBOM text companion and invariant matrix", () => {
     const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
-    expect(textCompanion).toContain("Audited: Stand: 2026-09-30");
+    expect(textCompanion).toContain("Audited: Stand: 2026-10-01");
     expect(textCompanion).toContain("ellmos-clatcher-mcp");
     expect(textCompanion).toContain("RunAsInvoker");
     expect(textCompanion).toContain("Zero Cloud Egress");
@@ -510,5 +511,24 @@ describe("metadata consistency", () => {
     expect(licensesDoc).toContain("Binding 30d Remediation SLA");
     expect(textCompanion).toContain("Binding 30d Remediation SLA");
     expect(textCompanion).toContain("30 calendar days remediation SLA");
+  });
+
+  it("validates ASCII Four-View Architectural Topology projection across bilingual READMEs", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+
+    // English 4-view topology
+    expect(readme).toContain("### ASCII Four-View Architectural Topology");
+    expect(readme).toContain("[VIEW 1: CALLER RUNTIMES & AGENT CLIENTS]");
+    expect(readme).toContain("[VIEW 2: CLATCHER MCP CORE ENGINE & TOOL DISPATCH ORCHESTRATOR]");
+    expect(readme).toContain("[VIEW 3: RUNTIME UTILITIES, FORMAT CONVERTERS & ATOMIC REPAIR PIPELINE]");
+    expect(readme).toContain("[VIEW 4: AIR-GAP DEFENSE PERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]");
+
+    // German 4-view topology
+    expect(readmeDe).toContain("### ASCII Vier-Sichten-Architekturtopologie");
+    expect(readmeDe).toContain("[SICHT 1: AUFRUFER-LAUFZEITEN & AGENTEN-CLIENTS]");
+    expect(readmeDe).toContain("[SICHT 2: CLATCHER MCP KERN-ENGINE & WERKZEUG-DISPATCH-ORCHESTRATOR]");
+    expect(readmeDe).toContain("[SICHT 3: LAUFZEIT-UTILITIES, FORMAT-KONVERTER & ATOMARE REPARATUR-PIPELINE]");
+    expect(readmeDe).toContain("[SICHT 4: AIR-GAP SCHUTZPERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]");
   });
 });

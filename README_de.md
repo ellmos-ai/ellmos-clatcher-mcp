@@ -11,15 +11,15 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-167%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-168%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/Sicherheit-RunAsInvoker-success.svg)](SECURITY.md)
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Geprüft: 2026-09-30](https://img.shields.io/badge/Gepr%C3%BCft-2026--09--30-blue.svg)](CHANGELOG.md)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--09--30-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-10-01](https://img.shields.io/badge/Gepr%C3%BCft-2026--10--01-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--10--01-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -94,6 +94,54 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 
 <a id="sec-04"></a><a id="4-systemarchitektur--datenfluss"></a><a id="systemarchitektur--datenfluss"></a>
 ## Systemarchitektur & Datenfluss
+
+### ASCII Vier-Sichten-Architekturtopologie
+
+```text
++--------------------------------------------------------------------------------------------------+
+|                           ELLMOS CLATCHER MCP VIER-SICHTEN-ARCHITEKTURTOPOLOGIE                  |
++--------------------------------------------------------------------------------------------------+
+| [SICHT 1: AUFRUFER-LAUFZEITEN & AGENTEN-CLIENTS]                                                 |
+|   * Autonome Agenten    : Claude Code, OpenAI Codex, Antigravity / Gemini, Kimi, Cursor          |
+|   * Agenten-Frameworks  : AutoGen, CrewAI, LangChain, LlamaIndex, eigene Python / TS Clients    |
+|   * Transportprotokolle : Model Context Protocol (MCP stdio), JSON-RPC 2.0 Framing               |
+|   * Werkzeug-Oberfläche : 12 spezialisierte Agenten-Tools (Reparatur, Konvertierung, Hashes)     |
+|   * Schema-Vertrag      : Stdio-Transport, strikte Zod-Laufzeitvalidierung & Parameterprüfung    |
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [SICHT 2: CLATCHER MCP KERN-ENGINE & WERKZEUG-DISPATCH-ORCHESTRATOR]                             |
+|   * Protokoll-Dispatch  : ESM Stdio-Router mit Zod-Schema-Validierung & Parameterüberprüfung     |
+|   * Sicherheits-Guard   : Integrierter Dry-Run-Schutz (INV-DRYRUN-01) als Standard für Mutationen|
+|   * Fehlerdiagnostik    : Mehrstufige JSON-Syntaxanalyse & selbstreparierende AST-Pipeline       |
+|   * Zeichensatz-Resolver: Verlustfreie UTF-8-Normalisierung, BOM-Entfernung & Umlaut-Mojibake-Fix|
+|   * Format-Konverter    : Bidirektionale Übersetzung über 6 Formate (JSON, YAML, TOML, XML...)   |
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [SICHT 3: LAUFZEIT-UTILITIES, FORMAT-KONVERTER & ATOMARE REPARATUR-PIPELINE]                     |
+|   * Atomare Datei-Ops   : Schreiben in temporäre Staging-Puffer vor dem Ersetzen (INV-ATOMIC-04) |
+|   * Traversal-Schutz    : Archiv-Extraktion & Batch-Rename strikt auf Zielverzeichnisse begrenzt  |
+|   * Duplikat-Analyse    : Kollisionsresistente SHA-256-Cluster-Erkennung über Arbeitsbereiche    |
+|   * Kryptografie-Hashes : Native Multi-Algorithmen-Prüfsummen (SHA-256, SHA-512, MD5, SHA-1)     |
+|   * Verzeichnis-Diffs   : Schneller rekursiver Ordner- und Inhaltsvergleich                      |
+|   * In-Memory Archive   : Robuste ZIP-Erstellung, Inspektion und Extraktion mit adm-zip          |
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [SICHT 4: AIR-GAP SCHUTZPERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]                        |
+|   * Ausführungsprivileg : RunAsInvoker unprivilegierter Benutzermodus (0 administrative Rechte)  |
+|   * Transportgrenze     : 100% lokaler Stdio-Transport, 0 Telemetrie, 0 offene Netzwerk-Ports     |
+|   * Air-Gap Isolation   : 100% Offline-Ausführung, keine ausgehenden Netzwerk-Sockets, 0 Egress  |
+|   * Haftungsschutz      : Haftungsausschluss nach § 521 BGB für unentgeltliche Bereitstellung    |
+|   * Governance & Supply : Level 1 SBOM, 100% freizügige Laufzeit (MIT/BSD), NOTICE-Attribution   |
++--------------------------------------------------------------------------------------------------+
+```
+
+### Komponenten-Datenflussdiagramm
 
 ```mermaid
 graph TD
@@ -400,7 +448,7 @@ Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für
 npm test
 ```
 
-167 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+168 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ### Voraussetzungen
 

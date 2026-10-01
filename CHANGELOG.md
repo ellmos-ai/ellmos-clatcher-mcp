@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### ASCII Four-View Architectural Topology, 18-Point Bilingual Navigation & Level 1 SBOM Audit (Pfad B) (2026-10-01)
+- **ASCII Four-View Architectural Topology Projection (`README.md` & `README_de.md`):** Integrated comprehensive 4-view architectural topology ASCII projection in Section 04 across both English and German documentation, mapping View 1 (Caller Runtimes & Agent Clients), View 2 (Clatcher MCP Core Engine & Tool Dispatch Orchestrator), View 3 (Runtime Utilities, Format Converters & Atomic Repair Pipeline), and View 4 (Air-Gap Defense Perimeter, RunAsInvoker & Zero-Egress Governance; German Sicht 1..Sicht 4).
+- **Quality Badges & Freshness Parity:** Synchronized Shields.io verification and audit badges across `README.md` and `README_de.md` to `2026-10-01` (`Verified-2026--10--01`, `last--checked-2026--10--01`, `Geprüft-2026--10--01`, `Zuletzt geprüft-2026--10--01`).
+- **Level 1 SBOM & Invariant Verification Recency (`THIRD_PARTY_LICENSES.md`, `THIRD_PARTY_LICENSES.txt`):** Synchronized audit verification dates to `2026-10-01` with strict compliance across runtime invariants `INV-DRYRUN-01` through `INV-SLA-10`, unprivileged user-mode certification `RunAsInvoker`, and zero-egress guarantees.
+- **Security Policy & Context Synchronization (`SECURITY.md`, `llms.txt`, `MARKETING-LOG.txt`):** Updated last-checked and policy recency timestamps to `2026-10-01` with continued enforcement of binding 48-hour response SLA, 5 business days triage, 30-calendar-day remediation SLA, and statutory German law liability disclaimer (§ 521 BGB).
+- **Automated Contract Test Parity (`test/metadata.test.ts`):** Added automated contract test validating ASCII Four-View Architectural Topology presence and bilateral structural parity across both English and German README files.
+
 ### AI Security & Dependency Audit, Supply-Chain Hardening & 30d SLA (2026-09-30)
 - **Supply-Chain & Dependency Hardening (`package.json`, `package-lock.json`):** Eliminated 9 vulnerabilities (4 high, 5 moderate) reported by `npm audit` across direct and transitive dependencies:
   - Bumped `adm-zip` to `^0.6.1` resolving 7 advisories (GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc, GHSA-rcw4-f5rp-g42v, GHSA-j5f4-cc29-5x44, GHSA-p634-w6r4-rjp2, GHSA-c6fg-446q-cg94, GHSA-8238-w5pm-2374).
