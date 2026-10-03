@@ -4,22 +4,23 @@
 
 # ellmos-clatcher-mcp
 
-**🇩🇪 [Deutsche Version](README_de.md)** | **🛡️ [Security Policy](SECURITY.md)** | **📜 [Licenses](THIRD_PARTY_LICENSES.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
+**🇩🇪 [Deutsche Version](README_de.md)** | **🤝 [Contributing](CONTRIBUTING.md)** | **🛡️ [Security Policy](SECURITY.md)** | **📜 [Licenses](THIRD_PARTY_LICENSES.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
 
 [![npm version](https://img.shields.io/npm/v/ellmos-clatcher-mcp.svg)](https://www.npmjs.com/package/ellmos-clatcher-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-168%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-172%20passed-brightgreen.svg)](vitest.config.ts)
 [![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/security-RunAsInvoker-success.svg)](SECURITY.md)
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Third-Party Licenses](https://img.shields.io/badge/licenses-audited%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
+[![Contributing Guidelines](https://img.shields.io/badge/Contributing-Guidelines-blue.svg)](CONTRIBUTING.md)
 [![Marketing Log](https://img.shields.io/badge/marketing--log-active-informational.svg)](MARKETING-LOG.txt)
-[![Verified: 2026-10-01](https://img.shields.io/badge/Verified-2026--10--01-blue.svg)](CHANGELOG.md)
-[![Last Checked](https://img.shields.io/badge/last--checked-2026--10--01-blue.svg)](MARKETING-LOG.txt)
+[![Verified: 2026-10-03](https://img.shields.io/badge/Verified-2026--10--03-blue.svg)](CHANGELOG.md)
+[![Last Checked](https://img.shields.io/badge/last--checked-2026--10--03-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -433,7 +434,7 @@ Our partner organization **[open-bricks](https://github.com/open-bricks)** and s
 <a id="sec-15"></a><a id="15-security-policy--incident-reporting"></a><a id="security-policy"></a>
 ## Security Policy
 
-For security vulnerability disclosure channels, supported versions, and our 48-hour response SLA, refer to **[SECURITY.md](SECURITY.md)**.
+For security vulnerability disclosure channels, supported versions, and our 48-hour response SLA, refer to **[SECURITY.md](SECURITY.md)**. For development guidelines, quality gates, and invariant contracts, see **[CONTRIBUTING.md](CONTRIBUTING.md)**.
 
 <a id="sec-16"></a><a id="16-machine-readable-context-llmstxt"></a><a id="machine-readable-context-llmstxt"></a>
 ## Machine-Readable Context (llms.txt)
@@ -448,7 +449,7 @@ This repository provides a standardized machine-readable context file for AI age
 npm test
 ```
 
-168 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+172 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ### Requirements
 

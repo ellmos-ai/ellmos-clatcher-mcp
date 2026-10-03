@@ -64,17 +64,25 @@ id_ed25519*
 *-Mac Studio*
 *-MacBook*
 *-IDEAPAD*
+*-IDEAPAD-GEI*
+*-IDEAPAD-GEI.*
 CONFLICT_REVIEW_LOG*
 *.orig
 *.rej
 Desktop.ini
 desktop.ini
+ehthumbs.db
+TASKPLAN_*.md
+*-TASKPLAN*
 
 # Multi-agent locks & lock system
 LOCK
 LOCK.*
 LOCK*.txt
 LOCK.permissions.json
+LOCK.dev.*
+LOCK.antigravity.*
+LOCK.bugsearch.*
 uv.lock
 *.lock
 !package-lock.json

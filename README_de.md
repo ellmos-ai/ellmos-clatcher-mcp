@@ -4,22 +4,23 @@
 
 # ellmos-clatcher-mcp
 
-**🇬🇧 [English Version](README.md)** | **🛡️ [Sicherheitsrichtlinie](SECURITY.md)** | **📜 [Lizenzen](THIRD_PARTY_LICENSES.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
+**🇬🇧 [English Version](README.md)** | **🤝 [Mitwirken](CONTRIBUTING.md)** | **🛡️ [Sicherheitsrichtlinie](SECURITY.md)** | **📜 [Lizenzen](THIRD_PARTY_LICENSES.md)** | **📝 [Changelog](CHANGELOG.md)** | **📋 [llms.txt](llms.txt)**
 
 [![npm version](https://img.shields.io/npm/v/ellmos-clatcher-mcp.svg)](https://www.npmjs.com/package/ellmos-clatcher-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-168%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-172%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/Sicherheit-RunAsInvoker-success.svg)](SECURITY.md)
 [![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
 [![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
+[![Mitwirken: Richtlinien](https://img.shields.io/badge/Mitwirken-Richtlinien-blue.svg)](CONTRIBUTING.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Geprüft: 2026-10-01](https://img.shields.io/badge/Gepr%C3%BCft-2026--10--01-blue.svg)](CHANGELOG.md)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--10--01-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-10-03](https://img.shields.io/badge/Gepr%C3%BCft-2026--10--03-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--10--03-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -433,7 +434,7 @@ Unsere Partnerorganisation **[open-bricks](https://github.com/open-bricks)** und
 <a id="sec-15"></a><a id="15-sicherheitsrichtlinie--meldewege"></a><a id="sicherheitsrichtlinie"></a>
 ## Sicherheitsrichtlinie
 
-Für Sicherheitsmeldungen, unterstützte Versionen und unsere 48-Stunden-Reaktions-SLA siehe **[SECURITY.md](SECURITY.md)**.
+Für Sicherheitsmeldungen, unterstützte Versionen und unsere 48-Stunden-Reaktions-SLA siehe **[SECURITY.md](SECURITY.md)**. Für Entwickler-Richtlinien, Qualitätstore und Invariantenverträge siehe **[CONTRIBUTING.md](CONTRIBUTING.md)**.
 
 <a id="sec-16"></a><a id="16-maschinenlesbarer-kontext-llmstxt"></a><a id="maschinenlesbarer-kontext-llmstxt"></a>
 ## Maschinenlesbarer Kontext (llms.txt)
@@ -448,7 +449,7 @@ Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für
 npm test
 ```
 
-168 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+172 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ### Voraussetzungen
 

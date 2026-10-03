@@ -3,9 +3,9 @@ ELLMOS-CLATCHER-MCP - MARKETING, DISCOVERABILITY & ECOSYSTEM LOG
 ================================================================================
 Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
-Version:           1.0.17 (Pfad B ASCII 4-View Topology, Level 1 SBOM & Multi-Host Defense)
+Version:           1.0.17 (Pfad A Hygiene, Bilingual CONTRIBUTING, Level 1 SBOM Re-Audit & Multi-Host Lock Defense)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-10-01
+Date:              2026-10-03
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
@@ -181,8 +181,15 @@ Ecosystem Integration:
 - Multi-Host Sync & Lock Shielding: .gitignore hardened with full OneDrive duplicate copy patterns (`* (kopie)*`, `* (copy)*`, `*conflicted copy*`, host tokens), multi-agent lock management (`LOCK.permissions.json`, `uv.lock`), and coverage/tool caches (`.tox/`, `.turbo/`, `.hypothesis/`, `htmlcov/`, `.nyc_output/`).
 - Automated Vitest Testsuite: 100% green parity across all contract and hygiene tests.
 - Multi-OS CI Matrix: Ubuntu, Windows, macOS across Node.js 20, 22, 24.
-- Third-Party License Audit: 100% permissive (0 copyleft, 0 AGPL, 0 cloud telemetry).
-- Bilingual Documentation Parity: 18-point reciprocal quick navigation in README.md & README_de.md.
+--------------------------------------------------------------------------------
+8. PFAD A HYGIENE, BILINGUAL CONTRIBUTING & LOCK DEFENSE AUDIT (2026-10-03)
+--------------------------------------------------------------------------------
+- Bilingual CONTRIBUTING Guidelines: Authoritative guidelines codified in CONTRIBUTING.md (EN/DE) defining all 10 Governance and Runtime Invariants (INV-DRYRUN-01 through INV-SLA-10), unprivileged RunAsInvoker non-elevation mode, Plan D local development workflow (C:\_Local_DEV\repos\ellmos-clatcher-mcp), version freeze discipline (1.0.17 per T-20260920-167562623), quality gates (npm run build, npm test, git diff --check, git diff -G"version"), statutory liability notice (§ 521 BGB Gefälligkeitsrecht), and 48h response / 30d remediation SLA.
+- Package Manifest Whitelist: Added CONTRIBUTING.md to package.json files array; maintained strict version 1.0.17 freeze.
+- Multi-Host Cloud-Sync & Lock Defense: Hardened .gitignore against *-IDEAPAD-GEI*, *-IDEAPAD-GEI.*, ehthumbs.db, TASKPLAN_*.md, *-TASKPLAN*, and scoped multi-agent locks (LOCK.dev.*, LOCK.antigravity.*, LOCK.bugsearch.*).
+- Level 1 SBOM & Plain-Text Companion: Re-audited Stand 2026-10-03 across THIRD_PARTY_LICENSES.md and THIRD_PARTY_LICENSES.txt with cross-links to CONTRIBUTING.md, certifying 100% permissive open source (0 copyleft, 0 AGPL, 0 cloud telemetry).
+- Documentation & Context Synchronization: Synchronized verified/last-checked timestamps across README.md, README_de.md, llms.txt, and SECURITY.md to 2026-10-03; added Contributing guide badges and links while preserving all 18 bilateral quick navigation anchors (sec-01 .. sec-18).
+- Automated Contract Test Expansion: Enhanced test/repository-hygiene.test.ts and test/metadata.test.ts with assertions for bilingual CONTRIBUTING parity, 10 invariants mapping, package.json files coverage, version freeze discipline, and expanded .gitignore lock defenses.
 
 ================================================================================
 HISTORISCHES AUDIT-PROTOKOLL

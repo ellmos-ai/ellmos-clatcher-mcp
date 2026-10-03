@@ -1,18 +1,19 @@
 # Third-Party Licenses & Level 1 SBOM
 
-Last checked: 2026-10-01 against npm metadata.
-Audited: Stand: 2026-10-01 against Level 1 SBOM and runtime invariants.
+Last checked: 2026-10-03 against npm metadata.
+Audited: Stand: 2026-10-03 against Level 1 SBOM and runtime invariants.
 
 Scope: direct runtime dependencies declared in `package.json`, transitive
 dependencies, and development/testing tooling. This inventory provides a direct
 dependency review and Level 1 SBOM affirmation, complementing the markdown
-review in `THIRD_PARTY_LICENSES.md`.
+review in `THIRD_PARTY_LICENSES.md` and developer guidelines in `CONTRIBUTING.md`.
 
 ## Project License & Attribution
 
 ellmos-clatcher-mcp is licensed under the MIT License.
 Canonical copyright attribution is maintained in `NOTICE`:
 Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
+Developer governance and invariant rules are codified in `CONTRIBUTING.md`.
 
 ## Architecture & Security Invariants
 
@@ -22,6 +23,8 @@ Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
 - Atomic File Operations & Path Traversal Guards
 - Zero-Copyleft & 100% Permissive Open-Source Licensing
 - Level 1 SBOM mapping invariants INV-DRYRUN-01 to INV-SLA-10 (verified)
+- Statutory German law liability disclaimer (§ 521 BGB Gefälligkeitsrecht)
+- 48h Security Response SLA and 30-day remediation SLA (INV-SLA-10)
 
 ## Core Runtime Dependencies
 
@@ -48,7 +51,7 @@ Copyright (c) 2026 Lukas Geiger, ellmos-ai family under open-bricks umbrella.
 | @emnapi/core | Node / npm | ^1.10.0 | MIT | Emscripten N-API implementation helper |
 | @emnapi/runtime | Node / npm | ^1.10.0 | MIT | Emscripten N-API runtime support |
 
-## Level 1 SBOM Invariant Verification (Stand: 2026-10-01)
+## Level 1 SBOM Invariant Verification (Stand: 2026-10-03)
 
 All 10 architectural and runtime governance invariants are confirmed:
 - INV-DRYRUN-01: Default Dry-Run Guard (Mutating tools default to dry_run: true; writes require explicit dry_run: false)
@@ -62,4 +65,4 @@ All 10 architectural and runtime governance invariants are confirmed:
 - INV-VALIDATION-09: Fail-Closed Argument Validation (All tool calls are validated against strict Zod runtime schemas before execution)
 - INV-SLA-10: Binding 30d Remediation SLA (Structured status receipts with diff previews, binding 48-hour response, 5 business days triage, and 30 calendar days remediation SLA)
 
-Refer to `THIRD_PARTY_LICENSES.md` for full cross-reference matrix and component analyses.
+Refer to `THIRD_PARTY_LICENSES.md` and `CONTRIBUTING.md` for full cross-reference matrix and component analyses.

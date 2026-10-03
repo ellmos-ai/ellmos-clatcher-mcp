@@ -114,6 +114,11 @@ describe("repository hygiene", () => {
       "CONFLICT_REVIEW_LOG-ASUS-GEI.md",
       "update.orig",
       "patch.rej",
+      "note-IDEAPAD-GEI.md",
+      "data-IDEAPAD-GEI.json",
+      "ehthumbs.db",
+      "TASKPLAN_123.md",
+      "feature-TASKPLAN.md",
     ];
 
     for (const candidate of conflictPaths) {
@@ -128,6 +133,9 @@ describe("repository hygiene", () => {
       "LOCK.user.txt",
       "LOCK.until.txt",
       "LOCK.permissions.json",
+      "LOCK.dev.txt",
+      "LOCK.antigravity.txt",
+      "LOCK.bugsearch.txt",
       "uv.lock",
       "process.lock",
       "file.tmp",

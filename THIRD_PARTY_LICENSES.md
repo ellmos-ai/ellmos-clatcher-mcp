@@ -2,9 +2,10 @@
 
 - **Repository:** `ellmos-ai/ellmos-clatcher-mcp`
 - **Version:** `1.0.17`
-- **Audit Date:** `2026-10-01`
+- **Audit Date:** `2026-10-03`
 - **License Status:** `100% Permissive Open Source (0 AGPL, 0 Copyleft, 0 Cloud Telemetry)`
 - **Attribution:** Formal copyright notice and attribution defined in [`NOTICE`](NOTICE)
+- **Contributing Guidelines:** Full developer governance and invariant contracts detailed in [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - **Umbrella Organization:** [`open-bricks`](https://github.com/open-bricks) | **Parent Organization:** [`ellmos-ai`](https://github.com/ellmos-ai)
 - **Security Contact:** `security@ellmos.ai`, `security@open-bricks.org`, `support@lukasgeiger.com`, `lukas@open-bricks.org`
 

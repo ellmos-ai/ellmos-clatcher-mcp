@@ -124,13 +124,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("168 tests");
-    expect(readme).toContain("badge/tests-168%20passed");
+    expect(readme).toContain("172 tests");
+    expect(readme).toContain("badge/tests-172%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("168 Tests");
-    expect(readmeDe).toContain("badge/tests-168%20passed");
-    expect(readRepoFile("llms.txt")).toContain("168 tests");
+    expect(readmeDe).toContain("172 Tests");
+    expect(readmeDe).toContain("badge/tests-172%20passed");
+    expect(readRepoFile("llms.txt")).toContain("172 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -260,14 +260,15 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-168%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-168%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-172%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-172%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-10-01");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-10-01");
+    expect(llmsDoc).toContain("Last-checked: 2026-10-03");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-10-03");
+    expect(changelog).toContain("Repository Hygiene, Bilingual CONTRIBUTING Guidelines, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-03)");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
     expect(changelog).toContain("Repository Hygiene, CI Matrix Concurrency & Multi-Agent Lock Protection (Pfad A) (2026-09-10)");
@@ -406,8 +407,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.txt");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--10--01");
-    expect(readmeDe).toContain("2026--10--01");
+    expect(readme).toContain("2026--10--03");
+    expect(readmeDe).toContain("2026--10--03");
     expect(readme).toContain("Attribution-NOTICE");
     expect(readmeDe).toContain("Attribution-NOTICE");
     expect(readme).toContain("RunAsInvoker");
@@ -462,7 +463,7 @@ describe("metadata consistency", () => {
 
   it("verifies THIRD_PARTY_LICENSES.txt Level 1 SBOM text companion and invariant matrix", () => {
     const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
-    expect(textCompanion).toContain("Audited: Stand: 2026-10-01");
+    expect(textCompanion).toContain("Audited: Stand: 2026-10-03");
     expect(textCompanion).toContain("ellmos-clatcher-mcp");
     expect(textCompanion).toContain("RunAsInvoker");
     expect(textCompanion).toContain("Zero Cloud Egress");
@@ -530,5 +531,75 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("[SICHT 2: CLATCHER MCP KERN-ENGINE & WERKZEUG-DISPATCH-ORCHESTRATOR]");
     expect(readmeDe).toContain("[SICHT 3: LAUFZEIT-UTILITIES, FORMAT-KONVERTER & ATOMARE REPARATUR-PIPELINE]");
     expect(readmeDe).toContain("[SICHT 4: AIR-GAP SCHUTZPERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]");
+  });
+
+  it("validates bilingual CONTRIBUTING.md guidelines and 10 runtime invariants parity", () => {
+    expect(existsSync(path.join(repoRoot, "CONTRIBUTING.md"))).toBe(true);
+    const contributing = readRepoFile("CONTRIBUTING.md");
+
+    expect(contributing).toContain("# Contributing to ellmos-clatcher-mcp / Mitwirken an ellmos-clatcher-mcp");
+    expect(contributing).toContain('<a id="english"></a>');
+    expect(contributing).toContain('<a id="deutsch"></a>');
+    expect(contributing).toContain("Plan D Local Development Workflow");
+    expect(contributing).toContain("Plan D Lokaler Entwicklungsworkflow");
+    expect(contributing).toContain("C:\\_Local_DEV\\repos\\ellmos-clatcher-mcp");
+    expect(contributing).toContain("T-20260920-167562623");
+    expect(contributing).toContain("RunAsInvoker");
+    expect(contributing).toContain("§ 521 BGB");
+    expect(contributing).toContain("48h Security Response SLA");
+    expect(contributing).toContain("30 calendar days remediation SLA");
+
+    const invariants = [
+      "INV-DRYRUN-01",
+      "INV-LOCAL-02",
+      "INV-TRAVERSAL-03",
+      "INV-ATOMIC-04",
+      "INV-UNPRIV-05",
+      "INV-ENCODING-06",
+      "INV-CRYPTO-07",
+      "INV-PLATFORM-08",
+      "INV-VALIDATION-09",
+      "INV-SLA-10",
+    ];
+
+    for (const inv of invariants) {
+      expect(contributing).toContain(inv);
+    }
+  });
+
+  it("validates package.json files distribution array includes CONTRIBUTING.md", () => {
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    expect(pkg.files).toContain("CONTRIBUTING.md");
+    expect(pkg.files).toContain("THIRD_PARTY_LICENSES.md");
+    expect(pkg.files).toContain("THIRD_PARTY_LICENSES.txt");
+    expect(pkg.files).toContain("NOTICE");
+  });
+
+  it("enforces version-freeze discipline (T-20260920-167562623) on 1.0.17", () => {
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    const serverJson = JSON.parse(readRepoFile("server.json"));
+    const glamaJson = JSON.parse(readRepoFile("glama.json"));
+    const srcIndex = readRepoFile("src/index.ts");
+    const changelog = readRepoFile("CHANGELOG.md");
+
+    const frozenVersion = "1.0.17";
+    expect(pkg.version).toBe(frozenVersion);
+    expect(serverJson.version).toBe(frozenVersion);
+    expect(glamaJson.version).toBe(frozenVersion);
+    expect(srcIndex).toContain(`version: "${frozenVersion}"`);
+    expect(changelog).toContain("## Unreleased");
+    expect(changelog).toContain(`## [${frozenVersion}]`);
+  });
+
+  it("verifies Contributing guide shields and navigation across READMEs and llms.txt", () => {
+    const readme = readRepoFile("README.md");
+    const readmeDe = readRepoFile("README_de.md");
+    const llmsDoc = readRepoFile("llms.txt");
+
+    expect(readme).toContain("Contributing-Guidelines-blue.svg");
+    expect(readme).toContain("[Contributing](CONTRIBUTING.md)");
+    expect(readmeDe).toContain("Mitwirken-Richtlinien-blue.svg");
+    expect(readmeDe).toContain("[Mitwirken](CONTRIBUTING.md)");
+    expect(llmsDoc).toContain("CONTRIBUTING.md");
   });
 });
