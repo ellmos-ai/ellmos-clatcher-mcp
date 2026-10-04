@@ -430,6 +430,7 @@ Our partner organization **[open-bricks](https://github.com/open-bricks)** and s
 | [dev-bricks/safe-start-for-codex](https://github.com/dev-bricks/safe-start-for-codex) | Secure workspace preflight and agent bootstrap gates | Active |
 | [dev-bricks/DevCenter](https://github.com/dev-bricks/DevCenter) | Central development cockpit and service manager | Active |
 | [dev-bricks/CodeBox](https://github.com/dev-bricks/CodeBox) | Sandboxed code execution and containerized worker environment | Active |
+| [dev-bricks/Zombie Killer Tray](https://github.com/dev-bricks/zombie-killer-tray) | Optional Windows tool for checking orphaned MCP processes. Clatcher is a configured candidate when launched through the supported `node_modules/ellmos-clatcher-mcp/dist/index.js` entrypoint; all additional process and apply checks still apply | Optional |
 
 <a id="sec-15"></a><a id="15-security-policy--incident-reporting"></a><a id="security-policy"></a>
 ## Security Policy

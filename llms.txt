@@ -45,6 +45,7 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 ## Optional
 
 - [GitHub Issues](https://github.com/ellmos-ai/ellmos-clatcher-mcp/issues): Bug reports and feature requests
+- [Zombie Killer Tray](https://github.com/dev-bricks/zombie-killer-tray): Optional Windows tool for checking orphaned MCP processes. Clatcher is a configured candidate when launched through the supported `node_modules/ellmos-clatcher-mcp/dist/index.js` entrypoint; additional process and apply checks still apply.
 
 ## Audience
 
