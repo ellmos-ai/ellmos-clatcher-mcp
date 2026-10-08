@@ -19,8 +19,8 @@
 [![Third-Party Licenses](https://img.shields.io/badge/licenses-audited%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Contributing Guidelines](https://img.shields.io/badge/Contributing-Guidelines-blue.svg)](CONTRIBUTING.md)
 [![Marketing Log](https://img.shields.io/badge/marketing--log-active-informational.svg)](MARKETING-LOG.txt)
-[![Verified: 2026-10-03](https://img.shields.io/badge/Verified-2026--10--03-blue.svg)](CHANGELOG.md)
-[![Last Checked](https://img.shields.io/badge/last--checked-2026--10--03-blue.svg)](MARKETING-LOG.txt)
+[![Verified: 2026-10-08](https://img.shields.io/badge/Verified-2026--10--08-blue.svg)](CHANGELOG.md)
+[![Last Checked](https://img.shields.io/badge/last--checked-2026--10--08-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -64,7 +64,7 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 | 14 | [🧱 Ecosystem & Partner Suites](#ellmos-ai-ecosystem) | Integration with open-bricks desktop suites, BACH text OS, and dev-bricks tools |
 | 15 | [🔒 Security Policy & Incident Reporting](#security-policy) | Bilingual security policy, private vulnerability disclosure, 48h response SLA |
 | 16 | [📋 Machine-Readable Context (llms.txt)](#machine-readable-context-llmstxt) | Standardized LLM index for agent discovery and RAG crawlers |
-| 17 | [🧪 Verification & Automated Tests](#testing) | 163 Vitest tests, 100% green parity, Multi-OS CI matrix across Node.js 20, 22, 24 |
+| 17 | [🧪 Verification & Automated Tests](#testing) | 172+ Vitest tests, 100% green parity, Multi-OS CI matrix across Node.js 20, 22, 24 |
 | 18 | [⚖️ Third-Party Licenses & Transparency](#third-party-licenses--transparency) | 100% permissive Level 1 SBOM, NOTICE attribution, and statutory § 521 BGB disclaimer |
 
 <a id="sec-02"></a><a id="2-target-personas--discoverability"></a><a id="target-personas--discoverability"></a>

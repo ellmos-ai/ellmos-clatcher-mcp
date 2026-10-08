@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Repository Hygiene, Dependabot Actions Guard, Workflow Concurrency, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-08)
+- **Automated Dependabot Actions Maintenance Guard (`.github/dependabot.yml`):** Enhanced Dependabot configuration with dedicated weekly scheduled updates for `github-actions` (Mondays 06:00 Europe/Berlin, open-pull-requests-limit: 3) alongside existing grouped npm security updates.
+- **Workflow Concurrency & Concurrency-Härtung (`.github/workflows/auto-assign.yml`, `.github/workflows/label-sync.yml`):** Hardened auxiliary GitHub Actions workflows with strict concurrency groups (`${{ github.workflow }}-${{ github.ref }}`) and `cancel-in-progress: true` to prevent redundant overlapping executions.
+- **Multi-Host Cloud-Sync & Desktop Defense (`.gitignore`):** Hardened `.gitignore` against additional lowercase Windows thumbnail databases (`thumbs.db`), Vista thumbnail caches (`ehthumbs_vista.db`), and host-specific token wildcards (`*-IDEAPAD.*`, `*-ASUS-GEI*`).
+- **Level 1 SBOM & Plain-Text Companion Re-Audit (`THIRD_PARTY_LICENSES.md`, `THIRD_PARTY_LICENSES.txt`):** Re-audited and reaffirmed Stand 2026-10-08 compliance across 10 core governance invariants (`INV-DRYRUN-01` to `INV-SLA-10`), 100% permissive open source (0 Copyleft, 0 AGPL), unprivileged `RunAsInvoker` mode, statutory German law liability disclaimer (§ 521 BGB), and 48h Security Response SLA.
+- **Documentation & Verification Synchronization (`README.md`, `README_de.md`, `llms.txt`, `MARKETING-LOG.txt`):** Updated verified and last-checked audit timestamps to `2026-10-08` across badges and manifests while strictly maintaining version freeze discipline on `1.0.17` (`T-20260920-167562623`).
+- **Automated Contract Test Suite Expansion (`test/repository-hygiene.test.ts`, `test/metadata.test.ts`):** Added automated Vitest contract tests covering Dependabot GitHub Actions maintenance, workflow concurrency controls, expanded `.gitignore` patterns, Level 1 SBOM recency (2026-10-08), and changelog/marketing log alignment.
+
 ### Repository Hygiene, Bilingual CONTRIBUTING Guidelines, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-03)
 - **Bilingual Contributing Guidelines (`CONTRIBUTING.md`):** Authoritative bilingual guide (EN/DE) codifying all 10 core governance and runtime invariants (`INV-DRYRUN-01` to `INV-SLA-10`), unprivileged standard user mode (`RunAsInvoker`), Plan D local git development workflow (`C:\_Local_DEV\repos\ellmos-clatcher-mcp`), version freeze discipline per `T-20260920-167562623` (version `1.0.17`), statutory German law liability disclaimer (§ 521 BGB), and 48-hour response / 30-day remediation SLA.
 - **Package Manifest Distribution (`package.json`):** Declared `CONTRIBUTING.md` in `files` array for downstream packaging and distribution; strictly maintained version `1.0.17` freeze discipline.

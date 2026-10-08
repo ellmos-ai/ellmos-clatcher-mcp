@@ -266,8 +266,9 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
     // Freshness
-    expect(llmsDoc).toContain("Last-checked: 2026-10-03");
-    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-10-03");
+    expect(llmsDoc).toContain("Last-checked: 2026-10-08");
+    expect(secDoc).toContain("Zuletzt aktualisiert:** 2026-10-08");
+    expect(changelog).toContain("Repository Hygiene, Dependabot Actions Guard, Workflow Concurrency, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-08)");
     expect(changelog).toContain("Repository Hygiene, Bilingual CONTRIBUTING Guidelines, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-03)");
     expect(changelog).toContain("Discoverability, Showcase Design & Parity Audit (Pfad B) (2026-09-07)");
     expect(changelog).toContain("Discoverability, Visual Architecture & Governance Audit (Pfad B) (2026-09-09)");
@@ -407,8 +408,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("THIRD_PARTY_LICENSES.txt");
     expect(readme).toContain("MARKETING-LOG.txt");
     expect(readmeDe).toContain("MARKETING-LOG.txt");
-    expect(readme).toContain("2026--10--03");
-    expect(readmeDe).toContain("2026--10--03");
+    expect(readme).toContain("2026--10--08");
+    expect(readmeDe).toContain("2026--10--08");
     expect(readme).toContain("Attribution-NOTICE");
     expect(readmeDe).toContain("Attribution-NOTICE");
     expect(readme).toContain("RunAsInvoker");
@@ -463,7 +464,7 @@ describe("metadata consistency", () => {
 
   it("verifies THIRD_PARTY_LICENSES.txt Level 1 SBOM text companion and invariant matrix", () => {
     const textCompanion = readRepoFile("THIRD_PARTY_LICENSES.txt");
-    expect(textCompanion).toContain("Audited: Stand: 2026-10-03");
+    expect(textCompanion).toContain("Audited: Stand: 2026-10-08");
     expect(textCompanion).toContain("ellmos-clatcher-mcp");
     expect(textCompanion).toContain("RunAsInvoker");
     expect(textCompanion).toContain("Zero Cloud Egress");
@@ -601,5 +602,16 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Mitwirken-Richtlinien-blue.svg");
     expect(readmeDe).toContain("[Mitwirken](CONTRIBUTING.md)");
     expect(llmsDoc).toContain("CONTRIBUTING.md");
+  });
+
+  it("validates recent Pfad A hygiene deliverables (2026-10-08) in MARKETING-LOG.txt and CHANGELOG.md", () => {
+    const mktLog = readRepoFile("MARKETING-LOG.txt");
+    const changelog = readRepoFile("CHANGELOG.md");
+    const licensesDoc = readRepoFile("THIRD_PARTY_LICENSES.md");
+
+    expect(mktLog).toContain("9. PFAD A HYGIENE, DEPENDABOT ACTIONS GUARD & WORKFLOW CONCURRENCY (2026-10-08)");
+    expect(mktLog).toContain("Date:              2026-10-08");
+    expect(changelog).toContain("### Repository Hygiene, Dependabot Actions Guard, Workflow Concurrency, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-08)");
+    expect(licensesDoc).toContain("- **Audit Date:** `2026-10-08`");
   });
 });

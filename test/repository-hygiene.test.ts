@@ -116,7 +116,11 @@ describe("repository hygiene", () => {
       "patch.rej",
       "note-IDEAPAD-GEI.md",
       "data-IDEAPAD-GEI.json",
+      "data-IDEAPAD.json",
+      "settings-ASUS-GEI.json",
+      "thumbs.db",
       "ehthumbs.db",
+      "ehthumbs_vista.db",
       "TASKPLAN_123.md",
       "feature-TASKPLAN.md",
     ];
@@ -189,8 +193,25 @@ describe("repository hygiene", () => {
 
     const assignYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "auto-assign.yml"), "utf8");
     expect(assignYaml).toContain("timeout-minutes: 5");
+    expect(assignYaml).toContain("concurrency:");
+    expect(assignYaml).toContain("cancel-in-progress: true");
 
     const labelYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "label-sync.yml"), "utf8");
     expect(labelYaml).toContain("timeout-minutes: 5");
+    expect(labelYaml).toContain("concurrency:");
+    expect(labelYaml).toContain("cancel-in-progress: true");
+  });
+
+  it("validates dependabot configuration includes weekly github-actions maintenance", () => {
+    const dependabotPath = path.join(repoRoot, ".github", "dependabot.yml");
+    expect(existsSync(dependabotPath)).toBe(true);
+    const dependabotYaml = readFileSync(dependabotPath, "utf8");
+    expect(dependabotYaml).toContain('package-ecosystem: "npm"');
+    expect(dependabotYaml).toContain('package-ecosystem: "github-actions"');
+    expect(dependabotYaml).toContain('interval: "weekly"');
+    expect(dependabotYaml).toContain('day: "monday"');
+    expect(dependabotYaml).toContain('time: "06:00"');
+    expect(dependabotYaml).toContain('timezone: "Europe/Berlin"');
+    expect(dependabotYaml).toContain("open-pull-requests-limit: 3");
   });
 });

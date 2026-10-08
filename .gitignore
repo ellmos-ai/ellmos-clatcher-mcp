@@ -3,6 +3,7 @@ dist/
 *.tsbuildinfo
 .DS_Store
 Thumbs.db
+thumbs.db
 *-protocoll.txt
 *-protocol.txt
 
@@ -64,14 +65,17 @@ id_ed25519*
 *-Mac Studio*
 *-MacBook*
 *-IDEAPAD*
+*-IDEAPAD.*
 *-IDEAPAD-GEI*
 *-IDEAPAD-GEI.*
+*-ASUS-GEI*
 CONFLICT_REVIEW_LOG*
 *.orig
 *.rej
 Desktop.ini
 desktop.ini
 ehthumbs.db
+ehthumbs_vista.db
 TASKPLAN_*.md
 *-TASKPLAN*
 

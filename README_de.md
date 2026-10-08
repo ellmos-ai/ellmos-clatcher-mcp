@@ -19,8 +19,8 @@
 [![Drittanbieter-Lizenzen](https://img.shields.io/badge/Lizenzen-gepr%C3%BCft%20%7C%20Level%201%20SBOM-success.svg)](THIRD_PARTY_LICENSES.md)
 [![Mitwirken: Richtlinien](https://img.shields.io/badge/Mitwirken-Richtlinien-blue.svg)](CONTRIBUTING.md)
 [![Marketing Log](https://img.shields.io/badge/Marketing--Log-aktiv-informational.svg)](MARKETING-LOG.txt)
-[![Geprüft: 2026-10-03](https://img.shields.io/badge/Gepr%C3%BCft-2026--10--03-blue.svg)](CHANGELOG.md)
-[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--10--03-blue.svg)](MARKETING-LOG.txt)
+[![Geprüft: 2026-10-08](https://img.shields.io/badge/Gepr%C3%BCft-2026--10--08-blue.svg)](CHANGELOG.md)
+[![Zuletzt geprüft](https://img.shields.io/badge/Zuletzt%20gepr%C3%BCft-2026--10--08-blue.svg)](MARKETING-LOG.txt)
 [![MCP Registry Ready](https://img.shields.io/badge/MCP%20Registry-ready-blue)](server.json)
 [![Glama](https://img.shields.io/badge/Glama.ai-registered-purple)](glama.json)
 [![LLM-Ready](https://img.shields.io/badge/LLM--Ready-llms.txt-blue)](llms.txt)
@@ -64,7 +64,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | 14 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
 | 15 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
 | 16 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
-| 17 | [🧪 Verifikation & Automatisierte Tests](#tests) | 163 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 17 | [🧪 Verifikation & Automatisierte Tests](#tests) | 172+ Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
 | 18 | [⚖️ Drittanbieter-Lizenzen & Transparenz](#drittanbieter-lizenzen--transparenz) | 100% permissive Level 1 SBOM, NOTICE-Attribution und gesetzlicher § 521 BGB Haftungshinweis |
 
 <a id="sec-02"></a><a id="2-zielgruppen--auffindbarkeit"></a><a id="zielgruppen--auffindbarkeit"></a>

@@ -2,7 +2,7 @@
 
 - **Repository:** `ellmos-ai/ellmos-clatcher-mcp`
 - **Version:** `1.0.17`
-- **Audit Date:** `2026-10-03`
+- **Audit Date:** `2026-10-08`
 - **License Status:** `100% Permissive Open Source (0 AGPL, 0 Copyleft, 0 Cloud Telemetry)`
 - **Attribution:** Formal copyright notice and attribution defined in [`NOTICE`](NOTICE)
 - **Contributing Guidelines:** Full developer governance and invariant contracts detailed in [`CONTRIBUTING.md`](CONTRIBUTING.md)

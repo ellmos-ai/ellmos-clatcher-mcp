@@ -5,7 +5,7 @@ Repository:        ellmos-ai/ellmos-clatcher-mcp
 Working Directory: C:\_Local_DEV\repos\ellmos-clatcher-mcp
 Version:           1.0.17 (Pfad A Hygiene, Bilingual CONTRIBUTING, Level 1 SBOM Re-Audit & Multi-Host Lock Defense)
 Status:            Active / Production Ready (Public Open-Source MCP Server)
-Date:              2026-10-03
+Date:              2026-10-08
 Author:            Gemini (Antigravity Agent Framework)
 Parent Org:        https://github.com/ellmos-ai
 Umbrella Org:      https://github.com/open-bricks
@@ -190,6 +190,16 @@ Ecosystem Integration:
 - Level 1 SBOM & Plain-Text Companion: Re-audited Stand 2026-10-03 across THIRD_PARTY_LICENSES.md and THIRD_PARTY_LICENSES.txt with cross-links to CONTRIBUTING.md, certifying 100% permissive open source (0 copyleft, 0 AGPL, 0 cloud telemetry).
 - Documentation & Context Synchronization: Synchronized verified/last-checked timestamps across README.md, README_de.md, llms.txt, and SECURITY.md to 2026-10-03; added Contributing guide badges and links while preserving all 18 bilateral quick navigation anchors (sec-01 .. sec-18).
 - Automated Contract Test Expansion: Enhanced test/repository-hygiene.test.ts and test/metadata.test.ts with assertions for bilingual CONTRIBUTING parity, 10 invariants mapping, package.json files coverage, version freeze discipline, and expanded .gitignore lock defenses.
+
+--------------------------------------------------------------------------------
+9. PFAD A HYGIENE, DEPENDABOT ACTIONS GUARD & WORKFLOW CONCURRENCY (2026-10-08)
+--------------------------------------------------------------------------------
+- Dependabot Actions Maintenance Guard: Configured weekly scheduled updates for github-actions in .github/dependabot.yml (Mondays 06:00 Berlin, limit 3) alongside existing grouped npm security updates.
+- CI Workflow Concurrency Hardening: Integrated strict workflow concurrency groups (${{ github.workflow }}-${{ github.ref }}) and cancel-in-progress: true into auxiliary workflows auto-assign.yml and label-sync.yml.
+- Multi-Host Cloud-Sync & Desktop Defense: Hardened .gitignore with lowercase thumbs.db, ehthumbs_vista.db, and multi-host token wildcards (*-IDEAPAD.*, *-ASUS-GEI*).
+- Level 1 SBOM & Plain-Text Companion Re-Audit: Re-certified Stand 2026-10-08 across THIRD_PARTY_LICENSES.md and THIRD_PARTY_LICENSES.txt with 10 runtime invariants (INV-DRYRUN-01 through INV-SLA-10), RunAsInvoker non-elevation certification, and § 521 BGB disclaimer.
+- Documentation & Quality Freshness Parity: Synchronized verified and last-checked audit timestamps across README.md, README_de.md, llms.txt, and manifests to 2026-10-08 while strictly adhering to version freeze discipline on 1.0.17 (T-20260920-167562623).
+- Automated Contract Test Expansion: Enhanced test/repository-hygiene.test.ts and test/metadata.test.ts with assertions for Dependabot GitHub Actions maintenance, workflow concurrency, expanded gitignore patterns, Level 1 SBOM recency (2026-10-08), and changelog alignment.
 
 ================================================================================
 HISTORISCHES AUDIT-PROTOKOLL
