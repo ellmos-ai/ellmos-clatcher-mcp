@@ -34,9 +34,14 @@ lokaler Verarbeitung und einer dokumentierten Null-Egress-Ausrichtung.
 
 | ID | Aufgabe | Priorität | Aufwand | Scope | Quelle |
 | --- | --- | --- | --- | --- | --- |
-| `CLATCHER-SECURITY-001` (TASKPLAN #2195) | Produktionsabhängigkeiten gegen den aktuellen npm-Audit-Befund härten | hoch | large | local | `npm audit --omit=dev --json`, `package.json`, `package-lock.json` |
 | `CLATCHER-RELEASE-002` (TASKPLAN #2196) | Post-1.0.17-Hygiene-Commit mit Unreleased- und Remote-Status abgleichen | mittel | special | local | Git-Status/-Historie/-Tags, `CHANGELOG.md` |
 | `CLATCHER-SMITHERY-003` (TASKPLAN #2197) | Smithery-Konfiguration und Paketbeigabe bewusst entscheiden | mittel | special | local | `CHANGELOG.md`, `smithery.yaml`, `package.json` |
+
+## Abgeschlossene TASKPLAN-Aufgaben
+
+| ID | Aufgabe | Status | Abschluss | Lösung |
+| --- | --- | --- | --- | --- |
+| `CLATCHER-SECURITY-001` (TASKPLAN #2195) | Produktionsabhängigkeiten gegen den aktuellen npm-Audit-Befund härten | ERLEDIGT | 2026-11-01 | Overrides & SDK/Zod-Härtung (0 Schwachstellen across 210 packages) |
 
 Die vollständige Definition of Done, die Ist-/Soll-Abgrenzung, Blocker,
 Prioritätsbegründung und Nichtziele stehen in den jeweiligen TASKPLAN-

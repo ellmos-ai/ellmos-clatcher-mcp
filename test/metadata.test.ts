@@ -614,4 +614,26 @@ describe("metadata consistency", () => {
     expect(changelog).toContain("### Repository Hygiene, Dependabot Actions Guard, Workflow Concurrency, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-08)");
     expect(licensesDoc).toContain("- **Audit Date:** `2026-10-08`");
   });
+
+  it("validates AI Security & Dependency Audit, Supply-Chain Hardening (0 vulnerabilities) Stand 2026-11-01", () => {
+    const pkg = JSON.parse(readRepoFile("package.json"));
+    const mktLog = readRepoFile("MARKETING-LOG.txt");
+    const changelog = readRepoFile("CHANGELOG.md");
+
+    expect(pkg.dependencies["@modelcontextprotocol/sdk"]).toBe("^1.32.2");
+    expect(pkg.dependencies["zod"]).toBe("^4.6.7");
+    expect(pkg.overrides["proxy-addr"]).toBe("^2.0.8");
+    expect(pkg.overrides["source-map-js"]).toBe("^1.2.2");
+    expect(pkg.overrides["body-parser"]).toBe("^2.4.0");
+    expect(pkg.overrides["@vitest/mocker"]).toBe("^4.1.12");
+    expect(pkg.overrides["fast-uri"]).toBe("^3.1.9");
+    expect(pkg.overrides["ip-address"]).toBe("^10.7.5");
+    expect(pkg.overrides["qs"]).toBe("^6.17.1");
+    expect(pkg.overrides["hono"]).toBe("^4.13.13");
+    expect(pkg.overrides["@hono/node-server"]).toBe("^2.1.5");
+    expect(pkg.overrides["vite"]).toBe("^6.4.5");
+    expect(pkg.overrides["zod"]).toBe("^4.6.7");
+    expect(changelog).toContain("### AI Security & Dependency Audit, Supply-Chain Hardening & Level 1 SBOM (2026-11-01)");
+    expect(mktLog).toContain("10. AI SECURITY & DEPENDENCY AUDIT, SUPPLY-CHAIN HARDENING & LEVEL 1 SBOM (2026-11-01)");
+  });
 });

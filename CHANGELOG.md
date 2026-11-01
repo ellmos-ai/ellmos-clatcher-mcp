@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### AI Security & Dependency Audit, Supply-Chain Hardening & Level 1 SBOM (2026-11-01)
+- **Supply-Chain & Dependency Hardening (`package.json`, `package-lock.json`):** Eliminated all 12 reported vulnerabilities (1 critical, 5 high, 6 moderate) across direct and transitive dependencies:
+  - Critical fix for `proxy-addr` (GHSA-jqcg-44mw-7w3h) via override `^2.0.8`.
+  - High severity fix for `source-map-js` (GHSA-68fv-2mgg-jv7q) via override `^1.2.2`.
+  - High severity fix for `body-parser` (GHSA-27r3-jxmh-p828) via override `^2.4.0`.
+  - High severity fix for `zod` (GHSA-mrhx-c7xc-m3w5) bumped to `^4.6.7` across dependencies and overrides.
+  - Bumped `@modelcontextprotocol/sdk` to `^1.32.2` resolving 6 upstream advisories.
+  - Moderate severity fixes for `@vitest/mocker` (`^4.1.12`), `fast-uri` (`^3.1.9`), `ip-address` (`^10.7.5`), `qs` (`^6.17.1`), `hono` (`^4.13.13`), `@hono/node-server` (`^2.1.5`), and `vite` (`^6.4.5`).
+  - Achieved 0 vulnerabilities across 210 audited packages (`npm audit` 100% clean).
+- **TASKPLAN Task Resolution (`TODO.md`):** Resolved task `CLATCHER-SECURITY-001 (TASKPLAN #2195)` with end-to-end audit verification.
+- **Contract & Regression Testing (`test/metadata.test.ts`):** Added automated Vitest contract test validating Stand 2026-11-01 dependency and override matrix and 0 vulnerability baseline.
+- **Level 1 SBOM & Plain-Text Companion Parity (`THIRD_PARTY_LICENSES.md`, `THIRD_PARTY_LICENSES.txt`):** Synchronized package inventory and versions (`@modelcontextprotocol/sdk` 1.32.2, `zod` 4.6.7, `vite` 6.4.5) while reaffirming 100% permissive open source (0 Copyleft, 0 AGPL) and version freeze on `1.0.17`.
+
 ### Repository Hygiene, Dependabot Actions Guard, Workflow Concurrency, Level 1 SBOM Re-Audit & Multi-Host Lock Defense (Pfad A) (2026-10-08)
 - **Automated Dependabot Actions Maintenance Guard (`.github/dependabot.yml`):** Enhanced Dependabot configuration with dedicated weekly scheduled updates for `github-actions` (Mondays 06:00 Europe/Berlin, open-pull-requests-limit: 3) alongside existing grouped npm security updates.
 - **Workflow Concurrency & Concurrency-Härtung (`.github/workflows/auto-assign.yml`, `.github/workflows/label-sync.yml`):** Hardened auxiliary GitHub Actions workflows with strict concurrency groups (`${{ github.workflow }}-${{ github.ref }}`) and `cancel-in-progress: true` to prevent redundant overlapping executions.
