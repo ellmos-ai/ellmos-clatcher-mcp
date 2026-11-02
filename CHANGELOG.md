@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Executable conversion examples (2026-11-02)
+- Corrected the EN/DE/ES `convert_format` examples to supply all four registered path and format parameters.
+- Added regression coverage that validates the documented JSON against the real tool registration and executes its handler using temporary YAML/JSON files, checking output and unchanged input.
+- No runtime, dependency, workflow, or product-version changes.
+
 ### Spanish README and language navigation (2026-11-02)
 - **Spanish documentation (`README_es.md`):** Added a Spanish-language README; corrected archive-operation, metadata-sanitization, and execution-receipt terminology.
 - **Documentation navigation (`README.md`, `README_de.md`, `README_es.md`, `llms.txt`):** Added reciprocal EN/DE/ES navigation and indexed the Spanish edition in `llms.txt`.

@@ -323,8 +323,10 @@ Converts structured data between JSON, YAML, TOML, XML, CSV, and INI in a single
 {
   "name": "convert_format",
   "arguments": {
-    "source_path": "config.yaml",
-    "target_format": "json",
+    "input_path": "config.yaml",
+    "output_path": "config.json",
+    "input_format": "yaml",
+    "output_format": "json",
     "dry_run": false
   }
 }
