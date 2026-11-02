@@ -10,6 +10,7 @@ All destructive tools default to dry-run mode -- writes require explicit `dry_ru
 
 - [README (English)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README.md): Tools overview, installation, family context
 - [README (Deutsch)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_de.md): German version
+- [README (Español)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/README_es.md): Spanish documentation edition
 - [CONTRIBUTING.md](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/CONTRIBUTING.md): Bilingual contribution guidelines and 10 runtime invariants
 - [NOTICE](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/NOTICE): Formal copyright attribution (Lukas Geiger, ellmos-ai, open-bricks)
 - [THIRD_PARTY_LICENSES.md](https://github.com/ellmos-ai/ellmos-clatcher-mcp/blob/main/THIRD_PARTY_LICENSES.md): Audited permissive dependencies (100% MIT/BSD/Apache, 0 AGPL, Level 1 SBOM)
