@@ -26,13 +26,13 @@
 
 | Package | Version Range | License | SPDX Identifier | Purpose in Project | Upstream Repository |
 |---|---|---|---|---|---|
-| [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk) | `^1.0.0` | MIT License | `MIT` | Official MCP TypeScript SDK for stdio server transport and JSON-RPC tool dispatching | `https://github.com/modelcontextprotocol/typescript-sdk` |
+| [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk) | `^1.32.2` | MIT License | `MIT` | Official MCP TypeScript SDK for stdio server transport and JSON-RPC tool dispatching | `https://github.com/modelcontextprotocol/typescript-sdk` |
 | [`adm-zip`](https://github.com/cthackers/adm-zip) | `^0.6.1` | MIT License | `MIT` | In-memory ZIP archive creation, extraction, directory inspection, and buffer handling | `https://github.com/cthackers/adm-zip` |
 | [`fast-xml-parser`](https://github.com/NaturalIntelligence/fast-xml-parser) | `^5.8.0` | MIT License | `MIT` | High-performance XML parser and builder for cross-format conversion (`convert_format`) | `https://github.com/NaturalIntelligence/fast-xml-parser` |
 | [`js-yaml`](https://github.com/nodeca/js-yaml) | `^4.3.2` | MIT License | `MIT` | Spec-compliant YAML 1.2 parsing and serializing for structured configuration conversion | `https://github.com/nodeca/js-yaml` |
 | [`smol-toml`](https://github.com/squirrelchat/smol-toml) | `^1.9.0` | BSD 3-Clause License | `BSD-3-Clause` | Compact, fast, and spec-compliant TOML parser and serializer | `https://github.com/squirrelchat/smol-toml` |
 | [`update-notifier`](https://github.com/yeoman/update-notifier) | `^7.3.1` | BSD 2-Clause License | `BSD-2-Clause` | Non-blocking CLI update notification mechanism for global and local npm installations | `https://github.com/yeoman/update-notifier` |
-| [`zod`](https://github.com/colinhacks/zod) | `^3.23.8` | MIT License | `MIT` | Strict runtime schema declaration, input type validation, and fail-closed argument defense | `https://github.com/colinhacks/zod` |
+| [`zod`](https://github.com/colinhacks/zod) | `^4.6.7` | MIT License | `MIT` | Strict runtime schema declaration, input type validation, and fail-closed argument defense | `https://github.com/colinhacks/zod` |
 | Node.js Standard Library | `>=20.0.0` | Node.js License (MIT-equivalent) | `MIT` | Core execution, file I/O, child processes, hashing, path normalization (`fs`, `path`, `crypto`, `os`, `child_process`, `util`) | `https://github.com/nodejs/node` |
 
 ---
@@ -62,7 +62,7 @@ Development and build tools are utilized solely for compiling TypeScript, execut
 |---|---|---|---|---|---|
 | [`typescript`](https://github.com/microsoft/TypeScript) | `^5.3.3` | Apache License 2.0 | `Apache-2.0` | TypeScript compiler (`tsc`) and type definitions | `https://github.com/microsoft/TypeScript` |
 | [`vitest`](https://github.com/vitest-dev/vitest) | `^4.1.11` | MIT License | `MIT` | Unit, integration, and metadata regression test runner | `https://github.com/vitest-dev/vitest` |
-| [`vite`](https://github.com/vitejs/vite) | `^6.4.3` | MIT License | `MIT` | Next-generation frontend and test runtime bundling engine | `https://github.com/vitejs/vite` |
+| [`vite`](https://github.com/vitejs/vite) | `^6.4.5` | MIT License | `MIT` | Next-generation frontend and test runtime bundling engine | `https://github.com/vitejs/vite` |
 | [`@types/node`](https://github.com/DefinitelyTyped/DefinitelyTyped) | `^20.11.0` | MIT License | `MIT` | Type definitions for Node.js runtime and standard modules | `https://github.com/DefinitelyTyped/DefinitelyTyped` |
 | [`@types/adm-zip`](https://github.com/DefinitelyTyped/DefinitelyTyped) | `^0.5.7` | MIT License | `MIT` | Type definitions for adm-zip library | `https://github.com/DefinitelyTyped/DefinitelyTyped` |
 | [`@types/js-yaml`](https://github.com/DefinitelyTyped/DefinitelyTyped) | `^4.0.9` | MIT License | `MIT` | Type definitions for js-yaml parser | `https://github.com/DefinitelyTyped/DefinitelyTyped` |

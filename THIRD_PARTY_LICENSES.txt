@@ -30,13 +30,13 @@ Developer governance and invariant rules are codified in `CONTRIBUTING.md`.
 
 | Package | Ecosystem | Version / Range | License | Role & Purpose |
 |---|---|---:|---|---|
-| @modelcontextprotocol/sdk | Node / npm | ^1.0.0 | MIT | Model Context Protocol TypeScript SDK (stdio transport, JSON-RPC handling) |
+| @modelcontextprotocol/sdk | Node / npm | ^1.32.2 | MIT | Model Context Protocol TypeScript SDK (stdio transport, JSON-RPC handling) |
 | adm-zip | Node / npm | ^0.6.1 | MIT | In-memory ZIP archive creation, extraction, and directory inspection |
 | fast-xml-parser | Node / npm | ^5.8.0 | MIT | High-performance XML parser and builder for cross-format conversion |
 | js-yaml | Node / npm | ^4.3.2 | MIT | YAML 1.2 parsing and serializing for structured configuration conversion |
 | smol-toml | Node / npm | ^1.9.0 | BSD-3-Clause | Compact, fast, and spec-compliant TOML parser and serializer |
 | update-notifier | Node / npm | ^7.3.1 | BSD-2-Clause | Non-intrusive interactive CLI update notification (suppressed in stdio) |
-| zod | Node / npm | ^3.23.8 | MIT | Strict runtime schema declaration and fail-closed argument defense |
+| zod | Node / npm | ^4.6.7 | MIT | Strict runtime schema declaration and fail-closed argument defense |
 
 ## Development & Test Tooling
 
@@ -44,7 +44,7 @@ Developer governance and invariant rules are codified in `CONTRIBUTING.md`.
 |---|---|---:|---|---|
 | typescript | Node / npm | ^5.3.3 | Apache-2.0 | TypeScript compiler (tsc) for strict static typing and compilation |
 | vitest | Node / npm | ^4.1.11 | MIT | Unit, integration, and metadata regression test runner |
-| vite | Node / npm | ^6.4.3 | MIT | Bundler and test runtime infrastructure |
+| vite | Node / npm | ^6.4.5 | MIT | Bundler and test runtime infrastructure |
 | @types/node | Node / npm | ^20.11.0 | MIT | Type definitions for Node.js runtime APIs |
 | @types/adm-zip | Node / npm | ^0.5.7 | MIT | Type definitions for adm-zip library |
 | @types/js-yaml | Node / npm | ^4.0.9 | MIT | Type definitions for js-yaml library |
