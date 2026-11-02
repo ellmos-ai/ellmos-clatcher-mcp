@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Executable conversion examples (2026-11-02)
+- Corrected the EN/DE/ES `convert_format` examples to supply all four registered path and format parameters.
+- Added regression coverage that validates the documented JSON against the real tool registration and executes its handler using temporary YAML/JSON files, checking output and unchanged input.
+- No runtime, dependency, workflow, or product-version changes.
+
+### Spanish README and language navigation (2026-11-02)
+- **Spanish documentation (`README_es.md`):** Added a Spanish-language README; corrected archive-operation, metadata-sanitization, and execution-receipt terminology.
+- **Documentation navigation (`README.md`, `README_de.md`, `README_es.md`, `llms.txt`):** Added reciprocal EN/DE/ES navigation and indexed the Spanish edition in `llms.txt`.
+- Documentation-only; no code or product-claim changes.
+
 ### AI Security & Dependency Audit, Supply-Chain Hardening & Level 1 SBOM (2026-11-01)
 - **Supply-Chain & Dependency Hardening (`package.json`, `package-lock.json`):** Eliminated all 12 reported vulnerabilities (1 critical, 5 high, 6 moderate) across direct and transitive dependencies:
   - Critical fix for `proxy-addr` (GHSA-jqcg-44mw-7w3h) via override `^2.0.8`.
