@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Spanish Visual Architecture & Test Count Synchronization (Pfad B) (2026-11-05)
+- **Spanish Visual Architecture (`README_es.md`):** Fully localized ASCII Four-View Architectural Topology (`[VISTA 1: ENTORNOS DE EJECUCIÓN Y CLIENTES DE AGENTES]` to `[VISTA 4: PERÍMETRO DEFENSIVO AIR-GAP, RUNASINVOKER Y GOBERNANZA ZERO-EGRESS]`) into native Spanish.
+- **Spanish Sequence & Data Flow Diagrams (`README_es.md`):** Localized component data flow diagram (`graph TD`) and end-to-end execution sequence diagram (`sequenceDiagram`) into natural Spanish with strict quoting and semicolon-free syntax.
+- **Accurate Test Count & Badge Parity (`README.md`, `README_de.md`, `README_es.md`, `llms.txt`):** Synchronized Vitest test count from 172 to 178 across all README editions, Shields.io badges, and `llms.txt` to strictly match the verified test suite count (178 passed).
+- **Automated Contract & Mermaid Validation (`test/metadata.test.ts`):** Extended contract tests to validate 178 test count parity across documentation and added continuous Mermaid syntax validation for `README_es.md`.
+
 ### Executable conversion examples (2026-11-02)
 - Corrected the EN/DE/ES `convert_format` examples to supply all four registered path and format parameters.
 - Added regression coverage that validates the documented JSON against the real tool registration and executes its handler using temporary YAML/JSON files, checking output and unchanged input.

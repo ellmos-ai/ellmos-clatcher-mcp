@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-172%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-178%20passed-brightgreen.svg)](vitest.config.ts)
 [![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/security-RunAsInvoker-success.svg)](SECURITY.md)
@@ -64,7 +64,7 @@ Usa Clatcher cuando tu agente necesite herramientas locales y fiables para el ma
 | 14 | [🧱 Ecosistema y conjuntos asociados](#ellmos-ai-ecosystem) | Integración con las suites de escritorio open-bricks, el sistema de texto BACH y las herramientas dev-bricks |
 | 15 | [🔒 Política de seguridad e informe de incidentes](#security-policy) | Política de seguridad bilingüe, comunicación privada de vulnerabilidades y SLA de respuesta de 48 horas |
 | 16 | [📋 Contexto legible por máquinas (llms.txt)](#machine-readable-context-llmstxt) | Índice LLM estandarizado para descubrimiento por agentes y rastreadores RAG |
-| 17 | [🧪 Verificación y pruebas automatizadas](#testing) | Más de 172 pruebas Vitest, paridad al 100 % y matriz de CI multiplataforma para Node.js 20, 22 y 24 |
+| 17 | [🧪 Verificación y pruebas automatizadas](#testing) | 178 pruebas Vitest, paridad al 100 % y matriz de CI multiplataforma para Node.js 20, 22 y 24 |
 | 18 | [⚖️ Licencias de terceros y transparencia](#third-party-licenses--transparency) | SBOM permisiva de nivel 1 al 100 %, atribución en NOTICE y descargo de responsabilidad legal según § 521 BGB |
 
 <a id="sec-02"></a><a id="2-target-personas--discoverability"></a><a id="target-personas--discoverability"></a>
@@ -100,45 +100,45 @@ Usa Clatcher cuando tu agente necesite herramientas locales y fiables para el ma
 
 ```text
 +--------------------------------------------------------------------------------------------------+
-|                              ELLMOS CLATCHER MCP ARCHITECTURAL TOPOLOGY                          |
+|                            TOPOLOGÍA ARQUITECTÓNICA DE ELLMOS CLATCHER MCP                       |
 +--------------------------------------------------------------------------------------------------+
-| [VIEW 1: CALLER RUNTIMES & AGENT CLIENTS]                                                        |
-|   * Autonomous Agents   : Claude Code, OpenAI Codex, Antigravity / Gemini, Kimi, Cursor          |
-|   * Agent Frameworks    : AutoGen, CrewAI, LangChain, LlamaIndex, Custom Python / TS Clients    |
-|   * Transport Protocols : Model Context Protocol (MCP stdio), JSON-RPC 2.0 Framing               |
-|   * Tool Surface        : 12 Specialized Agent Tools (file repair, formatting, hash & archives)  |
-|   * Schema Contract     : Stdio transport, dynamic runtime Zod schema validation & parameter guards|
-+--------------------------------------------------------------------------------------------------+
-|                                                |                                                 |
-|                                                v                                                 |
-+--------------------------------------------------------------------------------------------------+
-| [VIEW 2: CLATCHER MCP CORE ENGINE & TOOL DISPATCH ORCHESTRATOR]                                  |
-|   * Protocol Dispatch   : ESM stdio router with Zod schema validation & parameter checking      |
-|   * Safety Interceptor  : Built-in Dry-Run Guard (INV-DRYRUN-01) defaulting mutating tools to preview|
-|   * Fault Diagnostics   : Multi-pass JSON syntax linter & self-healing AST repair pipeline       |
-|   * Encoding Resolver   : Lossless UTF-8 normalization, BOM stripper & German umlaut Mojibake fix|
-|   * Format Converter    : Bi-directional translation across 6 formats (JSON, YAML, TOML, XML...)|
+| [VISTA 1: ENTORNOS DE EJECUCIÓN Y CLIENTES DE AGENTES]                                           |
+|   * Agentes autónomos   : Claude Code, OpenAI Codex, Antigravity / Gemini, Kimi, Cursor          |
+|   * Frameworks de agente: AutoGen, CrewAI, LangChain, LlamaIndex, clientes propios en Python / TS|
+|   * Protocolos de transp: Model Context Protocol (MCP stdio), tramas JSON-RPC 2.0                |
+|   * Catálogo de herram  : 12 herramientas para agentes (reparación, formato, hashes y archivos)  |
+|   * Contrato de esquema : Transporte stdio, validación estricta Zod en ejecución y argumentos    |
 +--------------------------------------------------------------------------------------------------+
 |                                                |                                                 |
 |                                                v                                                 |
 +--------------------------------------------------------------------------------------------------+
-| [VIEW 3: RUNTIME UTILITIES, FORMAT CONVERTERS & ATOMIC REPAIR PIPELINE]                          |
-|   * Atomic File Ops     : Staged temporary buffer writes before replacement (INV-ATOMIC-04)      |
-|   * Traversal Guard     : Archive extraction & batch rename strictly bounded to root trees       |
-|   * Duplication Analysis: Collision-resistant SHA-256 cluster detection across workspace files   |
-|   * Cryptographic Hashes: Native multi-algorithm digest verification (SHA-256, SHA-512, MD5, SHA-1)|
-|   * Directory Diffs     : Fast recursive folder structural and content delta comparison engine   |
-|   * In-Memory Archives  : Streamlined ZIP creation, inspection, and extraction with adm-zip      |
+| [VISTA 2: MOTOR CENTRAL DE CLATCHER MCP Y ORQUESTADOR DE DESPACHO]                               |
+|   * Despacho de protoc  : Enrutador stdio ESM con validación de esquemas Zod y comprobación      |
+|   * Guardián de segurid : Protección Dry-Run integrada (INV-DRYRUN-01) por defecto para cambios |
+|   * Diagnóstico fallos  : Linter de sintaxis JSON en varias fases y pipeline de auto-reparación  |
+|   * Corrector codificac : Normalización UTF-8 sin pérdidas, eliminación de BOM y fix Mojibake    |
+|   * Conversor formatos  : Traducción bidireccional entre 6 formatos (JSON, YAML, TOML, XML...)   |
 +--------------------------------------------------------------------------------------------------+
 |                                                |                                                 |
 |                                                v                                                 |
 +--------------------------------------------------------------------------------------------------+
-| [VIEW 4: AIR-GAP DEFENSE PERIMETER, RUNASINVOKER & ZERO-EGRESS GOVERNANCE]                       |
-|   * Execution Privilege : RunAsInvoker unprivileged user-mode (Zero administrative elevation)    |
-|   * Transport Boundary  : 100% Local stdio transport, zero telemetry, zero open listening ports  |
-|   * Air-Gap Isolation   : 100% Offline execution, zero outbound network sockets, zero egress     |
-|   * Statutory Protection: § 521 BGB gratuitous open-source liability disclaimer & 48h SLA        |
-|   * Governance & Supply : Level 1 SBOM, 100% permissive runtime (MIT/BSD), NOTICE attribution    |
+| [VISTA 3: UTILIDADES DE EJECUCIÓN, CONVERTIDORES DE FORMATO Y FLUJO DE REPARACIÓN ATÓMICA]       |
+|   * Operaciones atómicas: Escritura en búfer temporal antes del reemplazo en disco (INV-ATOMIC-04)|
+|   * Protección traversal: Extracción de archivos y renombrado por lotes acotados a la raíz       |
+|   * Análisis duplicados : Detección de clústeres SHA-256 resistente a colisiones en el workspace |
+|   * Hashes criptográf   : Verificación nativa multi-algoritmo (SHA-256, SHA-512, MD5, SHA-1)     |
+|   * Diffs de directorios: Motor rápido de comparación diferencial recursiva de estructura/datos   |
+|   * Archivos en memoria : Creación, inspección y extracción ágil de archivos ZIP con adm-zip     |
++--------------------------------------------------------------------------------------------------+
+|                                                |                                                 |
+|                                                v                                                 |
++--------------------------------------------------------------------------------------------------+
+| [VISTA 4: PERÍMETRO DEFENSIVO AIR-GAP, RUNASINVOKER Y GOBERNANZA ZERO-EGRESS]                    |
+|   * Privilegio ejecución: RunAsInvoker modo usuario sin privilegios (cero elevación a admin)     |
+|   * Límite de transporte: 100% transporte local por stdio, cero telemetría, cero puertos abiertos|
+|   * Aislamiento Air-Gap : 100% ejecución sin conexión, cero sockets de red salientes, cero egress|
+|   * Amparo estatutario  : Exención de responsabilidad por donación de software según § 521 BGB   |
+|   * Gobernanza y cadena : Nivel 1 SBOM, 100% dependencias permisivas (MIT/BSD), atribución NOTICE|
 +--------------------------------------------------------------------------------------------------+
 ```
 
@@ -146,26 +146,26 @@ Usa Clatcher cuando tu agente necesite herramientas locales y fiables para el ma
 
 ```mermaid
 graph TD
-    Agent["AI Agent / Claude Code / Cursor / IDE"] -->|"MCP JSON-RPC Protocol over Stdio"| Transport["MCP Stdio Transport Layer"]
-    Transport --> Server["Clatcher MCP Server Runtime"]
-    Server --> Dispatcher{"Tool Dispatcher"}
+    Agent["Agente de IA / Claude Code / Cursor / IDE"] -->|"Protocolo MCP JSON-RPC sobre Stdio"| Transport["Capa de transporte MCP Stdio"]
+    Transport --> Server["Servidor Clatcher MCP en ejecución"]
+    Server --> Dispatcher{"Distribuidor de herramientas"}
 
-    Dispatcher -->|"fix_json / cleanup_file"| JsonEngine["JSON Linter & Auto-Fix Engine"]
-    Dispatcher -->|"fix_encoding / fix_umlauts"| EncodingEngine["Encoding Normalizer & Mojibake Resolver"]
-    Dispatcher -->|"convert_format"| FormatEngine["Format Converter: JSON/YAML/TOML/XML/CSV/INI"]
-    Dispatcher -->|"detect_dupes / checksum"| HashEngine["SHA-256 / Multi-Hash Content Engine"]
-    Dispatcher -->|"folder_diff / batch_rename"| FileOpsEngine["Folder Diff & Regex Batch Renamer"]
-    Dispatcher -->|"archive / zip"| ArchiveEngine["AdmZip Compression Handler"]
-    Dispatcher -->|"scan_emoji / regex_test"| RegexEngine["Emoji Scanner & Regex Debugger"]
+    Dispatcher -->|"fix_json / cleanup_file"| JsonEngine["Linter JSON y motor de auto-reparación"]
+    Dispatcher -->|"fix_encoding / fix_umlauts"| EncodingEngine["Normalizador de codificación y resolución de Mojibake"]
+    Dispatcher -->|"convert_format"| FormatEngine["Convertidor de formatos: JSON/YAML/TOML/XML/CSV/INI"]
+    Dispatcher -->|"detect_dupes / checksum"| HashEngine["Motor de hashes de contenido SHA-256 / múltiple"]
+    Dispatcher -->|"folder_diff / batch_rename"| FileOpsEngine["Comparador de directorios y renombrado por lotes con regex"]
+    Dispatcher -->|"archive / zip"| ArchiveEngine["Gestor de compresión AdmZip"]
+    Dispatcher -->|"scan_emoji / regex_test"| RegexEngine["Escáner de emojis y depurador de regex"]
 
-    JsonEngine --> DryRunGuard{"Dry-Run Guard"}
+    JsonEngine --> DryRunGuard{"Protección Dry-Run"}
     EncodingEngine --> DryRunGuard
     FormatEngine --> DryRunGuard
     FileOpsEngine --> DryRunGuard
     ArchiveEngine --> DryRunGuard
 
-    DryRunGuard -->|"dry_run: true (default)"| PreviewReport["Detailed Dry-Run Preview Diff & Status"]
-    DryRunGuard -->|"dry_run: false (explicit)"| DiskWrite["Safe Atomic Filesystem Write"]
+    DryRunGuard -->|"dry_run: true (por defecto)"| PreviewReport["Informe detallado de vista previa de diff y estado"]
+    DryRunGuard -->|"dry_run: false (explícito)"| DiskWrite["Escritura segura y atómica en el sistema de archivos"]
 ```
 
 <a id="sec-05"></a><a id="5-end-to-end-execution-sequence"></a><a id="end-to-end-execution-sequence"></a>
@@ -174,39 +174,39 @@ graph TD
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as Developer / Agent Orchestrator
-    participant Agent as AI Coding Agent (Claude Code / Cursor)
-    participant Stdio as MCP Stdio Protocol (JSON-RPC)
-    participant Clatcher as Clatcher MCP Server
-    participant Validator as Zod Schema Validator
-    participant Engine as Dedicated Tool Engine
-    participant Guard as Dry-Run Safety Guard
-    participant FS as Local Filesystem
+    actor User as Desarrollador / Orquestador de agentes
+    participant Agent as Agente de IA para código (Claude Code / Cursor)
+    participant Stdio as Protocolo MCP Stdio (JSON-RPC)
+    participant Clatcher as Servidor Clatcher MCP
+    participant Validator as Validador de esquemas Zod
+    participant Engine as Motor de herramienta dedicado
+    participant Guard as Protección de seguridad Dry-Run
+    participant FS as Sistema de archivos local
 
-    User->>Agent: Prompt: "Fix broken encoding and trailing commas in config.json"
+    User->>Agent: Petición: "Repara la codificación dañada y comas finales en config.json"
     Agent->>Stdio: CallTool(name="fix_json", args={path: "config.json", dry_run: true})
-    Stdio->>Clatcher: Dispatch JSON-RPC Request
-    Clatcher->>Validator: Validate arguments (Zod schema)
-    Validator-->>Clatcher: Validated inputs
+    Stdio->>Clatcher: Despacha la solicitud JSON-RPC
+    Clatcher->>Validator: Valida argumentos (esquema Zod)
+    Validator-->>Clatcher: Parámetros válidos
 
-    Clatcher->>Engine: Run JSON repair pipeline
-    Engine->>FS: Read target file content (UTF-8)
-    FS-->>Engine: Raw file bytes / string
-    Engine->>Engine: Strip comments, trailing commas, single quotes, NULs
-    Engine->>Guard: Submit repaired AST / string
+    Clatcher->>Engine: Ejecuta flujo de reparación JSON
+    Engine->>FS: Lee contenido del archivo objetivo (UTF-8)
+    FS-->>Engine: Bytes en bruto / texto del archivo
+    Engine->>Engine: Elimina comentarios, comas finales, comillas simples y NULs
+    Engine->>Guard: Envía resultado reparado
 
-    alt dry_run == true (Default Mode)
-        Guard->>Guard: Generate diff & mutation preview
-        Guard-->>Clatcher: Return diff preview without disk write
-    else dry_run == false (Explicit Agent Mutation)
-        Guard->>FS: Atomic write to target file via temp buffer
-        FS-->>Guard: Write successful
-        Guard-->>Clatcher: Return success receipt + bytes written
+    alt dry_run == true (Modo por defecto)
+        Guard->>Guard: Genera diff y vista previa de modificaciones
+        Guard-->>Clatcher: Devuelve vista previa de diff sin escritura en disco
+    else dry_run == false (Mutación explícita del agente)
+        Guard->>FS: Escritura atómica en archivo objetivo mediante búfer temporal
+        FS-->>Guard: Escritura exitosa
+        Guard-->>Clatcher: Devuelve recibo de éxito + bytes escritos
     end
 
-    Clatcher-->>Stdio: JSON-RPC ToolResult (diff, stats, safety report)
-    Stdio-->>Agent: Formatted MCP response
-    Agent-->>User: Synthesized result & proposed next steps
+    Clatcher-->>Stdio: ToolResult JSON-RPC (diff, estadísticas, informe de seguridad)
+    Stdio-->>Agent: Respuesta formateada de MCP
+    Agent-->>User: Resultado sintetizado y próximos pasos sugeridos
 ```
 
 <a id="sec-06"></a><a id="6-core-invariants--safety-guarantees"></a><a id="core-invariants--safety-guarantees"></a>
@@ -451,7 +451,7 @@ Este repositorio incluye un archivo de contexto estandarizado y legible por máq
 npm test
 ```
 
-172 pruebas cubren las 12 herramientas, los paquetes de idiomas i18n, la higiene del repositorio y la coherencia de los metadatos (Vitest). El flujo de GitHub Actions ejecuta `npm ci`, la compilación TypeScript, Vitest y una simulación de empaquetado npm en Node.js 20, 22 y 24.
+178 pruebas cubren las 12 herramientas, los paquetes de idiomas i18n, la higiene del repositorio y la coherencia de los metadatos (Vitest). El flujo de GitHub Actions ejecuta `npm ci`, la compilación TypeScript, Vitest y una simulación de empaquetado npm en Node.js 20, 22 y 24.
 
 ### Requisitos
 

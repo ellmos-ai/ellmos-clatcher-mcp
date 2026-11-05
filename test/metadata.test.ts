@@ -124,13 +124,13 @@ describe("metadata consistency", () => {
     expect(readme).toContain("open-bricks");
     expect(readme).toContain("ellmos-ai");
     // The badge and the prose both state a test count -- keep them in step.
-    expect(readme).toContain("172 tests");
-    expect(readme).toContain("badge/tests-172%20passed");
+    expect(readme).toContain("178 tests");
+    expect(readme).toContain("badge/tests-178%20passed");
     expect(readmeDe).toContain("open-bricks");
     expect(readmeDe).toContain("ellmos-ai");
-    expect(readmeDe).toContain("172 Tests");
-    expect(readmeDe).toContain("badge/tests-172%20passed");
-    expect(readRepoFile("llms.txt")).toContain("172 tests");
+    expect(readmeDe).toContain("178 Tests");
+    expect(readmeDe).toContain("badge/tests-178%20passed");
+    expect(readRepoFile("llms.txt")).toContain("178 tests");
   });
 
   it("validates GitHub Actions CI workflow configuration", () => {
@@ -248,6 +248,7 @@ describe("metadata consistency", () => {
 
     validateMermaidBlocks(readme, "README.md");
     validateMermaidBlocks(readmeDe, "README_de.md");
+    validateMermaidBlocks(readRepoFile("README_es.md"), "README_es.md");
 
     // Core Invariants & Safety Guarantees matrix
     expect(readme).toContain("## Core Invariants & Safety Guarantees");
@@ -260,8 +261,8 @@ describe("metadata consistency", () => {
     expect(readmeDe).toContain("Claude Desktop / Cursor Konfiguration");
 
     // Badges & metadata
-    expect(readme).toContain("tests-172%20passed-brightgreen.svg");
-    expect(readmeDe).toContain("tests-172%20passed-brightgreen.svg");
+    expect(readme).toContain("tests-178%20passed-brightgreen.svg");
+    expect(readmeDe).toContain("tests-178%20passed-brightgreen.svg");
     expect(readme).toContain("security-48h%20SLA-blue.svg");
     expect(readmeDe).toContain("Sicherheit-48h%20SLA-blue.svg");
 
