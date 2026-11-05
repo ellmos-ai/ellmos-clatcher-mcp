@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Plattform](https://img.shields.io/badge/Plattform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-172%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-178%20passed-brightgreen.svg)](vitest.config.ts)
 [![Sicherheitsrichtlinie](https://img.shields.io/badge/Sicherheit-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/Architektur-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/Sicherheit-RunAsInvoker-success.svg)](SECURITY.md)
@@ -64,7 +64,7 @@ Nutze Clatcher, wenn ein Agent zuverlässige lokale Wartungswerkzeuge für Textd
 | 14 | [🧱 Ökosystem & Partnersuiten](#ellmos-ai-ecosystem) | Integration mit open-bricks Desktop-Suiten, BACH Text-OS und dev-bricks Tools |
 | 15 | [🔒 Sicherheit & Meldewege](#sicherheitsrichtlinie) | Zweisprachige Sicherheitsrichtlinie, vertrauliche Meldewege, 48h Reaktions-SLA |
 | 16 | [📋 Maschinenlesbarer Kontext (llms.txt)](#maschinenlesbarer-kontext-llmstxt) | Standardisierter LLM-Index für Agenten-Discovery und RAG-Crawler |
-| 17 | [🧪 Verifikation & Automatisierte Tests](#tests) | 172+ Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
+| 17 | [🧪 Verifikation & Automatisierte Tests](#tests) | 178 Vitest Tests, 100% grün, Multi-OS CI-Matrix auf Node.js 20, 22, 24 |
 | 18 | [⚖️ Drittanbieter-Lizenzen & Transparenz](#drittanbieter-lizenzen--transparenz) | 100% permissive Level 1 SBOM, NOTICE-Attribution und gesetzlicher § 521 BGB Haftungshinweis |
 
 <a id="sec-02"></a><a id="2-zielgruppen--auffindbarkeit"></a><a id="zielgruppen--auffindbarkeit"></a>
@@ -452,7 +452,7 @@ Dieses Repository stellt eine standardisierte maschinenlesbare Kontextdatei für
 npm test
 ```
 
-172 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
+178 Tests für alle 12 Tools, i18n-Sprachpakete, Repository-Hygiene und Metadaten-Konsistenz (vitest). Der GitHub-Actions-Workflow führt `npm ci`, TypeScript-Build, Vitest und einen npm-Paket-Dry-Run auf Node.js 20, 22 und 24 aus.
 
 ### Voraussetzungen
 

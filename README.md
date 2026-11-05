@@ -11,7 +11,7 @@
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp)
 [![Clatcher tests](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/ellmos-clatcher-mcp/actions/workflows/tests.yml)
-[![Vitest](https://img.shields.io/badge/tests-172%20passed-brightgreen.svg)](vitest.config.ts)
+[![Vitest](https://img.shields.io/badge/tests-178%20passed-brightgreen.svg)](vitest.config.ts)
 [![Security Policy](https://img.shields.io/badge/security-48h%20SLA-blue.svg)](SECURITY.md)
 [![Zero-Egress](https://img.shields.io/badge/architecture-Local--First%20%2F%20Zero--Egress-success.svg)](SECURITY.md)
 [![RunAsInvoker](https://img.shields.io/badge/security-RunAsInvoker-success.svg)](SECURITY.md)
@@ -64,7 +64,7 @@ Use Clatcher when your agent needs reliable local maintenance tools for text fil
 | 14 | [🧱 Ecosystem & Partner Suites](#ellmos-ai-ecosystem) | Integration with open-bricks desktop suites, BACH text OS, and dev-bricks tools |
 | 15 | [🔒 Security Policy & Incident Reporting](#security-policy) | Bilingual security policy, private vulnerability disclosure, 48h response SLA |
 | 16 | [📋 Machine-Readable Context (llms.txt)](#machine-readable-context-llmstxt) | Standardized LLM index for agent discovery and RAG crawlers |
-| 17 | [🧪 Verification & Automated Tests](#testing) | 172+ Vitest tests, 100% green parity, Multi-OS CI matrix across Node.js 20, 22, 24 |
+| 17 | [🧪 Verification & Automated Tests](#testing) | 178 Vitest tests, 100% green parity, Multi-OS CI matrix across Node.js 20, 22, 24 |
 | 18 | [⚖️ Third-Party Licenses & Transparency](#third-party-licenses--transparency) | 100% permissive Level 1 SBOM, NOTICE attribution, and statutory § 521 BGB disclaimer |
 
 <a id="sec-02"></a><a id="2-target-personas--discoverability"></a><a id="target-personas--discoverability"></a>
@@ -452,7 +452,7 @@ This repository provides a standardized machine-readable context file for AI age
 npm test
 ```
 
-172 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
+178 tests covering all 12 tools, i18n language packs, repository hygiene, and metadata consistency (vitest). The GitHub Actions workflow runs `npm ci`, TypeScript build, Vitest, and an npm package dry-run on Node.js 20, 22, and 24.
 
 ### Requirements
 
