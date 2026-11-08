@@ -146,6 +146,8 @@ describe("repository hygiene", () => {
       "file.bak",
       "file.swp",
       "file~",
+      ".vscode/settings.json",
+      ".idea/workspace.xml",
     ];
 
     for (const candidate of ignoredPaths) {
@@ -190,6 +192,8 @@ describe("repository hygiene", () => {
 
     const welcomeYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "welcome.yml"), "utf8");
     expect(welcomeYaml).toContain("timeout-minutes: 5");
+    expect(welcomeYaml).toContain("concurrency:");
+    expect(welcomeYaml).toContain("cancel-in-progress: true");
 
     const assignYaml = readFileSync(path.join(repoRoot, ".github", "workflows", "auto-assign.yml"), "utf8");
     expect(assignYaml).toContain("timeout-minutes: 5");
