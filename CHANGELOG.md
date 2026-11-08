@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### Repository Hygiene, Package Distribution Parity & CI Workflow Concurrency (Pfad A) (2026-11-08)
+- **Package Distribution Parity (`package.json`):** Included `README_es.md` in package `files` distribution manifest, ensuring Spanish documentation is packaged alongside English and German README editions.
+- **Workflow Concurrency Hardening (`.github/workflows/welcome.yml`):** Added scoped concurrency controls (`${{ github.workflow }}-${{ github.ref }}-${{ github.event.issue.number || github.event.pull_request.number }}`) and `cancel-in-progress: true` to prevent redundant overlapping executions on contributor events.
+- **IDE & Editor Hygiene (`.gitignore`):** Hardened `.gitignore` with `.vscode/` and `.idea/` workspace directory exclusions.
+- **Automated Contract Test Suite Expansion (`test/metadata.test.ts`, `test/repository-hygiene.test.ts`):** Extended contract tests to verify `README_es.md` presence in `package.json["files"]`, welcome workflow concurrency controls, and IDE workspace exclusion coverage across all 178 tests.
+
 ### Spanish Visual Architecture & Test Count Synchronization (Pfad B) (2026-11-05)
 - **Spanish Visual Architecture (`README_es.md`):** Fully localized ASCII Four-View Architectural Topology (`[VISTA 1: ENTORNOS DE EJECUCIÓN Y CLIENTES DE AGENTES]` to `[VISTA 4: PERÍMETRO DEFENSIVO AIR-GAP, RUNASINVOKER Y GOBERNANZA ZERO-EGRESS]`) into native Spanish.
 - **Spanish Sequence & Data Flow Diagrams (`README_es.md`):** Localized component data flow diagram (`graph TD`) and end-to-end execution sequence diagram (`sequenceDiagram`) into natural Spanish with strict quoting and semicolon-free syntax.
