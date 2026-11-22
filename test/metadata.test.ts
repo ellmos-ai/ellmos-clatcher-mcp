@@ -112,7 +112,9 @@ describe("metadata consistency", () => {
 
     const pkg = JSON.parse(readRepoFile("package.json"));
     expect(existsSync(path.join(repoRoot, "NOTICE"))).toBe(true);
+    expect(existsSync(path.join(repoRoot, "README_es.md"))).toBe(true);
     expect(pkg.files).toContain("NOTICE");
+    expect(pkg.files).toContain("README_es.md");
     expect(pkg.files).toContain("SECURITY.md");
     expect(pkg.files).toContain("smithery.yaml");
     expect(pkg.files).toContain("llms.txt");
